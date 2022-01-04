@@ -1,11 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import EventIndex from './containers/EventIndex';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        
         <img src={logo} className="App-logo" alt="logo" />
+        <h1> Events Meetup!</h1>
+        <EventIndex/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

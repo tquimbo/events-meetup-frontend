@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import EventIndex from './containers/EventIndex';
-import { reducer } from './redux/reducer';
-import { createEvent} from 'redux'
 
 
 

@@ -2,9 +2,9 @@ import {useEffect} from 'react'
 import {getEvents} from '../redux/actionCreators'
 import { connect } from 'react-redux'
 
-function EventIndex(props){
+function EventIndex({getEvents, events}){
 
-    useEffect(() => props.getEvents()) 
+  useEffect(getEvents, [getEvents])
 
     return <form> Search by artist, event, team, or venue </form>
 }

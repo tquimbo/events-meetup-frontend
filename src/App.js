@@ -1,14 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import EventIndex from './containers/EventIndex';
+import Search from './components/Search';
+// import { EventIndex, Search} from './components'
+
 
 
 
 function App() {
   return (
     <div className="App">
+ 
       <header className="App-header">
-        
+        <Search/>
         <img src={logo} className="App-logo" alt="logo" />
         <h1> Events Meetup!</h1>
         <EventIndex/>

@@ -1,9 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react";
+import {getEvents} from './redux/actionCreators';
+import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
-import Search from './components/Search';
+import SearchBar from './components/SearchBar';
+import FilterEvents from './components/FilterEvents';
 // import { EventIndex, Search} from './components'
 
+const { search } = window.location;
+const query = new URLSearchParams(search).get('s');
 
 
 
@@ -12,10 +18,19 @@ function App() {
     <div className="App">
  
       <header className="App-header">
-        <Search/>
+        <SearchBar/>
         <img src={logo} className="App-logo" alt="logo" />
         <h1> Events Meetup!</h1>
-        <EventIndex/>
+        
+        <div>
+        {/* <EventIndex/> */}
+            <ul>
+                {filteredEvents.map(event => (
+                    <li key={event.key}>{event.name}</li>
+                ))}
+            </ul>
+        </div>
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -31,5 +46,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

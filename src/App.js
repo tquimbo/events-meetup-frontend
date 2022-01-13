@@ -5,7 +5,7 @@ import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import SearchBar from './components/SearchBar';
-import FilterEvents from './components/FilterEvents';
+
 // import { EventIndex, Search} from './components'
 
 const { search } = window.location;
@@ -23,12 +23,12 @@ function App() {
         <h1> Events Meetup!</h1>
         
         <div>
-        {/* <EventIndex/> */}
-            <ul>
+        <EventIndex/>
+            {/* <ul>
                 {filteredEvents.map(event => (
                     <li key={event.key}>{event.name}</li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
 
         <p>

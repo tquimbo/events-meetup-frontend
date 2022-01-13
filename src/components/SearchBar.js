@@ -36,12 +36,12 @@ export default function SearchBar() {
             placeholder="Search an artist"
             name="s"
             onChange={(e) => setData({ ...data, slug: e.target.value })}
-            />
+            
         />
         <button type="submit">Search</button>
     </form>
     <br />
-      {data.results.length > 0 ? <EventCard card={data.results[0]} /> : null}
+      {data.results.length > 0 ? <EventCard event={data.results[0]} /> : null}
     </main>
 
        

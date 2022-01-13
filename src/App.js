@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import SearchBar from './components/SearchBar';
 import useFetch from "./hooks/useFetch";
+import EventSearchResults from './containers/EventIndex';
+
 
 // import { EventIndex, Search} from './components'
 
@@ -27,7 +29,11 @@ function App() {
         <h1> Events Meetup!</h1>
         
         <div>
-        <EventIndex/>
+
+       
+        {/* <EventSearchResults/> */}
+
+        {/* <EventIndex/> */}
             {/* <ul>
                 {filteredEvents.map(event => (
                     <li key={event.key}>{event.name}</li>

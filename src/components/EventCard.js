@@ -1,8 +1,11 @@
-export default function EventCard({performer_name, venue_name, venue_address, datetime}){
-  return <div className="card">
-   <h2>{performer_name}</h2>
-    <p>{venue_name}</p>
-    <p>{venue_address}</p>
-    <p>{datetime}</p>
-  </div>
+export default function EventCard({event}){
+  return (<div className="card">
+   <h2>{event.performer_name}</h2>
+    <p>{event.venue_name}</p>
+    <p>{event.venue_address}</p>
+    <p>{event.datetime}</p>
+  </div>);
+
 }
+
+

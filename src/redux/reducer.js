@@ -11,7 +11,7 @@ const initialEvent = {
 
 
 const initialState = {
-    events: []
+    events: [],
     selectedEvent: initialEvent,
   }
 
@@ -19,10 +19,10 @@ const initialState = {
       switch (action.type){
       case "GET_EVENTS":
         return{...state, events: action.payload};
-        default:
-       return {...state}
        case "GET_EVENT":
         return {...state, selectedEvent: action.payload};
+        default:
+          return {...state}
      }
   }
 

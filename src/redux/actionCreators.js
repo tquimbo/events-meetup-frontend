@@ -6,7 +6,7 @@ export const getEvents = () => {
 };
 
 export const getEvent = (id) => {
-  return dispatch => fetch(api + `/events/${id}`)
+  return dispatch => fetch("http://localhost:3000/events" + `/events/${id}`)
   .then(res => res.json())
   .then(event => dispatch({type: "GET_EVENT", payload: event})
   )

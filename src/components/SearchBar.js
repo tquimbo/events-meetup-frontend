@@ -34,7 +34,7 @@ export default function SearchBar() {
             type="text"
             id="header-search"
             placeholder="Search an artist"
-            name="s"
+            name="input"
             onChange={(e) => setData({ ...data, slug: e.target.value })}
             
         />
@@ -50,3 +50,17 @@ export default function SearchBar() {
     );
   }
 
+
+//   const { data, setData } = useFetch();
+//   return (
+//     <main>
+//       <input
+//         type="text"
+//         placeholder="Search by artist"
+//         value={data.slug}
+//         onChange={(e) => setData({ ...data, slug: e.target.value })}
+//       />
+//       <br />
+//       {data.results.length > 0 ? <EventCard event={data.results[0]} /> : null}
+//     </main>
+//   );

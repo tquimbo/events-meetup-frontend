@@ -3,6 +3,7 @@ import {getEvents} from '../redux/actionCreators'
 import { connect } from 'react-redux'
 
 const FilterEvents = (events, query) => {
+    debugger
     if (!query) {
         return events;
     }

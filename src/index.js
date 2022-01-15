@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import logo from './logo.svg';
 import './App.css';
-// import EventIndex from './containers/EventIndex';
+import EventIndex from './containers/EventIndex';
 import {reducer} from './redux/reducer'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import { BrowserRouter as Router} from 'react-router-dom'
+
 
 
 
@@ -22,7 +24,7 @@ const store = createStore(reducer, composeEnhancers(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}><App /></Provider>
+    <Router> <Provider store={store}><App /></Provider></Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

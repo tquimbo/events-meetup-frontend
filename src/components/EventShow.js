@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getEvent } from '../redux/actionCreators'
-import { Link} from 'react-router'
+import { Link, Route} from 'react-router'
 import { useEffect } from 'react'
 
-function EventShow(getEvent, performer_name,venue_name, venue_address, datetime ){
+function EventShow(getEvent, performer_name, venue_name, venue_address, datetime, id ){
+
+
 
     const routeId = useParams().id
 
@@ -14,7 +16,6 @@ function EventShow(getEvent, performer_name,venue_name, venue_address, datetime 
     
    
       return <div className="show">
-         
    <h1>{performer_name}</h1>
     {/* <img src={imageUrl} alt={venue_name}/> */}
     <p>{venue_name}</p>
@@ -26,9 +27,9 @@ function EventShow(getEvent, performer_name,venue_name, venue_address, datetime 
 
 const mapStateToProps = (state) => {
         return {...state.selectedEvent}
-      }
+    }
 
-
+    
 
 // export default EventShow;
 

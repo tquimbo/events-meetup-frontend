@@ -50,7 +50,6 @@ function App() {
       <Routes>
       <Route path="events/:id" element={<EventShow />}/>
       <Route path="events" element={<EventIndex />} />
-      
         </Routes>
     
 

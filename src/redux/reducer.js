@@ -1,5 +1,4 @@
 
-   
 const initialEvent = {
   performer_name: "",
   performer_image: "",
@@ -21,6 +20,7 @@ const initialState = {
         return{...state, events: action.payload};
        case "GET_EVENT":
         return {...state, selectedEvent: action.payload};
+        
         default:
           return {...state}
      }

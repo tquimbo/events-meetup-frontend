@@ -1,11 +1,10 @@
 
    
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 
 export default function EventCard({id, performer_name, venue_name, venue_address, datetime }){
   
-  console.log(id)
 
   return (<div className="cards">
 

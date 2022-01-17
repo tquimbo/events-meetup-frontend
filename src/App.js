@@ -11,7 +11,11 @@ import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
 import EventShow from "./components/EventShow";
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useParams } from 'react-router-dom';
+import { Outlet, Link } from "react-router-dom";
+
+
+
 
 
 // import { EventIndex, Search} from './components'
@@ -38,21 +42,22 @@ function App() {
         */}
        {/* element={<Team />} */}
        
-       {/* <Routes>
+       {/* <Switch>
         <Route path="/events/:id"><EventShow/></Route>
-        <Route path="/event
-        s"><EventIndex/></Route>
-      </Routes> */}
+        <Route path="/events"><EventIndex/></Route>
+      </Switch> */}
 
 {/* <Route path="teams/:teamId" element={<Team />} /> */}
 
 
       <Routes>
-      <Route path="events/:id" element={<EventShow />}/>
-      <Route path="events" element={<EventIndex />} />
-        </Routes>
-    
+      <Route path="events" >
+        <Route path=":eventId" element={<EventShow />}/>
 
+        </Route>
+       </Routes>
+    
+       <Outlet />
       
     
   

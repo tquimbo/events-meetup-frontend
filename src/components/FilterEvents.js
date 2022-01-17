@@ -1,17 +1,17 @@
-import {useEffect} from "react"
-import {getEvents} from '../redux/actionCreators'
-import { connect } from 'react-redux'
+// import {useEffect} from "react"
+// import {getEvents} from '../redux/actionCreators'
+// import { connect } from 'react-redux'
 
-const FilterEvents = (events, query) => {
-    debugger
-    if (!query) {
-        return events;
-    }
+// const FilterEvents = (events, query) => {
+//     debugger
+//     if (!query) {
+//         return events;
+//     }
 
-    return events.filter((event) => {
-        const eventName = event.name.toLowerCase();
-        return eventName.includes(query);
-    });
-};
+//     return events.filter((event) => {
+//         const eventName = event.name.toLowerCase();
+//         return eventName.includes(query);
+//     });
+// };
 
-export default FilterEvents;
+// export default FilterEvents;

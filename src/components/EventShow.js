@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getEvent } from '../redux/actionCreators'
-import { Link, Route} from 'react-router'
+import { Link, Outlet} from 'react-router'
 import { useEffect } from 'react'
+import EventCard from "../components/EventCard";
 
-function EventShow(getEvent, performer_name, venue_name, venue_address, datetime, id ){
+function EventShow({getEvent, performer_name, venue_name, venue_address, datetime, id}){
 
-
-
+    // let params = useParams().id;
+   
     const routeId = useParams().id
 
     useEffect(() => {
@@ -15,14 +16,14 @@ function EventShow(getEvent, performer_name, venue_name, venue_address, datetime
       }, [getEvent, routeId]);
     
    
-      return <div className="show">
+return (<div className="show">
    <h1>{performer_name}</h1>
     {/* <img src={imageUrl} alt={venue_name}/> */}
     <p>{venue_name}</p>
     <p>{venue_address}</p>
     <p>{datetime}</p>
     <p> "Hi" </p>
-  </div>
+  </div>)
 }
 
 const mapStateToProps = (state) => {
@@ -30,7 +31,6 @@ const mapStateToProps = (state) => {
     }
 
     
-
-// export default EventShow;
+// export default EventShow
 
 export default connect(mapStateToProps, {getEvent})(EventShow);

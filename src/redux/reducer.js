@@ -3,9 +3,11 @@ const initialEvent = {
   performer_name: "",
   performer_image: "",
   venue_name: "",
+  venue_address: "",
   address: "",
   attendance_status: "",
-  id: null,
+  datetime: "",
+  id: "",
 }
 
 

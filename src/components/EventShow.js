@@ -1,35 +1,44 @@
-import { useParams } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { getEvent } from '../redux/actionCreators'
-import { Link, Outlet} from 'react-router'
-import { useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getEvent } from '../redux/actionCreators';
+import { Link, Outlet} from 'react-router';
+import { useEffect } from 'react';
 import EventCard from "../components/EventCard";
 
-function EventShow({getEvent, performer_name, venue_name, venue_address, datetime, id}){
+function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime,  id}){
 
     // let params = useParams().id;
+    // let params = useParams();
+    //let { eventId } = useParams();
+
    
-    const routeId = useParams().id
+    const eventId = useParams().eventId
+      
 
     useEffect(() => {
-        getEvent(routeId)
-      }, [getEvent, routeId]);
+        getEvent(eventId)
+      }, [getEvent, eventId])
+
+       useEffect(getEvent, [getEvent])
     
    
 return (<div className="show">
+
+    
    <h1>{performer_name}</h1>
-    {/* <img src={imageUrl} alt={venue_name}/> */}
-    <p>{venue_name}</p>
+   {/* <p> {params.eventId} </p> */}
+    <img src={performer_image} alt={venue_name}/>
+   {/* {/* <p>{venue_name}</p>} */}
     <p>{venue_address}</p>
     <p>{datetime}</p>
-    <p> "Hi" </p>
-  </div>)
-}
+    <p> "This is the show" </p> 
+  </div>
+
+)};
 
 const mapStateToProps = (state) => {
         return {...state.selectedEvent}
     }
-
     
 // export default EventShow
 

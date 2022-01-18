@@ -5,8 +5,8 @@ export const getEvents = () => {
   )
 };
 
-export const getEvent = (id) => {
-  return dispatch => fetch(`http://localhost:3000/events/${id}`)
+export const getEvent = (eventId) => {
+  return dispatch => fetch(`http://localhost:3000/events/${eventId}`)
   .then(res => res.json())
   .then(event => dispatch({type: "GET_EVENT", payload: event})
   )

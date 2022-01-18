@@ -51,13 +51,15 @@ function App() {
 
 
       <Routes>
-      <Route path="events" >
+      {/* <Route path="events" > */}
+      <Route path="events" element={<EventIndex />} >
+      {/* <Route index path="events" element={<EventIndex />}> */}
         <Route path=":eventId" element={<EventShow />}/>
-
         </Route>
        </Routes>
     
        <Outlet />
+      
       
     
   

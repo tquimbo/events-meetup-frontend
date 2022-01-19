@@ -5,11 +5,12 @@ import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 // import SearchResults from './containers/EventIndex';
-// import SearchBar from './components/SearchBar';
+import SearchBar from './components/SearchBar';
 // import FilterEvents from './components/SearchBar';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
+import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
@@ -36,7 +37,18 @@ function App() {
     <div className="App">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-       <h1> Events Meetup!</h1>
+
+        <SearchBar/>
+
+        <h1> Events Meetup!</h1>
+
+         <Nav/>
+
+       
+
+       
+
+      
        
        {/* <EventIndex/>
         */}

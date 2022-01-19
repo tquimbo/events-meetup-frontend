@@ -56,7 +56,10 @@ function App() {
        <Route path="events" >
       {/* <Route index path="events" element={<EventIndex />}> */}
         <Route path=":eventId" element={<EventShow />}/>
-        </Route>
+         </Route>
+        <Route path="index" element={<EventIndex />}/> 
+        {/* <Route path="events" element={<EventIndex />}/> */}
+       
        </Routes>
     
        <Outlet />

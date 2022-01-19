@@ -19,8 +19,8 @@ function EventShow({getEvent, performer_name, performer_image, venue_name, venue
         getEvent(eventId)
       }, [getEvent, eventId])
 
-       useEffect(getEvent, [getEvent])
-    
+    //    useEffect(getEvent, [getEvent])
+    // {eventId}
    
 return (<div className="show">
 
@@ -31,7 +31,7 @@ return (<div className="show">
    {/* {/* <p>{venue_name}</p>} */}
     <p>{venue_address}</p>
     <p>{datetime}</p>
-    <p> "This is the show" </p> 
+    <p> "This is the show page" </p> 
   </div>
 
 )};

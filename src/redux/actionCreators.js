@@ -11,3 +11,11 @@ export const getEvent = (eventId) => {
   .then(event => dispatch({type: "GET_EVENT", payload: event})
   )
 };
+
+export const getResults = () => {
+  return dispatch => fetch(`http://localhost:3000/events`)
+  .then(res => res.json())
+  .then(event => dispatch({type: "GET_RESULTS", payload: event})
+  )
+};
+

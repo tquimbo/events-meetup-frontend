@@ -25,7 +25,7 @@ function EventShow({getEvent, performer_name, performer_image, venue_name, venue
 return (<div className="show">
 
     
-   <h1>{performer_name}</h1>
+   <h3>{performer_name}</h3>
    {/* <p> {params.eventId} </p> */}
     <img src={performer_image} alt={venue_name}/>
    {/* {/* <p>{venue_name}</p>} */}

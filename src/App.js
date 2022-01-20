@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
-// import SearchResults from './containers/EventIndex';
+import SearchResults from './containers/SearchResults';
 import SearchBar from './components/SearchBar';
-// import FilterEvents from './components/SearchBar';
+import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
+import EventCardSearch from "./components/EventCardSearch";
 import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
 import { Routes, Route, useParams } from 'react-router-dom';
@@ -25,10 +26,10 @@ import { Outlet, Link } from "react-router-dom";
 
 
 function App() {
-// const { search } = window.location;
-// const query = new URLSearchParams(search).get('input');
-// const [searchQuery, setSearchQuery] = useState(query || '');
-// const FilterEvents = FilterEvents(events, searchQuery);
+const { search } = window.location;
+const query = new URLSearchParams(search).get('input');
+const [searchQuery, setSearchQuery] = useState(query || '');
+const FilteredEvents = FilterEvents(getEvents, events, query)
 
 
   return (
@@ -47,7 +48,11 @@ function App() {
        
 
        
-
+         <ul>
+                {filteredEvents.map(event => (
+                    <li key={event.key}>{event.name}</li>
+                ))}
+            </ul>
       
        
        {/* <EventIndex/>

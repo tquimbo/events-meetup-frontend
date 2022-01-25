@@ -10,10 +10,14 @@ const initialEvent = {
   id: "",
 }
 
+const initialUser = {
+  username: ""
+}
 
 const initialState = {
     events: [],
     selectedEvent: initialEvent,
+    user: initialUser
   }
 
   export function reducer(state=initialState, action){

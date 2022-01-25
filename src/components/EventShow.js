@@ -28,10 +28,10 @@ return (<div className="show">
    <h3>{performer_name}</h3>
    {/* <p> {params.eventId} </p> */}
     <img src={performer_image} alt={venue_name}/>
-   {/* {/* <p>{venue_name}</p>} */}
+    <p>{venue_name}</p>
     <p>{venue_address}</p>
-    <p>{datetime}</p>
-    <p> "This is the show page" </p> 
+    {/* <p>{datetime}</p>
+    <p> "This is the show page" </p>  */}
   </div>
 
 )};

@@ -23,23 +23,37 @@
 // export default connect(mapStateToProps, { getEvents })(EventIndex)
 
 
-import React from "react";
+// import React from "react";
 
-import useFetch from "./hooks/useFetch";
-import House from "./components/House";
+// import useFetch from "./hooks/useFetch";
+// import House from "./components/House";
+// import EventCardSearch from "../components/EventCardSearch";
 
-export default function App() {
-  const { data, setData } = useFetch();
-  return (
-    <main>
-      <input
-        type="text"
-        placeholder="Type your favorite house"
-        value={data.slug}
-        onChange={(e) => setData({ ...data, slug: e.target.value })}
-      />
-      <br />
-      {data.results.length > 0 ? <Event family={data.results[0]} /> : null}
-    </main>
-  );
-}
+// export default function App() {
+//   const { data, setData } = useFetch();
+//   return (
+//     <main>
+//       <input
+//         type="text"
+//         placeholder="Type your favorite house"
+//         value={data.slug}
+//         onChange={(e) => setData({ ...data, slug: e.target.value })}
+//       />
+//       <br />
+//       {data.results.length > 0 ? <EventCardSearch event={data.results[0]} /> : null}
+//     </main>
+//   );
+// }
+
+// import React from "react";
+
+// import Members from "./Members";
+
+// export default function EventSearchResults({ family }) {
+//   return (
+//     <div>
+//       <h1>{family.name}</h1>
+//       <Members members={family.members} />
+//     </div>
+//   );
+// }

@@ -4,20 +4,14 @@ import { connect } from 'react-redux'
 import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"
 
-export default function EventCardSearch({events, query}){
+export default function EventCardSearch({event}){
+  return (
+    <div>
+      <h1>{event.name}</h1>
 
-  if (!query) {
-    return events;
+    </div>
+  );
 }
-
-  
-return events.filter((event) => {
-  const eventName = event.name.toLowerCase();
-  return eventName.includes(query);
-});
-};
-
-
 
 
 //   return (<div className="cards">

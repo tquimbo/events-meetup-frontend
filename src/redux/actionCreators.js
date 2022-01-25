@@ -15,7 +15,7 @@ export const getEvent = (eventId) => {
 export const getResults = () => {
   return dispatch => fetch(`http://localhost:3000/events`)
   .then(res => res.json())
-  .then(event => dispatch({type: "GET_RESULTS", payload: event})
+  .then(event => dispatch({type: "GET_RESULTS", payload: events})
   )
 };
 

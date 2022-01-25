@@ -14,7 +14,7 @@ export default function EventCard({id, performer_name, venue_name, venue_address
 {/* <h3>{performer_name}</h3> */}
     <p>{venue_name}</p>
     <p>{venue_address}</p>
-    <p>{datetime}</p>
+    {/* <p>{datetime}</p> */}
   </div>);
 
 }

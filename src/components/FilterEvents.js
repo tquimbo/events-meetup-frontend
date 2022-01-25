@@ -39,6 +39,7 @@ function FilterEvents({getResults, events, query}){
       
         
     // {events.map(event => <EventCard {...event} key={event.id}/>)}
+    
 return events.filter((event) => {
 const eventName = event.name.toLowerCase();
 return eventName.includes(query);});

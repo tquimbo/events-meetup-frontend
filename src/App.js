@@ -10,6 +10,7 @@ import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
+import Auth from "./components/Auth";
 import EventCardSearch from "./components/EventCardSearch";
 import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
@@ -27,34 +28,47 @@ import { Outlet, Link } from "react-router-dom";
 
 function App() {
 const { search } = window.location;
-const query = new URLSearchParams(search).get('input');
-const [searchQuery, setSearchQuery] = useState(query || '');
-const FilteredEvents = FilterEvents(getEvents, events, query)
+// const query = new URLSearchParams(search).get('input');
+// const [searchQuery, setSearchQuery] = useState(query || '');
+// const FilteredEvents = FilterEvents(getEvents, events, query)
+// const { data, setData } = useFetch();
+
 
 
   return (
-
   
     <div className="App">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <SearchBar/>
+        {/* <SearchBar/> */}
+        {/* <div className="Searcc">
+        <input
+        type="results"
+        placeholder="Search for artist"
+        value={data.slug}
+        onChange={(e) => setData({ ...data, slug: e.target.value })}
+        />
+        <br />
+        {data.results.length > 0 ? <EventCardSearch events={data.results[0]} /> : null}
+      </div> */}
 
         <h1> Events Meetup!</h1>
 
          <Nav/>
 
+         <Auth/>
+
        
 
        
-         <ul>
+         {/* <ul>
                 {filteredEvents.map(event => (
                     <li key={event.key}>{event.name}</li>
                 ))}
             </ul>
       
-       
+        */}
        {/* <EventIndex/>
         */}
        {/* element={<Team />} */}

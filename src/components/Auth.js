@@ -1,6 +1,7 @@
 import { useState } from 'react'
 // import { submitSignup, submitLogin } from '../redux/actionCreators'
 import { connect } from 'react-redux'
+import { submitSignup, submitLogin } from '../redux/actionCreators'
 
 
 function Auth(props){
@@ -12,11 +13,10 @@ function Auth(props){
 
   const toggleSignup = () => setSignup(!signup)
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault()
-//     signup ? props.submitSignup({ username, password }) : props.submitLogin({username, password})
-//     history.push("/restaurants")
-//   }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    signup ? props.submitSignup({ username, password }) : props.submitLogin({username, password})
+  }
 
   return <>
     {signup ? <h1>Sign up!</h1> : <h1>Login!</h1>}

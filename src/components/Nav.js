@@ -6,6 +6,7 @@ function Nav(){
 
   return <nav>
    <NavLink to="/index"> See all events </NavLink>
+
   </nav>
 
 }

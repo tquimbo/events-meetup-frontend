@@ -28,7 +28,7 @@ const initialState = {
         return {...state, selectedEvent: action.payload};
         // case "GET_RESULTS":
         //   return {...state, events: action.payload};
-        case "GET_USER":
+        case "SET_USER":
           return {...state, user: action.payload};
         default:
           return {...state}

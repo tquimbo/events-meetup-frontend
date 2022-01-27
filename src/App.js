@@ -10,7 +10,8 @@ import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
-import Auth from "./components/Auth";
+import Login from "./components/Login";
+// import Auth from "./components/Auth";
 import EventCardSearch from "./components/EventCardSearch";
 import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
@@ -42,7 +43,7 @@ const { search } = window.location;
         <img src={logo} className="App-logo" alt="logo" />
 
         {/* <SearchBar/> */}
-        {/* <div className="Searcc">
+        {/* <div className="Search">
         <input
         type="results"
         placeholder="Search for artist"
@@ -57,7 +58,7 @@ const { search } = window.location;
 
          <Nav/>
 
-         <Auth/>
+         {/* <Auth/> */}
 
        
 
@@ -82,14 +83,13 @@ const { search } = window.location;
 
 
       <Routes>
-      {/* <Route path="events" > */}
-      {/* <Route path="events" element={<EventIndex />} > */}
+     
        <Route path="events" >
-      {/* <Route index path="events" element={<EventIndex />}> */}
         <Route path=":eventId" element={<EventShow />}/>
          </Route>
+        <Route path="login" element={<Login />}/>
         <Route path="index" element={<EventIndex />}/> 
-        {/* <Route path="events" element={<EventIndex />}/> */}
+      
        
        </Routes>
     

@@ -4,14 +4,15 @@ import { connect } from 'react-redux'
 import { submitSignup, submitLogin } from '../redux/actionCreators'
 
 
-function Login(props){
+function Signup(props){
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
-   props.submitLogin({username, password})
+    props.submitSignup({username, password})
   }
 
   return <>
@@ -35,4 +36,4 @@ function Login(props){
 
 
 
-export default connect(null, { submitLogin })(Login);
+export default connect(null, { submitSignup})(Signup);

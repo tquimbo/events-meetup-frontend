@@ -17,6 +17,7 @@ import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
+import Signup from './components/Signup';
 
 
 
@@ -42,7 +43,7 @@ const { search } = window.location;
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        {/* <SearchBar/> */}
+        <SearchBar/>
         {/* <div className="Search">
         <input
         type="results"
@@ -88,7 +89,10 @@ const { search } = window.location;
         <Route path=":eventId" element={<EventShow />}/>
          </Route>
         <Route path="login" element={<Login />}/>
+        <Route path="signup" element={<Signup />}/>
+        
         <Route path="index" element={<EventIndex />}/> 
+
       
        
        </Routes>

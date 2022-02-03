@@ -19,6 +19,8 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
 
+import { autoLogin } from './redux/actionCreators';
+
 
 
 
@@ -28,7 +30,11 @@ import Signup from './components/Signup';
 
 
 
-function App() {
+function App({user, autoLogin}) {
+
+  
+  useEffect(() => localStorage.token && autoLogin(), [autoLogin])
+
 const { search } = window.location;
 // const query = new URLSearchParams(search).get('input');
 // const [searchQuery, setSearchQuery] = useState(query || '');
@@ -111,4 +117,6 @@ const { search } = window.location;
   );
 }
 
-export default App
+const mapStateToProps = (state) => ({user: state.user})
+
+export default connect(mapStateToProps, {autoLogin})(App);

@@ -19,28 +19,98 @@ export const getEvent = (eventId) => {
 //   )
 // };
 
-export const submitSignup = (user) => {
-  return dispatch => fetch(`http://localhost:3000/users`, {
-    method: 'POST',
+// export const submitSignup = (user) => {
+//   return dispatch => fetch(`http://localhost:3000/users`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user),
+//   })
+//   .then(res => res.json())
+//   .then(response => {localStorage.token = response.token})
+// };
+
+
+
+// export const submitLogin = (user) => {
+//   return dispatch => fetch(`http://localhost:3000/sessions`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user),
+//   })
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "SET_USER", payload: user}))
+// }
+
+export const submitLogin = (user) => {
+  return dispatch => fetch(`http://localhost:3000/sessions`, {
+    method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
   .then(res => res.json())
-  .then(user => dispatch({type: "SET_USER", payload: user}))
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
 };
 
 
 
-export const submitLogin = (user) => {
-  return dispatch => fetch(`http://localhost:3000/sessions`, {
-    method: 'POST',
+export const submitSignup = (user) => {
+  return dispatch => fetch(`http://localhost:3000/users`, {
+    method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
   .then(res => res.json())
-  .then(user => dispatch({type: "SET_USER", payload: user}))
-}
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
+};
+
+
+
+// export const submitLogin = (user) => {
+//   return dispatch => fetch(`http://localhost:3000/me`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user),
+//   })
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "SET_USER", payload: user}))
+// }
+
+// export const autoLogin = () => {
+//   return dispatch => fetch(`http://localhost:3000/me`, {
+//     headers: {
+//       'Authorization': localStorage.token
+//   })
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "SET_USER", payload: response.user}))
+// }
+
+export const autoLogin = () => {
+  return dispatch => fetch(`http://localhost:3000/me`, {
+    headers: {
+      'Authorization': localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
+};
+
+

@@ -5,7 +5,7 @@ import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import EventCard from "../components/EventCard";
 
-function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime,  id}){
+function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, id}){
 
     // let params = useParams().id;
     // let params = useParams();
@@ -30,10 +30,12 @@ return (<div className="show">
     <img src={performer_image} alt={venue_name}/>
     <p>{venue_name}</p>
     <p>{venue_address}</p>
+    <p>{attendance_status}</p>
     {/* <p>{datetime}</p>
     <p> "This is the show page" </p>  */}
   </div>
 
+ 
 )};
 
 const mapStateToProps = (state) => {

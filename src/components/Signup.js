@@ -16,7 +16,7 @@ function Signup(props){
   }
 
   return <>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
 
       <label>
         Username:

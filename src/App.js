@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import SearchResults from './containers/SearchResults';
 import SearchBar from './components/SearchBar';
+import MyProfile from './components/MyProfile';
 import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
@@ -19,7 +20,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
 
-import { autoLogin } from './redux/actionCreators';
+// import { autoLogin } from './redux/actionCreators';
 
 
 
@@ -30,10 +31,11 @@ import { autoLogin } from './redux/actionCreators';
 
 
 
-function App({user, autoLogin}) {
+export default function App({user, autoLogin}) {
 
   
-  useEffect(() => localStorage.token && autoLogin(), [autoLogin])
+  // 
+  
 
 const { search } = window.location;
 // const query = new URLSearchParams(search).get('input');
@@ -44,9 +46,13 @@ const { search } = window.location;
 
 
   return (
+
   
     <div className="App">
        <header className="App-header">
+
+       <Nav/>
+
         <img src={logo} className="App-logo" alt="logo" />
 
         <SearchBar/>
@@ -63,7 +69,7 @@ const { search } = window.location;
 
         <h1> Events Meetup!</h1>
 
-         <Nav/>
+       
 
          {/* <Auth/> */}
 
@@ -98,8 +104,8 @@ const { search } = window.location;
         <Route path="signup" element={<Signup />}/>
         
         <Route path="index" element={<EventIndex />}/> 
-
-      
+        <Route path="myprofile" element={<MyProfile />}/> 
+    
        
        </Routes>
     
@@ -117,6 +123,6 @@ const { search } = window.location;
   );
 }
 
-const mapStateToProps = (state) => ({user: state.user})
+// const mapStateToProps = (state) => ({user: state.user})
 
-export default connect(mapStateToProps, {autoLogin})(App);
+// export default connect(mapStateToProps, {autoLogin})(App);

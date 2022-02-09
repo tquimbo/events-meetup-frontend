@@ -1,3 +1,5 @@
+const USERURL = 'http://localhost:3000/users/'
+
 export const getEvents = () => {
   return dispatch => fetch('http://localhost:3000/events')
   .then(res => res.json())
@@ -76,6 +78,7 @@ export const submitSignup = (user) => {
     dispatch({type: "SET_USER", payload: response.user})
   })
 };
+
 
 
 

@@ -79,6 +79,14 @@ export const submitSignup = (user) => {
   })
 };
 
+export const logout = () => {
+  return dispatch => {
+    localStorage.clear()
+    dispatch({type: "LOGOUT"})
+  }
+}
+
+
 
 
 

@@ -19,6 +19,7 @@ function MyProfile(props){
     // }, [])
 
     useEffect(submitLogin, [submitLogin])
+    useEffect(submitSignup, [submitSignup])
 
     return (<div className="myprofile">
 

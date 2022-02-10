@@ -18,9 +18,8 @@ function MyProfile(props){
     //     submitLogin(localStorage.currentUser)
     // }, [])
 
-    useEffect(submitLogin, [submitLogin])
-    useEffect(submitSignup, [submitSignup])
-
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup] )
+    
     return (<div className="myprofile">
 
     <h1> Hi {props.username} </h1>

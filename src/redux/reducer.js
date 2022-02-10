@@ -11,7 +11,9 @@ const initialEvent = {
 }
 
 const initialUser = {
-  username: ""
+  username: "",
+  first_name: "",
+  last_name: ""
 }
 
 const initialState = {

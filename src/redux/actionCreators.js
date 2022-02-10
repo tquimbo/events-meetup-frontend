@@ -14,6 +14,14 @@ export const getEvent = (eventId) => {
   )
 };
 
+export const getSearchResultsEvents = (input) => {
+  return dispatch => fetch('http://localhost:3000/events')
+  .then(res => res.json())
+  .then(events => dispatch({type: "GET_EVENTS", payload: events})
+  )
+};
+
+
 // export const getResults = () => {
 //   return dispatch => fetch(`http://localhost:3000/events`)
 //   .then(res => res.json())
@@ -85,6 +93,38 @@ export const logout = () => {
     dispatch({type: "LOGOUT"})
   }
 }
+
+
+// export const attending = (user) => {
+//   return dispatch => fetch(`http://localhost:3000/events`, {
+//     method: 'POST', // or 'PUT'
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user),
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     localStorage.token = response.token
+//     dispatch({type: "SET_USER", payload: response.user})
+//   })
+// };
+
+
+// export const attending = (maybe) => {
+//   return dispatch => fetch(`http://localhost:3000/events`, {
+//     method: 'POST', // or 'PUT'
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user),
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     localStorage.token = response.token
+//     dispatch({type: "SET_USER", payload: response.user})
+//   })
+// };
 
 
 

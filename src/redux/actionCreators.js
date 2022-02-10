@@ -14,8 +14,9 @@ export const getEvent = (eventId) => {
   )
 };
 
-export const getSearchResultsEvents = (input) => {
-  return dispatch => fetch('http://localhost:3000/events')
+export const getSearchResults = (input) => {
+  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${input}
+  }&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
   .then(res => res.json())
   .then(events => dispatch({type: "GET_EVENTS", payload: events})
   )

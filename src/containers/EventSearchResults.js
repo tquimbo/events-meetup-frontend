@@ -57,3 +57,28 @@
 //     </div>
 //   );
 // }
+
+import {useEffect} from "react"
+import {getEvents} from '../redux/actionCreators'
+import { connect } from 'react-redux'
+import { Routes, Route, Outlet } from "react-router-dom";
+import EventCard from "../components/EventCard"
+
+
+function EventSearchIndex({getSearchResults, events}){
+
+  useEffect(getSearchResults, [getSearchResults])
+
+      return <div className="cards">
+    {events.map(event => <EventCard {...event} key={event.id}/>)}
+    <Outlet />
+  </div>
+}
+
+  const mapStateToProps = (state) => {
+  return {events: state.events}
+
+}
+
+
+export default connect(mapStateToProps, { getSearchResults })(EventSearchIndex)

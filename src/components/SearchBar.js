@@ -2,86 +2,46 @@ import useFetch from "../hooks/useFetch";
 import EventIndex from '../containers/EventIndex';
 import EventCard from "./EventCard"
 import EventCardSearch from "./EventCardSearch"
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getEvent } from '../redux/actionCreators';
+import { Link, Outlet} from 'react-router';
+import { useEffect } from 'react';
+import { getSearchResults } from '../redux/actionCreators';
 
-const SearchBar = ({ searchQuery, setSearchQuery }) => (
+function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
+
+    return (
     <form action="/" method="get">
         <label htmlFor="header-search">
             <span className="visually-hidden"></span>
         </label>
         <input
             value={searchQuery}
-            onInput={e => setSearchQuery(e.target.value)}
+            handleInput={e => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
             placeholder="Search an artist"
             name="results"
+            // onClick={this.handleInput}
         />
         <button type="submit">Search</button>
     </form>
-);
+    )
+}
 
-// export default function SearchBar() {
-//     const { data, setData } = useFetch();
-//     return (
-//       <main>
+    // useEffect(() => {
+    //     getSearchResults(searchQuery)
+    //   }, [getSearchResults, searchQuery])
 
-{/* <form action="/" method="get">
-        <label htmlFor="header-search">
-            <span className="visually-hidden"></span>
-        </label>
-        <input
-            value={data.slug}
-            // onInput={e => setData(e.target.value)}
-            type="text"
-            id="header-search"
-            placeholder="Search an artist"
-            name=""
-            onChange={(e) => setData({ ...data, slug: e.target.value })}
-            
-        />
-        <button type="submit">Search</button>
-    </form>
-    <br />
-      {data.results.length > 0 ? <EventCard event={data.results[0]} /> : null}
-    </main>
-
-       
+    
 
 
-    );
-  } */}
 
+const mapStateToProps = (state) => {
+    return {...state.selectedEvent}
+}
 
-{/* //   const { data, setData } = useFetch();
-//   return (
-//     <main>
-//       <input */}
+// export default EventShow
 
-//         type="text"
-//         placeholder="Search by artist"
-//         value={data.slug}
-//         onChange={(e) => setData({ ...data, slug: e.target.value })}
-//       />
-//       <br />
-//       {data.results.length > 0 ? <EventCard event={data.results[0]} /> : null}
-//     </main>
-//   );
-
-// export default function SeachBar() {
-//     const { data, setData } = useFetch();
-//     return (
-//       <main>
-//         <input
-//           type="text"
-//           placeholder="Search for artist"
-//           value={data.slug}
-//           onChange={(e) => setData({ ...data, slug: e.target.value })}
-//           name="results"
-//         />
-//         <br />
-//         {data.results.length > 0 ? <EventCardSearch event={data.results[0]} /> : null}
-//       </main>
-//     );
-//   }
-
-export default SearchBar
+export default connect(mapStateToProps, {getSearchResults})(SearchBar);

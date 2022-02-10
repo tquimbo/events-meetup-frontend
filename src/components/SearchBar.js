@@ -28,6 +28,8 @@ function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
         <button type="submit">Search</button>
     </form>
     )
+
+    
 }
 
     // useEffect(() => {

@@ -105,6 +105,10 @@ const { search } = window.location;
         
         <Route path="index" element={<EventIndex />}/> 
         <Route path="myprofile" element={<MyProfile />}/> 
+      
+        <Route path="?results=" >
+        <Route path=":searchQuery" element={<SearchResults />}/>
+        </Route>
     
        
        </Routes>

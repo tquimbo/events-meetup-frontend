@@ -80,13 +80,24 @@ import {getEvents} from '../redux/actionCreators'
 import { connect } from 'react-redux'
 import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"
+import SearchBar from "../components/SearchBar"
 import { getSearchResults } from '../redux/actionCreators';
+import { useParams } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+
+
 
 
 function SearchResults({getSearchResults, events}){
 
-  useEffect(getSearchResults, [getSearchResults])
+    const searchQuery = useParams().searchQuery
+      
 
+    useEffect(() => {
+        getSearchResults(searchQuery)
+      }, [getSearchResults, searchQuery])
+
+ 
       return <div className="cards">
     {events.map(event => <EventCard {...event} key={event.id}/>)}
     <Outlet />

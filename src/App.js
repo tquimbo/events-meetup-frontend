@@ -19,6 +19,8 @@ import EventShow from "./components/EventShow";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 // import { autoLogin } from './redux/actionCreators';
 
@@ -106,10 +108,10 @@ const { search } = window.location;
         <Route path="index" element={<EventIndex />}/> 
         <Route path="myprofile" element={<MyProfile />}/> 
       
-        <Route path="?results=" >
-        <Route path=":searchQuery" element={<SearchResults />}/>
+        <Route path="?results=:searchQuery"  element={<SearchResults />}/>
+        {/* <Route path=":searchQuery" element={<SearchResults />}/>
         </Route>
-    
+     */}
        
        </Routes>
     

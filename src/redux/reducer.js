@@ -32,6 +32,8 @@ const initialState = {
         //   return {...state, events: action.payload};
         case "SET_USER":
           return {...state, user: action.payload};
+          case "SEARCH_RESULTS":
+            return {...state, events: action.payload};
         case "LOGOUT":
           return {...state, user: initialUser}
         default:

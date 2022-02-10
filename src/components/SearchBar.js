@@ -8,6 +8,8 @@ import { getEvent } from '../redux/actionCreators';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import { getSearchResults } from '../redux/actionCreators';
+import { useHistory } from '../redux/actionCreators';
+import { BrowserRouter as Router } from "react-router-dom";
 
 function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
 
@@ -18,12 +20,12 @@ function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
         </label>
         <input
             value={searchQuery}
-            handleInput={e => setSearchQuery(e.target.value)}
+            handleinput={e => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
             placeholder="Search an artist"
             name="results"
-            // onClick={this.handleInput}
+            // onClick={this.handleinput}
         />
         <button type="submit">Search</button>
     </form>

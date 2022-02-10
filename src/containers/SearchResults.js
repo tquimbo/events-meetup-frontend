@@ -83,7 +83,6 @@ import EventCard from "../components/EventCard"
 import SearchBar from "../components/SearchBar"
 import { getSearchResults } from '../redux/actionCreators';
 import { useParams } from 'react-router-dom';
-import { BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -97,7 +96,7 @@ function SearchResults({getSearchResults, events}){
         getSearchResults(searchQuery)
       }, [getSearchResults, searchQuery])
 
- 
+
       return <div className="cards">
     {events.map(event => <EventCard {...event} key={event.id}/>)}
     <Outlet />

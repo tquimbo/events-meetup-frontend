@@ -25,9 +25,13 @@ function SearchBar(props) {
         // navigate.push(`?results=${searchQuery}`)
         e.preventDefault()
         props.getSearchResults(searchQuery)
+        <Redirect to="/login" />
+ 
     };
 
     return (
+
+        <div>
     <form action="/" method="get" autoComplete="off" onSubmit={onSubmit}>
         <label htmlFor="header-search">
             <span className="visually-hidden"></span>
@@ -44,6 +48,10 @@ function SearchBar(props) {
         />
         <button type="submit">Search</button>
     </form>
+
+
+</div>
+
     )
 
     

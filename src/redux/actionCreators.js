@@ -15,12 +15,25 @@ export const getEvent = (eventId) => {
 };
 
 export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}
-  }&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
   .then(res => res.json())
   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
   )
 };
+
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}
+//   &client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   method: 'POST', // or 'PUT'
+// body: JSON.stringify(searchQuery),
+// })
+// .then(res => res.json())
+// .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
+//   )
+// };
+
+
+
 
 
 // export const getResults = () => {

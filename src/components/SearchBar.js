@@ -8,24 +8,39 @@ import { getEvent } from '../redux/actionCreators';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import { getSearchResults } from '../redux/actionCreators';
-import { useHistory } from '../redux/actionCreators';
+import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
+import { useState } from 'react'
 
-function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
+function SearchBar(props) {
+
+  
+    const [searchQuery, setSearchQuery] = useState("")
+    // useEffect(() => {
+    //     getSearchResults(searchQuery)
+    //   }, [getSearchResults, searchQuery])
+
+    // const navigate = useNavigate();
+    const onSubmit = e => {
+        // navigate.push(`?results=${searchQuery}`)
+        e.preventDefault()
+        props.getSearchResults(searchQuery)
+    };
 
     return (
-    <form action="/" method="get">
+    <form action="/" method="get" autoComplete="off" onSubmit={onSubmit}>
         <label htmlFor="header-search">
             <span className="visually-hidden"></span>
         </label>
         <input
             value={searchQuery}
-            handleinput={e => setSearchQuery(e.target.value)}
+            // handleinput={e => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
             placeholder="Search an artist"
             name="results"
-            // onClick={this.handleinput}
+            // onSubmit={this.handleinput}
         />
         <button type="submit">Search</button>
     </form>
@@ -43,9 +58,9 @@ function SearchBar({ searchQuery, setSearchQuery, getSearchResults }) {
 
 
 const mapStateToProps = (state) => {
-    return {...state.selectedEvent}
+    return {events: state.events}
 }
 
 // export default EventShow
 
-export default connect(mapStateToProps, {getSearchResults})(SearchBar);
+export default connect(null, {getSearchResults})(SearchBar);

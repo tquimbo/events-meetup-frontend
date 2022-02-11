@@ -18,7 +18,6 @@ function EventIndex({getEvents, events}){
   const mapStateToProps = (state) => {
   return {events: state.events}
 
-
 }
 
 

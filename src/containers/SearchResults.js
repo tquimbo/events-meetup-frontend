@@ -85,9 +85,7 @@ import { getSearchResults } from '../redux/actionCreators';
 import { useParams } from 'react-router-dom';
 
 
-
-
-function SearchResults({getSearchResults, events}){
+function SearchResults(props){
 
     const searchQuery = useParams().searchQuery
       
@@ -98,7 +96,7 @@ function SearchResults({getSearchResults, events}){
 
 
       return <div className="cards">
-    {events.map(event => <EventCard {...event} key={event.id}/>)}
+    {props.events.map(event => <EventCard {...event} key={event.id}/>)}
     <Outlet />
   </div>
 }

@@ -10,11 +10,17 @@ import { useEffect } from 'react';
 import { getSearchResults } from '../redux/actionCreators';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
+import Login from "../components/Login";
+
+
 import { useState } from 'react'
 
 function SearchBar(props) {
 
   
+
+
     const [searchQuery, setSearchQuery] = useState("")
     // useEffect(() => {
     //     getSearchResults(searchQuery)
@@ -23,9 +29,10 @@ function SearchBar(props) {
     // const navigate = useNavigate();
     const onSubmit = e => {
         // navigate.push(`?results=${searchQuery}`)
+    
         e.preventDefault()
         props.getSearchResults(searchQuery)
-        <Redirect to="/login" />
+        
  
     };
 

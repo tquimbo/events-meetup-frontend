@@ -2,14 +2,20 @@ import { useState } from 'react'
 // import { submitSignup, submitLogin } from '../redux/actionCreators'
 import { connect } from 'react-redux'
 import { submitSignup, submitLogin } from '../redux/actionCreators'
+import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 
 function Login(props){
+
+  let navigate = useNavigate();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = (e) => {
+    navigate("/myprofile", { replace: true });
     e.preventDefault()
    props.submitLogin({username, password})
   }

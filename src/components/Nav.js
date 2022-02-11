@@ -35,7 +35,8 @@ function Nav({logout, username}){
       <button onClick={logout}>Logout!</button>
   </nav>
 
-  const loggedOutRender = () => <nav> <NavLink to="/index"> See all events </NavLink> |
+  const loggedOutRender = () => <nav> 
+  <NavLink to="/index"> See all events </NavLink> |
   <NavLink to="/login"> Login </NavLink> |
   <NavLink to="/signup"> Signup </NavLink> |</nav>
 

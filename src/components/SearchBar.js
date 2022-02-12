@@ -21,6 +21,8 @@ function SearchBar(props) {
   
 
 
+    let navigate = useNavigate();
+
     const [searchQuery, setSearchQuery] = useState("")
     // useEffect(() => {
     //     getSearchResults(searchQuery)
@@ -32,7 +34,8 @@ function SearchBar(props) {
     
         e.preventDefault()
         props.getSearchResults(searchQuery)
-        
+        navigate(`/results/${searchQuery}`, { replace: true });
+    
  
     };
 

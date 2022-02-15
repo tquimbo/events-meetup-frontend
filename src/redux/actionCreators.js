@@ -14,60 +14,40 @@ export const getEvent = (eventId) => {
   )
 };
 
+
 export const getSearchResults = (searchQuery) => {
   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-  .then(res => res.json())
+  .then(res => {
+    //debugger
+    return res.json()})
+  .then(
+    (json) => {
+    debugger
+    json.events.map(event => {
+    return { 
+      performer_name: event.performers[0].name,
+
+     }
+  }
+  )
+})
   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
   )
 };
 
+
 // export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}
-//   &client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-//   method: 'POST', // or 'PUT'
-// body: JSON.stringify(searchQuery),
-// })
-// .then(res => res.json())
-// .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )
-// };
-
-
-
-
-
-// export const getResults = () => {
-//   return dispatch => fetch(`http://localhost:3000/events`)
-//   .then(res => res.json())
-//   .then(event => dispatch({type: "GET_RESULTS", payload: events})
-//   )
-// };
-
-// export const submitSignup = (user) => {
-//   return dispatch => fetch(`http://localhost:3000/users`, {
-//     method: 'POST',
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`, {
+//     method: 'POST', // or 'PUT'
 //     headers: {
 //       'Content-Type': 'application/json',
 //     },
-//     body: JSON.stringify(user),
+//     body: JSON.stringify(searchQuery),
 //   })
 //   .then(res => res.json())
-//   .then(response => {localStorage.token = response.token})
+//   .then(events => dispatch({type: "GET_EVENTS", payload: events})
+//   )
 // };
-
-
-
-// export const submitLogin = (user) => {
-//   return dispatch => fetch(`http://localhost:3000/sessions`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(user),
-//   })
-//   .then(res => res.json())
-//   .then(user => dispatch({type: "SET_USER", payload: user}))
-// }
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {

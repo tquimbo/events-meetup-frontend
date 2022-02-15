@@ -1,16 +1,28 @@
 import {useEffect} from "react"
 import {getEvents} from '../redux/actionCreators'
 import { connect } from 'react-redux'
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import EventCard from "../components/EventCard"
 
-export default function EventCardSearch({event}){
-  return (
-    <div>
-      <h1>{event.name}</h1>
+import { Link, Outlet } from 'react-router-dom'
 
-    </div>
-  );
+
+export default function EventCardSearch({id, performer_name, venue_name, venue_address, datetime, type }){
+  
+
+
+  return (<div className="search_cards">
+ 
+{/* <Link to={`/events/${id}`}><h3>{performer_name}</h3></Link>  */}
+
+<h3>{type}</h3>
+
+{/* <h3>{performer_name}</h3> */}
+    {/* <p>{venue_name}</p>
+    <p>{venue_address}</p> */}
+    {/* <p>{datetime}</p> */}
+  </div>);
+
 }
 
 

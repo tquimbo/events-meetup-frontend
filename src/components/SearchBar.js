@@ -34,7 +34,7 @@ function SearchBar(props) {
     
         e.preventDefault()
         props.getSearchResults(searchQuery)
-        // navigate(`/results/${searchQuery}`, { replace: true });
+        navigate(`/results/${searchQuery}`, { replace: true });
     
  
     };
@@ -42,7 +42,7 @@ function SearchBar(props) {
     return (
 
         <div>
-    <form action="/" method="get" autoComplete="off" onSubmit={onSubmit}>
+    <form action="/" method="post" autoComplete="off" onSubmit={onSubmit}>
         <label htmlFor="header-search">
             <span className="visually-hidden"></span>
         </label>

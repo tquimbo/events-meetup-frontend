@@ -55,11 +55,15 @@ const initialState = {
         case "SET_USER":
           return {...state, user: action.payload};
           case "SEARCH_RESULTS":
-            return {...state, events: action.payload};
+            return {...state, 
+              events: action.payload};
         case "LOGOUT":
           return {...state, user: initialUser}
         case "ADD_EVENT":
-            return {...state, user_events: action.payload};
+            return {...state,  
+            user: {...state.user, user_events: [action.payload, ...state.user.user_events]},
+            selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
+          }
         default:
           return {...state}
      }

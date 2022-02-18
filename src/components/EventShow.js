@@ -5,8 +5,12 @@ import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import EventCard from "../components/EventCard";
 import AddEvent from "../components/AddEvent";
+import Login from "../components/Login";
+import Signup from "../components/Signup";
+import { submitSignup, submitLogin } from '../redux/actionCreators';
+import MyProfile from "../components/MyProfile";
 
-function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, id}){
+function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, id, username}){
 
     // let params = useParams().id;
     // let params = useParams();

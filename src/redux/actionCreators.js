@@ -14,6 +14,13 @@ export const getEvent = (eventId) => {
   )
 };
 
+// export const addEvent = (userID, eventId) => {
+//   return dispatch => fetch(`http://localhost:3000/user_events`)
+//   .then(res => res.json())
+//   .then(event => dispatch({type: "ADD_EVENT", payload: event})
+//   )
+// };
+
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
 //   .then(res => res.json())
@@ -121,22 +128,42 @@ export const getEvent = (eventId) => {
 //   )
 // };
 
+export const addEvent = (userID, eventId) => {
+  return dispatch => fetch(`http://localhost:3000/user_events`)
+  .then(res => res.json())
+  .then(event => dispatch({type: "ADD_EVENT", payload: event})
+  )
+};
 
-
-export const getSearchResults = (searchQuery) => {
-  debugger
-  return dispatch => fetch(`http://localhost:3000/events`, {
+export const addEvent = (userID, eventID) => {
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(searchQuery),
+    body: JSON.stringify(userID, eventID),
   })
   .then(res => res.json())
   .then(response => {
-    dispatch({type: "SEARCH_RESULTS", payload: response.events})
+    dispatch({type: "ADD_EVENT", payload: response.userID, response.eventID})
   })
 };
+
+
+
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`http://localhost:3000/events`, {
+//     method: 'POST', // or 'PUT'
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(searchQuery),
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     dispatch({type: "SEARCH_RESULTS", payload: response.events})
+//   })
+// };
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {

@@ -1,10 +1,15 @@
 import { useState } from 'react'
 // import { submitSignup, submitLogin } from '../redux/actionCreators'
+import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from 'react-redux'
 import { submitSignup, submitLogin } from '../redux/actionCreators'
 
 
 function Signup(props){
+
+
+  let navigate = useNavigate();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -17,6 +22,7 @@ function Signup(props){
   const handleSubmit = (e) => {
     e.preventDefault()
     props.submitSignup({username, password, first_name, last_name })
+    navigate("/myprofile", { replace: true });
   }
 
   return <>
@@ -52,4 +58,4 @@ function Signup(props){
 
 
 
-export default connect(null, { submitSignup})(Signup);
+export default connect(null, { submitSignup })(Signup);

@@ -4,6 +4,7 @@ import { getEvent } from '../redux/actionCreators';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import EventCard from "../components/EventCard";
+import AddEvent from "../components/AddEvent";
 
 function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, id}){
 
@@ -33,6 +34,8 @@ return (<div className="show">
     <p>{attendance_status}</p>
     {/* <p>{datetime}</p>
     <p> "This is the show page" </p>  */}
+    <AddEvent />
+
   </div>
 
  

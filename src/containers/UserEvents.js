@@ -5,20 +5,20 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"
 
 
-function EventIndex(props){
+function UserEvents(props){
 
-  useEffect(getEvents, [getEvents])
+  useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
-      return <div className="cards">
-    {events.map(event => <EventCard {...event} key={event.id}/>)}
+
+      return <div className="user_events">
+    {user_events.map(event => <EventCard {...event} key={event.id}/>)}
     <Outlet />
   </div>
 }
 
   const mapStateToProps = (state) => {
-  return {events: state.events}
+  return {user_events: state.user_events}
+  }
 
-}
 
-
-export default connect(mapStateToProps, { getEvents })(EventIndex)
+export default connect(mapStateToProps, { getEvents })(UserEvents)

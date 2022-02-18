@@ -108,19 +108,19 @@ const { search } = window.location;
         <Route path="index" element={<EventIndex />}/> 
         <Route path="myprofile" element={<MyProfile />}/> 
 
-        <Route path="results" >
+        {/* <Route path="results" >
         <Route path=":searchQuery" element={<SearchResults />}/>
          </Route>
-        
+         */}
       
         {/* <Route path="?results=:searchQuery"  element={<SearchResults />}/> */}
         {/* <Route path=":searchQuery" element={<SearchResults />}/>
         </Route>
      */}
 
-{/* <Route path="results" >
+  <Route path="results" >
         <Route path=":performer_name" element={<SearchResults />}/>
-         </Route> */}
+         </Route>
        
        </Routes>
     

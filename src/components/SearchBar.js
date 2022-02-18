@@ -20,7 +20,6 @@ function SearchBar(props) {
 
   
 
-
     let navigate = useNavigate();
 
     const [searchQuery, setSearchQuery] = useState("")
@@ -47,7 +46,7 @@ function SearchBar(props) {
             <span className="visually-hidden"></span>
         </label>
         <input
-            value={searchQuery}
+            value={props.searchQuery}
             // handleinput={e => setSearchQuery(e.target.value)}
             onChange={(e) => setSearchQuery(e.target.value)}
             type="text"

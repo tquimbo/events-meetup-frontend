@@ -53,7 +53,12 @@ const { search } = window.location;
     <div className="App">
        <header className="App-header">
 
+       <h1> Events Meetup!</h1>
+
        <Nav/>
+
+      
+
 
         <img src={logo} className="App-logo" alt="logo" />
 
@@ -69,8 +74,7 @@ const { search } = window.location;
         {data.results.length > 0 ? <EventCardSearch events={data.results[0]} /> : null}
       </div> */}
 
-        <h1> Events Meetup!</h1>
-
+      
        
 
          {/* <Auth/> */}

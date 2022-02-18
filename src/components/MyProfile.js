@@ -23,6 +23,7 @@ function MyProfile(props){
     return (<div className="myprofile">
 
     <h1> Hi {props.first_name} </h1>
+    <h3> My Events </h3>
     
    </div>
     )

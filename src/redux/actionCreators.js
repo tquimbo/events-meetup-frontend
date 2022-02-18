@@ -128,12 +128,6 @@ export const getEvent = (eventId) => {
 //   )
 // };
 
-export const addEvent = (userID, eventId) => {
-  return dispatch => fetch(`http://localhost:3000/user_events`)
-  .then(res => res.json())
-  .then(event => dispatch({type: "ADD_EVENT", payload: event})
-  )
-};
 
 export const addEvent = (userID, eventID) => {
   return dispatch => fetch(`http://localhost:3000/user_events`, {
@@ -145,25 +139,25 @@ export const addEvent = (userID, eventID) => {
   })
   .then(res => res.json())
   .then(response => {
-    dispatch({type: "ADD_EVENT", payload: response.userID, response.eventID})
+    dispatch({type: "ADD_EVENT", payload: response.userID && response.eventID})
   })
 };
 
 
 
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`http://localhost:3000/events`, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(searchQuery),
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     dispatch({type: "SEARCH_RESULTS", payload: response.events})
-//   })
-// };
+export const getSearchResults = (searchQuery) => {
+  return dispatch => fetch(`http://localhost:3000/events`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(searchQuery),
+  })
+  .then(res => res.json())
+  .then(response => {
+    dispatch({type: "SEARCH_RESULTS", payload: response.events})
+  })
+};
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {

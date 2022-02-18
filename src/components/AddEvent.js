@@ -47,29 +47,31 @@
 // function connect
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getEvent } from '../redux/actionCreators';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
-import { submitSignup, submitLogin } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
 
 
 
 
 function AddEvent(props){
 
-    // useEffect(() => {
-    //     submitSignup(localStorage.currentUser)
-    //     submitLogin(localStorage.currentUser)
-    // }, [])
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup] )
+    const handleClick = (e) => {
+        e.preventDefault()
+       props.addEvent({user_id, event_id})
+      }
+    
+
+
     
     return (<div className="addevent">
 
-        <button> Attending </button>
+        <button> onClick={handleClick} Attending </button>
     
    </div>
     )
@@ -80,4 +82,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { submitSignup, submitLogin })(AddEvent)
+export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent })(AddEvent)

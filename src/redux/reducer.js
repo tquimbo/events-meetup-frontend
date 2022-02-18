@@ -62,7 +62,7 @@ const initialState = {
         case "ADD_EVENT":
             return {...state,  
             user: {...state.user, user_events: [action.payload, ...state.user.user_events]},
-            selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
+            // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
           }
         default:
           return {...state}

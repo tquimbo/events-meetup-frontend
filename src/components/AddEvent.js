@@ -55,23 +55,35 @@ import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
 import EventShow from "../components/EventCard";
+// import { getState } from 'react';
 
 
 
 
 
 
-function AddEvent(props){
+function AddEvent(addEvent, user ){
+
+    
 
     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
   
     // const user_id = useSelector((state) => state.todos[props.id])
+    // const user_id = props.user.id
+    // const event_id = props.selectedEvent.id
+    // const selectEventID = props.state => state.selectedEvent.id
+    // const user = props.getState().auth.user.id;
 
+    useEffect(addEvent, [addEvent])
+
+    
 
     const handleClick = (e) => {
+
         e.preventDefault()
-    //    props.addEvent(props.id)
+        addEvent(user)
+        
       }
     
 
@@ -90,7 +102,6 @@ function AddEvent(props){
 const mapStateToProps = (state) => {
     return {
        ...state.selectedUserEvent,
-    
     }
         
 }

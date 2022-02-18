@@ -20,10 +20,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
 import { BrowserRouter as Router } from "react-router-dom";
-
-
-// import { autoLogin } from './redux/actionCreators';
-
+import { autoLogin } from './redux/actionCreators'
 
 
 
@@ -39,13 +36,13 @@ export default function App({user, autoLogin}) {
   // 
   
 
-const { search } = window.location;
+
 // const query = new URLSearchParams(search).get('input');
 // const [searchQuery, setSearchQuery] = useState(query || '');
 // const FilteredEvents = FilterEvents(getEvents, events, query)
 // const { data, setData } = useFetch();
 
-
+useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
   return (
 
@@ -142,6 +139,6 @@ const { search } = window.location;
   );
 }
 
-// const mapStateToProps = (state) => ({user: state.user})
+const mapStateToProps = (state) => ({user: state.user})
 
-// export default connect(mapStateToProps, {autoLogin})(App);
+export default connect(mapStateToProps, {autoLogin})(App);

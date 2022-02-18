@@ -14,20 +14,39 @@ export const getEvent = (eventId) => {
   )
 };
 
-export const addEvent = (user_event) => {
-  // debugger
-  return dispatch => fetch(`http://localhost:3000/user_events`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user_event),
-  })
-  .then(res => res.json())
-  .then(response => {
-    dispatch({type: "ADD_EVENT", payload: response.user_event })
-  })
-};
+// export const addEvent = (user_event) => {
+
+//   return dispatch => fetch(`http://localhost:3000/user_events`, {
+//     method: 'POST', // or 'PUT'
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(user_event),
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     dispatch({type: "ADD_EVENT", payload: response.user_event })
+//   })
+// };
+export const addEvent = () => (dispatch, getState, user) => {
+  // will hit reducer
+  const userId = getState().user.id;
+  const eventId = getState().selectedEvent.id;
+  console.log(userId) // should output the updated data
+  console.log(eventId)
+  return dispatch => fetch(`http://localhost:3000/user/${userId}/user_events`, {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.token
+        },
+        body: JSON.stringify(user),
+      })
+      .then(res => res.json())
+      .then(response => {
+        dispatch({type: "ADD_EVENT", payload: user })
+      })
+    };
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`http://localhost:3000/events`, {
@@ -77,6 +96,19 @@ export const logout = () => {
   return dispatch => {
     localStorage.clear()
     dispatch({type: "LOGOUT"})
+  }
+}
+
+function handleUserResponse(res, dispatch){
+  if (res.ok) {
+    res.json()
+    .then(response => {
+      localStorage.token = response.token
+      dispatch({type: "SET_USER", payload: response.user})
+    })
+  } else {
+    res.json()
+    .then(res => alert(res.errors))
   }
 }
 
@@ -156,6 +188,15 @@ export const getSearchResults = (searchQuery) => {
   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
   )
 };
+
+export const autoLogin = () => {
+  return dispatch => fetch(`http://localhost:3000/me`, {
+    headers: {
+      'Authorization': localStorage.token
+    }
+  })
+  .then(res => handleUserResponse(res, dispatch))
+}
 
 
 

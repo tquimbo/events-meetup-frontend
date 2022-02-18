@@ -105,20 +105,6 @@ export const getEvent = (eventId) => {
 //   )
 // };
 
-export const submitLogin = (user) => {
-  return dispatch => fetch(`http://localhost:3000/sessions`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  })
-  .then(res => res.json())
-  .then(response => {
-    localStorage.token = response.token
-    dispatch({type: "SET_USER", payload: response.user})
-  })
-};
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
@@ -152,6 +138,20 @@ export const getSearchResults = (searchQuery) => {
   })
 };
 
+export const submitLogin = (user) => {
+  return dispatch => fetch(`http://localhost:3000/sessions`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  })
+  .then(res => res.json())
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
+};
 
 export const submitSignup = (user) => {
   return dispatch => fetch(`http://localhost:3000/users`, {

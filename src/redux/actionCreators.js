@@ -14,19 +14,71 @@ export const getEvent = (eventId) => {
   )
 };
 
-// export const addEvent = (userID, eventId) => {
-//   return dispatch => fetch(`http://localhost:3000/user_events`)
-//   .then(res => res.json())
-//   .then(event => dispatch({type: "ADD_EVENT", payload: event})
-//   )
-// };
+export const addEvent = (user_event) => {
+  // debugger
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user_event),
+  })
+  .then(res => res.json())
+  .then(response => {
+    dispatch({type: "ADD_EVENT", payload: response.user_event })
+  })
+};
 
 // export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   return dispatch => fetch(`http://localhost:3000/events`, {
+//     method: 'POST', // or 'PUT'
+//     headefirs: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(searchQuery),
+//   })
 //   .then(res => res.json())
-//   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )
+//   .then(response => {
+//     dispatch({type: "SEARCH_RESULTS", payload: response.events})
+//   })
 // };
+
+export const submitLogin = (user) => {
+  return dispatch => fetch(`http://localhost:3000/sessions`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  })
+  .then(res => res.json())
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
+};
+
+export const submitSignup = (user) => {
+  return dispatch => fetch(`http://localhost:3000/users`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  })
+  .then(res => res.json())
+  .then(response => {
+    localStorage.token = response.token
+    dispatch({type: "SET_USER", payload: response.user})
+  })
+};
+
+export const logout = () => {
+  return dispatch => {
+    localStorage.clear()
+    dispatch({type: "LOGOUT"})
+  }
+}
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
@@ -98,172 +150,12 @@ export const getEvent = (eventId) => {
 //   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events}))
 // };
 
-
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(searchQuery),
-//   })
-//   .then(res => res.json())
-//   .then(events => dispatch({type: "GET_EVENTS", payload: events})
-//   )
-// };
-
-
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-//   .then(res => res.json())
-//   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )
-// };
-
-
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`http://localhost:3000/events`)
-//   .then(res => res.json())
-//   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )
-// };
-
-
-export const addEvent = (userID, eventID) => {
-  return dispatch => fetch(`http://localhost:3000/user_events`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userID, eventID),
-  })
-  .then(res => res.json())
-  .then(response => {
-    dispatch({type: "ADD_EVENT", payload: response.userID && response.eventID})
-  })
-};
-
-
-
 export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`http://localhost:3000/events`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(searchQuery),
-  })
+  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
   .then(res => res.json())
-  .then(response => {
-    dispatch({type: "SEARCH_RESULTS", payload: response.events})
-  })
+  .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
+  )
 };
 
-export const submitLogin = (user) => {
-  return dispatch => fetch(`http://localhost:3000/sessions`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  })
-  .then(res => res.json())
-  .then(response => {
-    localStorage.token = response.token
-    dispatch({type: "SET_USER", payload: response.user})
-  })
-};
-
-export const submitSignup = (user) => {
-  return dispatch => fetch(`http://localhost:3000/users`, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  })
-  .then(res => res.json())
-  .then(response => {
-    localStorage.token = response.token
-    dispatch({type: "SET_USER", payload: response.user})
-  })
-};
-
-export const logout = () => {
-  return dispatch => {
-    localStorage.clear()
-    dispatch({type: "LOGOUT"})
-  }
-}
-
-
-// export const attending = (user) => {
-//   return dispatch => fetch(`http://localhost:3000/events`, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(user),
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     localStorage.token = response.token
-//     dispatch({type: "SET_USER", payload: response.user})
-//   })
-// };
-
-
-// export const attending = (maybe) => {
-//   return dispatch => fetch(`http://localhost:3000/events`, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(user),
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     localStorage.token = response.token
-//     dispatch({type: "SET_USER", payload: response.user})
-//   })
-// };
-
-
-
-
-
-// export const submitLogin = (user) => {
-//   return dispatch => fetch(`http://localhost:3000/me`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(user),
-//   })
-//   .then(res => res.json())
-//   .then(user => dispatch({type: "SET_USER", payload: user}))
-// }
-
-// export const autoLogin = () => {
-//   return dispatch => fetch(`http://localhost:3000/me`, {
-//     headers: {
-//       'Authorization': localStorage.token
-//   })
-//   .then(res => res.json())
-//   .then(user => dispatch({type: "SET_USER", payload: response.user}))
-// }
-
-// export const autoLogin = () => {
-//   return dispatch => fetch(`http://localhost:3000/me`, {
-//     headers: {
-//       'Authorization': localStorage.token
-//     }
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     localStorage.token = response.token
-//     dispatch({type: "SET_USER", payload: response.user})
-//   })
-// };
 
 

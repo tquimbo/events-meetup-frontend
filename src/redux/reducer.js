@@ -8,18 +8,40 @@ const initialEvent = {
   attendance_status: "",
   datetime: "",
   id: "",
+  user_id: "",
+  event_id: "",
+  event_users: [],
 }
 
 const initialUser = {
+  id: "",
   username: "",
   first_name: "",
-  last_name: ""
+  last_name: "",
+  user_events: [],
 }
+
+// const initialUserEvent = {
+//   username: "",
+//   first_name: "",
+//   last_name: "",
+//   performer_name: "",
+//   performer_image: "",
+//   venue_name: "",
+//   venue_address: "",
+//   address: "",
+//   attendance_status: "",
+//   datetime: "",
+//   id: "",
+//   user_id: "",
+//   event_id: "",
+// }
+
 
 const initialState = {
     events: [],
     selectedEvent: initialEvent,
-    user: initialUser
+    user: initialUser,
   }
 
   export function reducer(state=initialState, action){
@@ -36,8 +58,8 @@ const initialState = {
             return {...state, events: action.payload};
         case "LOGOUT":
           return {...state, user: initialUser}
-          case "ADD_EVENT":
-            return {...state, selectedEvent: action.payload};
+        case "ADD_EVENT":
+            return {...state, user_events: action.payload};
         default:
           return {...state}
      }

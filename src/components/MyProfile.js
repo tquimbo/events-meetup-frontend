@@ -9,8 +9,6 @@ import EventCard from "../components/EventCard";
 import { submitSignup, submitLogin } from '../redux/actionCreators';
 
 
-
-
 function MyProfile(props){
 
     // useEffect(() => {

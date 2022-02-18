@@ -49,10 +49,14 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux'
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
+import EventShow from "../components/EventCard";
+
+
 
 
 
@@ -61,25 +65,36 @@ function AddEvent(props){
 
     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
+  
+    // const user_id = useSelector((state) => state.todos[props.id])
+
+
     const handleClick = (e) => {
         e.preventDefault()
-       props.addEvent({user_id, event_id})
+    //    props.addEvent(props.id)
       }
     
 
+    return (<div className="addEvent">
 
-    
-    return (<div className="addevent">
+{/* <h1> Hi {props.username} </h1> */}
 
-        <button> onClick={handleClick} Attending </button>
+            <button onClick={handleClick}>
+            Attending
+            </button>
     
    </div>
     )
 };
 
 const mapStateToProps = (state) => {
-    return {...state.user}
+    return {
+       ...state.selectedUserEvent,
+    
+    }
+        
 }
 
 
-export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent })(AddEvent)
+
+export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)

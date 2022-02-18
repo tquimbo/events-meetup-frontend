@@ -33,7 +33,7 @@ function SearchBar(props) {
     
         e.preventDefault()
         props.getSearchResults(searchQuery)
-        navigate(`/results/${searchQuery}`, { replace: true });
+        // navigate(`/results/${searchQuery}`, { replace: true });
     
  
     };

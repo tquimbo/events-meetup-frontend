@@ -7,10 +7,12 @@ import EventCard from "../components/EventCard";
 import AddEvent from "../components/AddEvent";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
-import { submitSignup, submitLogin } from '../redux/actionCreators';
+import { submitSignup, submitLogin, getUser } from '../redux/actionCreators';
 import MyProfile from "../components/MyProfile";
 
-function UserProfile({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, username, first_name, last_name, submitLogin, submitSignup}){
+// function UserProfile({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, username, first_name, last_name, submitLogin, submitSignup, getUser}){
+    function UserProfile({username, first_name, last_name, submitLogin, submitSignup, getUser}){
+
 
     // let params = useParams().id;
     // let params = useParams();
@@ -30,27 +32,20 @@ function UserProfile({getEvent, performer_name, performer_image, venue_name, ven
 
     useEffect(() => {
         getEvent(getUser)
-      }, [getUser, eventId])
+      }, [getUser, userId])
 
     //    useEffect(getEvent, [getEvent])
     // {eventId}
    
-return (<div className="show">
+return (<div className="usershow">
 
     
-   <h3>{performer_name}</h3>
+   <h2>{first_name} {last_name}</h2>
    {/* <p> {params.eventId} </p> */}
-    <img src={performer_image} alt={venue_name}/>
-    <p>{venue_name}</p>
-    <p>{venue_address}</p>
-    <p>{attendance_status}</p>
-    <p>{id}</p>
+  
    
    
     
-
-
-   <AddEvent/>
 
   </div>
 
@@ -69,9 +64,9 @@ return (<div className="show">
 
 
 const mapStateToProps = (state) => {
-        return {...state.selectedEvent}
+        return {...state.user}
     }
     
 // export default EventShow
 
-export default connect(mapStateToProps, {getEvent })(EventShow);
+export default connect(mapStateToProps, {getUser})(UserProfile);

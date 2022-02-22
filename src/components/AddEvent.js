@@ -64,15 +64,16 @@ function AddEvent(props){
 
     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
-    const eventId = useParams().eventId;
-    const userId = props.id;
+    // const eventId = useParams().eventId;
+    // const userId = props.id;
 
     // const [userID, setuserID] = useState(state.user.id);
     // const [eventID, seteventID] = useState(state.selectedEvent.id);
 
     const handleClick = (e) => {
         e.preventDefault()
-       props.addEvent({userId, eventId})
+    //    props.addEvent({userId, eventId})
+    // props.addEvent(userId)
       }
 
 
@@ -88,6 +89,7 @@ function AddEvent(props){
             </button>
 
             <h1> {props.id} </h1>
+            <h1> {props.username} </h1>
             {/* <h1> {eventId} </h1> */}
 
             {/* <h1> {this.props.event_id} </h1>
@@ -99,16 +101,16 @@ function AddEvent(props){
     )
 };
 
-// const mapStateToProps = (state) => {
-//     return {
-//        ...state.user,
-//     }
+const mapStateToProps = (state) => {
+    return {
+       ...state.user,
+    }
         
-// }
+}
 
 
-export default connect(null, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
-// export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
+// export default connect(null, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
+export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
 
 
 // const AddEvent = ({ history, addEvent }) =>

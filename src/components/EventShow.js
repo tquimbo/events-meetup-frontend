@@ -43,8 +43,6 @@ return (<div className="show">
     <p>{venue_name}</p>
     <p>{venue_address}</p>
     <p>{attendance_status}</p>
-    <p>{id}</p>
-   
    
     
 

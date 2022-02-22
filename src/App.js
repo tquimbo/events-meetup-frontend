@@ -5,7 +5,7 @@ import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import SearchResults from './containers/SearchResults';
-import UserProfile from './containers/SearchResults';
+import UserProfile from './containers/UserProfile';
 import SearchBar from './components/SearchBar';
 import MyProfile from './components/MyProfile';
 import FilterEvents from './components/FilterEvents';

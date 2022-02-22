@@ -16,12 +16,29 @@ export const getEvent = (eventId) => {
   )
 };
 
+// export const getUser = (userId) => {
+//   debugger
+//   return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "GET_USER", payload: user})
+//   )
+// };
 export const getUser = (userId) => {
-  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
-  .then(res => res.json())
-  .then(yser => dispatch({type: "GET_USER", payload: user})
-  )
-};
+  return (dispatch) => {
+      dispatch({ type: 'GET_USER'})
+      let config = {
+          method: 'GET',
+          headers: {
+              "Authorization": `bearer ${localStorage.token}`
+          }
+      }
+      fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
+          return response.json()
+      }).then(responseJSON => {
+          dispatch({ type: 'GET_USER', user: responseJSON})
+      })
+  }
+}
 
 export const addEvent = (userID, eventID) => {
 

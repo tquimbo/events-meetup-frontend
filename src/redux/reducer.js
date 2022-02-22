@@ -61,9 +61,16 @@ const initialState = {
               events: action.payload};
         case "LOGOUT":
           return {...state, user: initialUser}
+          // case "ADD_EVENT":
+          //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
             return {...state,  
-            user: {...state.user, user_events: [action.payload, ...state.user.user_events]},
+
+            selectedEvent: {...state.selectedEvent,
+              user_id: action.payload, ...state.selectedEvent.user_id, 
+              event_id: action.payload, ...state.selectedEvent.event_id},
+            // selectedEvent: {...state, selectedEvent: action.payload},
+            user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
             // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
           }
         default:

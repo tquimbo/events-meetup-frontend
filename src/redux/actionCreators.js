@@ -16,45 +16,51 @@ export const getEvent = (eventId) => {
   )
 };
 
+export const getUser = (userId, eventId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(user => dispatch({type: "GET_USER", payload: user})
+  )
+};
 // export const getUser = (userId) => {
-//   debugger
-//   return dispatch => fetch(`http://localhost:3000/users/${userId}`)
-//   .then(res => res.json())
-//   .then(user => dispatch({type: "GET_USER", payload: user})
-//   )
-// };
-export const getUser = (userId) => {
-  return (dispatch) => {
-      dispatch({ type: 'GET_USER'})
-      let config = {
-          method: 'GET',
-          headers: {
-              "Authorization": `bearer ${localStorage.token}`
-          }
-      }
-      fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
-          return response.json()
-      }).then(responseJSON => {
-          dispatch({ type: 'GET_USER', user: responseJSON})
-      })
-  }
-}
+//   return (dispatch) => {
+//       dispatch({ type: 'GET_USER'})
+//       let config = {
+//           method: 'GET',
+//           headers: {
+//               "Authorization": `bearer ${localStorage.token}`
+//           }
+//       }
+//       fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
+//           return response.json()
+//       }).then(responseJSON => {
+//           dispatch({ type: 'GET_USER', user: responseJSON})
+//       })
+//   }
+// }
 
-export const addEvent = (userID, eventID) => {
+export const addEvent = (user) => {
+  // return dispatch => {
+    // const user_event = {
+    //     user_id: user.userId,
+    //     event_id: user.eventId
+    //     performer_name: 
+    //     venue_name:
+    //     datetime:
+    // }
 
-  debugger
-
-  return dispatch => fetch(`http://localhost:3000/user_events`, {
+  return dispatch => fetch(`http://localhost:3000/user/${user.userId}/user_events`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
       'Authorization': localStorage.token
     },
-    body: JSON.stringify(userID),
+    body: JSON.stringify(user),
+    
   })
   .then(res => res.json())
   .then(response => {
-    dispatch({type: "ADD_EVENT", payload: response.user })
+    dispatch({type: "ADD_EVENT", payload: response.user_event })
   })
 };
 

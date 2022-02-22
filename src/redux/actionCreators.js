@@ -1,3 +1,5 @@
+import { reducer } from "./reducer";
+
 const USERURL = 'http://localhost:3000/users/'
 
 export const getEvents = () => {
@@ -14,39 +16,82 @@ export const getEvent = (eventId) => {
   )
 };
 
-// export const addEvent = (user_event) => {
+export const getUser = (userId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(yser => dispatch({type: "GET_USER", payload: user})
+  )
+};
 
-//   return dispatch => fetch(`http://localhost:3000/user_events`, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(user_event),
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     dispatch({type: "ADD_EVENT", payload: response.user_event })
-//   })
-// };
-export const addEvent = () => (dispatch, getState, user) => {
-  // will hit reducer
-  const userId = getState().user.id;
-  const eventId = getState().selectedEvent.id;
-  console.log(userId) // should output the updated data
-  console.log(eventId)
-  return dispatch => fetch(`http://localhost:3000/user/${userId}/user_events`, {
-        method: 'POST', // or 'PUT'
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.token
-        },
-        body: JSON.stringify(user),
-      })
-      .then(res => res.json())
-      .then(response => {
-        dispatch({type: "ADD_EVENT", payload: user })
-      })
-    };
+export const addEvent = (userID, eventID) => {
+
+  debugger
+
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.token
+    },
+    body: JSON.stringify(userID),
+  })
+  .then(res => res.json())
+  .then(response => {
+    dispatch({type: "ADD_EVENT", payload: response.user })
+  })
+};
+
+// export const addEvent = () => (dispatch, getState) => {
+
+  
+//   // will hit reducer
+//   const user = getState().user;
+//   const userId = getState().user.id;
+//   const eventId = getState().selectedEvent.id;
+//   console.log(user)
+//   console.log(userId) // should output the updated data
+//   console.log(eventId)ge
+//   debugger
+
+//   return dispatch => fetch(`http://localhost:3000/user/${userId}/user_events`, {
+//         method: 'POST', // or 'PUT'
+//         headers: {
+//           'Content-Type': 'application/json',
+          
+//         },
+//         body: JSON.stringify(user),
+//       })
+//       .then(res => res.json())
+//       .then(response => {
+//         dispatch({type: "ADD_EVENT", payload: response.user })
+//       })
+//     };
+
+// export const addEvent = (userEventData, history) => {
+//   return dispatch => {
+//     const sendableuserEventData = {
+//         user_id: userEventData.userId,
+//     }
+//     return fetch(`http://localhost:3000/user/${userId}/user_events`, {
+//       credentials: "include",
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(sendableuserEventData)
+//     })
+//     .then(r => r.json())
+//     .then(resp => {
+//       if (resp.error) {
+//         alert(resp.error)
+//       } 
+//       else {
+//         dispatch(addEvent)
+//         history.push(`/user_events/${resp.data.id}`)
+//       }
+//     })
+//   }
+// }
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`http://localhost:3000/events`, {
@@ -64,7 +109,7 @@ export const addEvent = () => (dispatch, getState, user) => {
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {
-    method: 'POST', // or 'PUT'
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -79,14 +124,14 @@ export const submitLogin = (user) => {
 
 export const submitSignup = (user) => {
   return dispatch => fetch(`http://localhost:3000/users`, {
-    method: 'POST', // or 'PUT'
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
   .then(res => res.json())
-  .then(response => {
+  .then(response => { 
     localStorage.token = response.token
     dispatch({type: "SET_USER", payload: response.user})
   })

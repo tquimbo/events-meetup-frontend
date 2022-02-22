@@ -10,14 +10,15 @@ import Signup from "../components/Signup";
 import { submitSignup, submitLogin } from '../redux/actionCreators';
 import MyProfile from "../components/MyProfile";
 
-function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent}){
+function UserProfile({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, username, first_name, last_name, submitLogin, submitSignup}){
 
     // let params = useParams().id;
     // let params = useParams();
     //let { eventId } = useParams();
 
-   
-    const eventId = useParams().eventId;
+  
+    const userId = useParams().userId;
+
 
   
     //  const handleClick = (e) => {
@@ -28,8 +29,8 @@ function EventShow({getEvent, performer_name, performer_image, venue_name, venue
 
 
     useEffect(() => {
-        getEvent(eventId)
-      }, [getEvent, eventId])
+        getEvent(getUser)
+      }, [getUser, eventId])
 
     //    useEffect(getEvent, [getEvent])
     // {eventId}

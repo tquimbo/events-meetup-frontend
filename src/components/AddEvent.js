@@ -54,58 +54,94 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
-import EventShow from "../components/EventCard";
+import EventShow from "../components/EventShow";
+import { useState } from 'react';
 // import { getState } from 'react';
 
 
 
-
-
-
-function AddEvent(addEvent, user ){
-
-    
+function AddEvent(props){
 
     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
 
-  
-    // const user_id = useSelector((state) => state.todos[props.id])
-    // const user_id = props.user.id
-    // const event_id = props.selectedEvent.id
-    // const selectEventID = props.state => state.selectedEvent.id
-    // const user = props.getState().auth.user.id;
+    const eventId = useParams().eventId;
+    const userId = props.id;
 
-    useEffect(addEvent, [addEvent])
-
-    
+    // const [userID, setuserID] = useState(state.user.id);
+    // const [eventID, seteventID] = useState(state.selectedEvent.id);
 
     const handleClick = (e) => {
-
         e.preventDefault()
-        addEvent(user)
-        
+       props.addEvent({userId, eventId})
       }
+
+
+    
     
 
+  
     return (<div className="addEvent">
 
-{/* <h1> Hi {props.username} </h1> */}
 
             <button onClick={handleClick}>
             Attending
             </button>
+
+            <h1> {props.id} </h1>
+            {/* <h1> {eventId} </h1> */}
+
+            {/* <h1> {this.props.event_id} </h1>
+             */}
+            
+            
     
    </div>
     )
 };
 
-const mapStateToProps = (state) => {
-    return {
-       ...state.selectedUserEvent,
-    }
+// const mapStateToProps = (state) => {
+//     return {
+//        ...state.user,
+//     }
         
-}
+// }
 
 
+export default connect(null, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
+// export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
 
-export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
+
+// const AddEvent = ({ history, addEvent }) =>
+
+//     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
+
+//     const handleSubmit = (formData, userId) => {
+//         addEvent({
+//           ...formData,
+//           userId
+//         }, history)
+//       }
+
+  
+//     return (<div className="addEvent">
+
+
+//             <button onClick={addEvent}>
+//             Attending
+//             </button>
+    
+//    </div>
+//     )
+// };
+
+// const mapDispatchToProps = { addEvent }
+
+// const mapStateToProps = (state) => {
+//     return {
+//        ...state.user,
+//     }
+        
+// }
+
+
+// export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)

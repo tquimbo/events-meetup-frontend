@@ -5,6 +5,7 @@ import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import SearchResults from './containers/SearchResults';
+import UserProfile from './containers/SearchResults';
 import SearchBar from './components/SearchBar';
 import MyProfile from './components/MyProfile';
 import FilterEvents from './components/FilterEvents';
@@ -29,8 +30,7 @@ import { autoLogin } from './redux/actionCreators'
 
 
 
-
-export default function App({user, autoLogin}) {
+function App({user, autoLogin}) {
 
   
   // 
@@ -103,6 +103,11 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
        <Route path="events" >
         <Route path=":eventId" element={<EventShow />}/>
          </Route>
+         <Route path="users" >
+        <Route path=":userId" element={<UserProfile />}/>
+         </Route>
+         
+
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
         

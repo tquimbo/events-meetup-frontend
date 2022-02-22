@@ -50,6 +50,8 @@ const initialState = {
         return{...state, events: action.payload};
        case "GET_EVENT":
         return {...state, selectedEvent: action.payload};
+        case "GET_USER":
+        return {...state, user: action.payload};
         // case "GET_RESULTS":
         //   return {...state, events: action.payload};
         case "SET_USER":

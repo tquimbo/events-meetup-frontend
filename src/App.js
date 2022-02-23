@@ -22,6 +22,7 @@ import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
 import { BrowserRouter as Router } from "react-router-dom";
 import { autoLogin } from './redux/actionCreators'
+import store from './store'
 
 
 

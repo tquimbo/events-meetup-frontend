@@ -10,7 +10,7 @@ import Signup from "../components/Signup";
 import { submitSignup, submitLogin } from '../redux/actionCreators';
 import MyProfile from "../components/MyProfile";
 
-function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent}){
+function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, userId}){
 
     // let params = useParams().id;
     // let params = useParams();
@@ -43,7 +43,6 @@ return (<div className="show">
     <p>{venue_name}</p>
     <p>{venue_address}</p>
     <p>{attendance_status}</p>
-   
     
 
 
@@ -66,7 +65,8 @@ return (<div className="show">
 
 
 const mapStateToProps = (state) => {
-        return {...state.selectedEvent}
+        return {...state.event,
+                ...state.user}
     }
     
 // export default EventShow

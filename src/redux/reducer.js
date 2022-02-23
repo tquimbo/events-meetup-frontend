@@ -40,7 +40,7 @@ const initialUser = {
 
 const initialState = {
     events: [],
-    selectedEvent: initialEvent,
+    event: initialEvent,
     user: initialUser,
   }
 
@@ -49,7 +49,7 @@ const initialState = {
       case "GET_EVENTS":
         return{...state, events: action.payload};
        case "GET_EVENT":
-        return {...state, selectedEvent: action.payload};
+        return {...state, event: action.payload};
         case "GET_USER":
         return {...state, user: action.payload};
         // case "GET_RESULTS":
@@ -67,8 +67,8 @@ const initialState = {
             return {...state,  
 
             selectedEvent: {...state.selectedEvent,
-              user_id: action.payload, ...state.selectedEvent.user_id, 
-              event_id: action.payload, ...state.selectedEvent.event_id},
+              user_id: action.payload, ...state.event.user_id, 
+              event_id: action.payload, ...state.event.event_id},
             // selectedEvent: {...state, selectedEvent: action.payload},
             user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
             // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
@@ -77,4 +77,17 @@ const initialState = {
           return {...state}
      }
   }
+
+  const exp = (state = null, action) => {
+    switch (action.type) {
+      case "SET_CURRENT_USER":
+        return action.user
+      case "CLEAR_CURRENT_USER":
+        return null
+      default:
+        return state
+    }
+  }
+  
+  export default exp
 

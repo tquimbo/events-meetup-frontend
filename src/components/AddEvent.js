@@ -59,6 +59,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
+import MyProfile from "../components/MyProfile";
+
+
+
 
 // import { getState } from 'react';
 
@@ -69,18 +73,29 @@ function AddEvent(props){
 
   let navigate = useNavigate();
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
+    // useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
+    // useEffect(getEvent, [getEvent], submitSignup, [submitSignup
 
-    const eventId = useParams().eventId;
-    const userId = props.id;
+    const user = props.user
+    const event = props.event
+    
+    // const eventId = useParams().eventId;
+    // const userId = props.userId;
+    // const userId = props.id;
+    // const userId = props.id;
+    // const selectUserId = state => state.user.id
+
 
     // const [userID, setuserID] = useState(state.user.id);
     // const [eventID, seteventID] = useState(state.selectedEvent.id);
 
     const handleClick = (e) => {
         e.preventDefault()
-       props.addEvent({userId, eventId})
-       navigate("/myprofile", { replace: true });
+        addEvent({ user, event } )
+        
+    // addEvent(userId, eventId)
+    // props.addEvent(currentUserId)
+    //    navigate("/myprofile", { replace: true });
     // props.addEvent(userId)
       }
 
@@ -96,9 +111,20 @@ function AddEvent(props){
             Attending
             </button>
 
+         
+            {/* {/* <h1> {selectUserId}</h1> */}
+            <h1> {  MyProfile.UserID}</h1>
+            <h1> {  props.user.id}</h1>
+            <h1> {  props.event.id}</h1>
 
-    
-            {/* <h1> {eventId} </h1> */}
+            {/* <h1> {  MyProfile.props.username}</h1>
+            */}
+
+
+{/*             
+            <h1> {parseInt(localStorage.currentUser, 2)} </h1> */}
+            {/* <h1> {state.username} </h1>
+            */}
 
             {/* <h1> {this.props.event_id} </h1>
              */}
@@ -109,9 +135,12 @@ function AddEvent(props){
     )
 };
 
+const getUserID = state => state.user.id;
+
 const mapStateToProps = (state) => {
     return {
-       ...state.selectedEvent,
+       user: state.user, 
+       event: state.event
     }
         
 }

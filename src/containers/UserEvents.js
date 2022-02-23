@@ -15,7 +15,7 @@ function UserEvents(props){
 
 
       return <div className="user_events">
-    {props.ser_events.map(event => <EventCard {...event} key={event.id}/>)}
+    {props.user_events.map(event => <EventCard {...event} key={event.id}/>)}
     <Outlet />
   </div>
 }

@@ -76,8 +76,8 @@ function AddEvent(props){
     // useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
     // useEffect(getEvent, [getEvent], submitSignup, [submitSignup
 
-    const user = props.user
-    const event = props.event
+    const user_id = props.user.id
+    const event_id = props.event.id
     
     // const eventId = useParams().eventId;
     // const userId = props.userId;
@@ -91,12 +91,8 @@ function AddEvent(props){
 
     const handleClick = (e) => {
         e.preventDefault()
-        addEvent({ user, event } )
-        
-    // addEvent(userId, eventId)
-    // props.addEvent(currentUserId)
-    //    navigate("/myprofile", { replace: true });
-    // props.addEvent(userId)
+        props.addEvent({ user_id, event_id } )
+    
       }
 
 
@@ -113,10 +109,7 @@ function AddEvent(props){
 
          
             {/* {/* <h1> {selectUserId}</h1> */}
-            <h1> {  MyProfile.UserID}</h1>
-            <h1> {  props.user.id}</h1>
-            <h1> {  props.event.id}</h1>
-
+        
             {/* <h1> {  MyProfile.props.username}</h1>
             */}
 
@@ -135,7 +128,7 @@ function AddEvent(props){
     )
 };
 
-const getUserID = state => state.user.id;
+
 
 const mapStateToProps = (state) => {
     return {

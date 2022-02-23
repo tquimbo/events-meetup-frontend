@@ -66,7 +66,7 @@ return (<div className="show">
 
 const mapStateToProps = (state) => {
         return {...state.event,
-                ...state.user}
+                ...state}
     }
     
 // export default EventShow

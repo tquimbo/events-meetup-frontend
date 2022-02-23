@@ -13,12 +13,29 @@ const initialEvent = {
   event_users: [],
 }
 
+const initialUserEvent = {
+  performer_name: "",
+  performer_image: "",
+  venue_name: "",
+  venue_address: "",
+  address: "",
+  attendance_status: "",
+  datetime: "",
+  username: "",
+  first_name: "",
+  last_name: "",
+  id: "",
+  user_id: "",
+  event_id: "",
+  event_users: [],
+}
+
 const initialUser = {
   id: "",
   username: "",
   first_name: "",
   last_name: "",
-  events: [],
+  user_events: [],
   // user_events: [],
 }
 

@@ -18,7 +18,8 @@ const initialUser = {
   username: "",
   first_name: "",
   last_name: "",
-  user_events: [],
+  events: [],
+  // user_events: [],
 }
 
 // const initialUserEvent = {
@@ -40,6 +41,8 @@ const initialUser = {
 
 const initialState = {
     events: [],
+    user_events: [],
+    user_event: initialEvent,
     event: initialEvent,
     user: initialUser,
   }
@@ -66,10 +69,11 @@ const initialState = {
         case "ADD_EVENT":
             return {...state,  
 
-            selectedEvent: {...state.selectedEvent,
+            user_event: {...state.event,
               user_id: action.payload, ...state.event.user_id, 
               event_id: action.payload, ...state.event.event_id},
             // selectedEvent: {...state, selectedEvent: action.payload},
+            // user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
             user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
             // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
           }

@@ -46,25 +46,30 @@ export const setCurrentUser = user => {
 //   }
 // }
 
-export const addEvent = (user, history) => {
+export const addEvent = (user, event, history) => {
+  return dispatch => {
+    const user_event = {
+        user_id: user.id,
+        event_id: event.id
+    }
+  
+  
 
-    debugger
 
-
-  return dispatch => fetch(`http://localhost:3000/events/${user.eventId}/${user.userId}`, {
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
       // 'Authorization': localStorage.token
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(user_event),
     
   })
   .then(res => res.json())
   .then(response => {
-    dispatch({type: "ADD_EVENT", payload: response.user })
+    dispatch({type: "ADD_EVENT", payload: response.user_event })
   })
-};
+}};
 
 // export const addEvent = () => (dispatch, getState) => {
 

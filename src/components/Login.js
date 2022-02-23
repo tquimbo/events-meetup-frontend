@@ -15,7 +15,7 @@ function Login(props){
   const [password, setPassword] = useState("")
 
   const handleSubmit = (e) => {
-    navigate("/myprofile", { replace: true });
+    // navigate("/myprofile", { replace: true });
     e.preventDefault()
    props.submitLogin({username, password})
   }

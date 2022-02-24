@@ -37,6 +37,7 @@ function App({user, autoLogin}) {
   
   // 
   
+  
 
 
 // const query = new URLSearchParams(search).get('input');
@@ -49,41 +50,40 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
   return (
 <>
   
-    <div className="App">
+<div className="App">
        <header className="App-header">
 
+    
        <h1> Events Meetup!</h1>
 
        <Nav/>
 
-    
-       { user.username ?
+    <SearchBar/>
+      
 
-        <img src={logo} className="App-logo" alt="logo" />
+         <img src={logo} className="App-logo" alt="logo" />
 
-        <SearchBar/>
+         { 
        
       <Routes>
      
        <Route path="events" >
-        <Route path=":eventId" element={<EventShow />}/>
-         </Route>
-         <Route path="users" >
-        <Route path=":userId" element={<UserProfile />}/>
-         </Route>
+        <Route path=":eventId" element={<EventShow />}/> </Route>
          
-
+      
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
-        
         <Route path="index" element={<EventIndex />}/> 
         <Route path="myprofile" element={<MyProfile />}/> 
 
-       }
-  
+        </Routes>
+
       
-      </header>
-    </div>
+         }
+
+        </header>
+</div>
+    
     </>
   );
 };
@@ -91,6 +91,12 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 const mapStateToProps = (state) => ({user: state.user})
 
 export default connect(mapStateToProps, {autoLogin})(App);
+
+   {/* <Route path="users" >
+        <Route path=":userId" element={<UserProfile />}/>
+         </Route>
+          */}
+
 
 
   {/* <Route path="results" >

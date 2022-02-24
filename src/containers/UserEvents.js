@@ -11,11 +11,9 @@ import EventShow from "../components/EventCard";
 
 function UserEvents(props){
 
-  useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent], addEvent, [addEvent]  )
-
 
       return <div className="user_events">
-    {props.user_events.map(event => <EventCard {...event} key={event.id}/>)}
+    {props.user_events.map(user_event => <EventCard {...user_event} key={user_event.id}/>)}
     <Outlet />
   </div>
 }
@@ -25,4 +23,4 @@ function UserEvents(props){
   }
 
 
-  export default connect(mapStateToProps, { submitLogin, submitSignup, getEvent, addEvent })(UserEvents)
+  export default connect(mapStateToProps, { getEvent, addEvent })(UserEvents)

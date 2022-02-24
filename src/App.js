@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
@@ -46,7 +47,7 @@ function App({user, autoLogin}) {
 useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
   return (
-
+<>
   
     <div className="App">
        <header className="App-header">
@@ -55,12 +56,62 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
        <Nav/>
 
-      
-
+    
+       { user.username ?
 
         <img src={logo} className="App-logo" alt="logo" />
 
         <SearchBar/>
+       
+      <Routes>
+     
+       <Route path="events" >
+        <Route path=":eventId" element={<EventShow />}/>
+         </Route>
+         <Route path="users" >
+        <Route path=":userId" element={<UserProfile />}/>
+         </Route>
+         
+
+        <Route path="login" element={<Login />}/>
+        <Route path="signup" element={<Signup />}/>
+        
+        <Route path="index" element={<EventIndex />}/> 
+        <Route path="myprofile" element={<MyProfile />}/> 
+
+       }
+  
+      
+      </header>
+    </div>
+    </>
+  );
+};
+
+const mapStateToProps = (state) => ({user: state.user})
+
+export default connect(mapStateToProps, {autoLogin})(App);
+
+
+  {/* <Route path="results" >
+        <Route path=":searchQuery" element={<SearchResults />}/>
+         </Route>
+         */}
+      
+        {/* <Route path="?results=:searchQuery"  element={<SearchResults />}/> */}
+        {/* <Route path=":searchQuery" element={<SearchResults />}/>
+        </Route>
+     */}
+
+{/* <Route path="results" >
+        <Route path=":performer_name" element={<SearchResults />}/>
+         </Route>
+       
+       </Routes>
+    
+       <Outlet />
+       */}
+
         {/* <div className="Search">
         <input
         type="results"
@@ -98,53 +149,4 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
 {/* <Route path="teams/:teamId" element={<Team />} /> */}
 
-
-      <Routes>
-     
-       <Route path="events" >
-        <Route path=":eventId" element={<EventShow />}/>
-         </Route>
-         <Route path="users" >
-        <Route path=":userId" element={<UserProfile />}/>
-         </Route>
-         
-
-        <Route path="login" element={<Login />}/>
-        <Route path="signup" element={<Signup />}/>
-        
-        <Route path="index" element={<EventIndex />}/> 
-        <Route path="myprofile" element={<MyProfile />}/> 
-
-        {/* <Route path="results" >
-        <Route path=":searchQuery" element={<SearchResults />}/>
-         </Route>
-         */}
-      
-        {/* <Route path="?results=:searchQuery"  element={<SearchResults />}/> */}
-        {/* <Route path=":searchQuery" element={<SearchResults />}/>
-        </Route>
-     */}
-
-  <Route path="results" >
-        <Route path=":performer_name" element={<SearchResults />}/>
-         </Route>
-       
-       </Routes>
-    
-       <Outlet />
-      
-      
-    
-  
-
-
-        
-      
-      </header>
-    </div>
-  );
-}
-
-const mapStateToProps = (state) => ({user: state.user})
-
-export default connect(mapStateToProps, {autoLogin})(App);
+{}

@@ -39,27 +39,11 @@ const initialUser = {
   // user_events: [],
 }
 
-// const initialUserEvent = {
-//   username: "",
-//   first_name: "",
-//   last_name: "",
-//   performer_name: "",
-//   performer_image: "",
-//   venue_name: "",
-//   venue_address: "",
-//   address: "",
-//   attendance_status: "",
-//   datetime: "",
-//   id: "",
-//   user_id: "",
-//   event_id: "",
-// }
-
 
 const initialState = {
     events: [],
     user_events: [],
-    user_event: initialEvent,
+    user_event: initialUserEvent,
     event: initialEvent,
     user: initialUser,
   }
@@ -84,16 +68,19 @@ const initialState = {
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
-            return {...state,  
+  
+            return {...state, user_event: action.payload }
+            
+            
 
-            user_event: {...state.event,
-              user_id: action.payload, ...state.event.user_id, 
-              event_id: action.payload, ...state.event.event_id},
-            // selectedEvent: {...state, selectedEvent: action.payload},
+            // user_event: {...state.event,
+            //   user_id: action.payload, ...state.event.user_id, 
+            //   event_id: action.payload, ...state.event.event_id},
+            // // selectedEvent: {...state, selectedEvent: action.payload},
+            // // user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
             // user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
-            user: {...state.user, user_events: [action.payload, ...state.user.user_events]}
-            // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
-          }
+            // // selectedEvent: {...state.selectedEvent, event_users: [action.payload, ...state.selectedEvent.event_users]},
+          
         default:
           return {...state}
      }

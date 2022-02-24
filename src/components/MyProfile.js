@@ -23,20 +23,20 @@ function MyProfile(props){
     
     return (<div className="myprofile">
 
-    <h1> Hi {props.first_name} </h1>
+    <h1> Hi {props.user.first_name} </h1>
  
     <h3> My Events </h3>
-    {/* <UserEvents /> */}
+    <UserEvents />
     
    </div>
     )
 };
 
 const mapStateToProps = (state) => {
-    return {...state.user,
-        ...state.events}
+    return {  user: state.user
+        // user_events: state.user_events
 }
-
+}
 // const mapStateToProps = state => {
 //     return {
 //         user: state.user,

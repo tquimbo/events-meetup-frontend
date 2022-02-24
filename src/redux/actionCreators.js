@@ -47,7 +47,9 @@ export const setCurrentUser = user => {
 // }
 
 export const addEvent = (user_event_data) => {
-  return dispatch => {
+  
+  
+  //return dispatch => {
     const user_event = {
       performer_name: user_event_data.event.performer_name,
       performer_image: user_event_data.event.performer_image,
@@ -55,95 +57,32 @@ export const addEvent = (user_event_data) => {
       venue_address: user_event_data.event.venue_address,
       username: user_event_data.user.username,
       first_name: user_event_data.user.first_name,
-      last_name: user_event_data.user.first_name,
+      last_name: user_event_data.user.last_name,
       user_id: user_event_data.user.id,
       event_id: user_event_data.event.id,
     }
-
+  //}
+    
   
 
-  return dispatch => fetch(`http://localhost:3000/user_events`, {
-    credentials: "include",
+  return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}/user_events`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `bearer ${localStorage.token}`
     },
     body: JSON.stringify(user_event)
     
   })
   .then(res => res.json())
   .then(response => {
+    debugger
+    dispatch({type: "ADD_EVENT", payload: user_event })
     
-    dispatch({type: "ADD_EVENT", payload: response.user_event })
   })
-  
+ 
 };
 
-// export const addEvent = () => (dispatch, getState) => {
-
-  
-//   // will hit reducer
-//   const user = getState().user;
-//   const userId = getState().user.id;
-//   const eventId = getState().selectedEvent.id;
-//   console.log(user)
-//   console.log(userId) // should output the updated data
-//   console.log(eventId)ge
-//   debugger
-
-//   return dispatch => fetch(`http://localhost:3000/user/${userId}/user_events`, {
-//         method: 'POST', // or 'PUT'
-//         headers: {
-//           'Content-Type': 'application/json',
-          
-//         },
-//         body: JSON.stringify(user),
-//       })
-//       .then(res => res.json())
-//       .then(response => {
-//         dispatch({type: "ADD_EVENT", payload: response.user })
-//       })
-//     };
-
-// export const addEvent = (userEventData, history) => {
-//   return dispatch => {
-//     const sendableuserEventData = {
-//         user_id: userEventData.userId,
-//     }
-//     return fetch(`http://localhost:3000/user/${userId}/user_events`, {
-//       credentials: "include",
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(sendableuserEventData)
-//     })
-//     .then(r => r.json())
-//     .then(resp => {
-//       if (resp.error) {
-//         alert(resp.error)
-//       } 
-//       else {
-//         dispatch(addEvent)
-//         history.push(`/user_events/${resp.data.id}`)
-//       }
-//     })
-//   }
-// }
-
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`http://localhost:3000/events`, {
-//     method: 'POST', // or 'PUT'
-//     headefirs: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(searchQuery),
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     dispatch({type: "SEARCH_RESULTS", payload: response.events})
-//   })
-// };
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {
@@ -156,6 +95,7 @@ export const submitLogin = (user) => {
   .then(res => res.json())
   .then(response => {
     localStorage.token = response.token
+    
     dispatch({type: "SET_USER", payload: response.user})
   })
 };
@@ -193,6 +133,15 @@ function handleUserResponse(res, dispatch){
     res.json()
     .then(res => alert(res.errors))
   }
+}
+
+export const autoLogin = () => {
+  return dispatch => fetch(`http://localhost:3000/me`, {
+    headers: {
+      'Authorization': localStorage.token
+    }
+  })
+  .then(res => handleUserResponse(res, dispatch))
 }
 
 // export const getSearchResults = (searchQuery) => {
@@ -272,14 +221,71 @@ export const getSearchResults = (searchQuery) => {
   )
 };
 
-export const autoLogin = () => {
-  return dispatch => fetch(`http://localhost:3000/me`, {
-    headers: {
-      'Authorization': localStorage.token
-    }
-  })
-  .then(res => handleUserResponse(res, dispatch))
-}
 
 
 
+// export const addEvent = () => (dispatch, getState) => {
+
+  
+//   // will hit reducer
+//   const user = getState().user;
+//   const userId = getState().user.id;
+//   const eventId = getState().selectedEvent.id;
+//   console.log(user)
+//   console.log(userId) // should output the updated data
+//   console.log(eventId)ge
+//   debugger
+
+//   return dispatch => fetch(`http://localhost:3000/user/${userId}/user_events`, {
+//         method: 'POST', // or 'PUT'
+//         headers: {
+//           'Content-Type': 'application/json',
+          
+//         },
+//         body: JSON.stringify(user),
+//       })
+//       .then(res => res.json())
+//       .then(response => {
+//         dispatch({type: "ADD_EVENT", payload: response.user })
+//       })
+//     };
+
+// export const addEvent = (userEventData, history) => {
+//   return dispatch => {
+//     const sendableuserEventData = {
+//         user_id: userEventData.userId,
+//     }
+//     return fetch(`http://localhost:3000/user/${userId}/user_events`, {
+//       credentials: "include",
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(sendableuserEventData)
+//     })
+//     .then(r => r.json())
+//     .then(resp => {
+//       if (resp.error) {
+//         alert(resp.error)
+//       } 
+//       else {
+//         dispatch(addEvent)
+//         history.push(`/user_events/${resp.data.id}`)
+//       }
+//     })
+//   }
+// }
+
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`http://localhost:3000/events`, {
+//     method: 'POST', // or 'PUT'
+//     headefirs: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(searchQuery),
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     dispatch({type: "SEARCH_RESULTS", payload: response.events})
+//   })
+// };

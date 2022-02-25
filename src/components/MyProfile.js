@@ -8,7 +8,6 @@ import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
 import AddEvent from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
-import UserEvents from "../containers/UserEvents";
 
 
 function MyProfile(props){
@@ -26,31 +25,14 @@ function MyProfile(props){
     <h1> Hi {props.user.first_name} </h1>
  
     <h3> My Events </h3>
-    <UserEvents />
     
    </div>
     )
 };
 
 const mapStateToProps = (state) => {
-    return {  user: state.user
-        // user_events: state.user_events
+    return {  user: state.user}
 }
-}
-// const mapStateToProps = state => {
-//     return {
-//         user: state.user,
-//         // selectedEvent: state.selectedEvent
-//     }
-        
-// }
-// const mapStateToProps = (state) => {
-//     return {
-//        ...state.user, 
-//         ...state.selectedEvent
-//     }
-        
-// }
 
 
 

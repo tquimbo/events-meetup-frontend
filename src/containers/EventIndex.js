@@ -11,13 +11,17 @@ function EventIndex({getEvents, events}){
 
       return <div className="cards">
     {events.map(event => <EventCard {...event} key={event.id}/>)}
-    <Outlet />
+    
+
   </div>
+
+
+
 }
+
 
   const mapStateToProps = (state) => {
   return {events: state.events}
-
 }
 
 

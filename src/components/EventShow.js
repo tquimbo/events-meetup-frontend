@@ -8,24 +8,15 @@ import AddEvent from "../components/AddEvent";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import { submitSignup, submitLogin } from '../redux/actionCreators';
-import MyProfile from "../components/MyProfile";
 
 function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, userId}){
 
-    // let params = useParams().id;
-    // let params = useParams();
-    //let { eventId } = useParams();
-
+ 
    
     const eventId = useParams().eventId;
 
   
-    //  const handleClick = (e) => {
-    //       e.preventDefault()
-    //     addEvent({id, eventId})
-    //     }
-
-
+ 
 
     useEffect(() => {
         getEvent(eventId)
@@ -54,19 +45,12 @@ return (<div className="show">
 )};
 
 
-// const mapStateToProps = state => {
-//   return {
-//       user: state.user,
-//       event: state.selectedEvent,
-//   }
-// }
-
 
 
 
 const mapStateToProps = (state) => {
-        return {...state.event,
-                ...state}
+  return {...state.event,
+    ...state.user}
     }
     
 // export default EventShow

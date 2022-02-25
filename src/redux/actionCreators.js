@@ -23,12 +23,12 @@ export const getUser = (userId) => {
   )
 };
 
-export const setCurrentUser = user => {
-  return {
-    type: "SET_CURRENT_USER",
-    user // same as user: user 
-  }
-}
+// export const setCurrentUser = user => {
+//   return {
+//     type: "SET_CURRENT_USER",
+//     user // same as user: user 
+//   }
+// }
 // export const getUser = (userId) => {
 //   return (dispatch) => {
 //       dispatch({ type: 'GET_USER'})
@@ -69,14 +69,13 @@ export const addEvent = (user_event_data) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `bearer ${localStorage.token}`
+      "Authorization": localStorage.token
     },
     body: JSON.stringify(user_event)
     
   })
   .then(res => res.json())
   .then(response => {
-    debugger
     dispatch({type: "ADD_EVENT", payload: user_event })
     
   })
@@ -95,7 +94,6 @@ export const submitLogin = (user) => {
   .then(res => res.json())
   .then(response => {
     localStorage.token = response.token
-    
     dispatch({type: "SET_USER", payload: response.user})
   })
 };

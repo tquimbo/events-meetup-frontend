@@ -9,7 +9,7 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import { submitSignup, submitLogin } from '../redux/actionCreators';
 
-function EventShow({getEvent, performer_name, performer_image, venue_name, venue_address, datetime, attendance_status, username, id, addEvent, userId}){
+function EventShow({getEvent, performerName, performerImage, venueName, venueAddress, datetime, attendance_status, username, id, addEvent, userId}){
 
  
    
@@ -28,11 +28,11 @@ function EventShow({getEvent, performer_name, performer_image, venue_name, venue
 return (<div className="show">
 
     
-   <h3>{performer_name}</h3>
+   <h3>{performerName}</h3>
    {/* <p> {params.eventId} </p> */}
-    <img src={performer_image} alt={venue_name}/>
-    <p>{venue_name}</p>
-    <p>{venue_address}</p>
+    <img src={performerImage} alt={venueName}/>
+    <p>{venueName}</p>
+    <p>{venueAddress}</p>
     <p>{attendance_status}</p>
     
 

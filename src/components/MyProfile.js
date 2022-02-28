@@ -22,7 +22,7 @@ function MyProfile(props){
     
     return (<div className="myprofile">
 
-    <h1> Hi {props.user.first_name} </h1>
+    <h1> Hi {props.user.firstName} {props.user.lastName} </h1>
  
     <h3> My Events </h3>
     

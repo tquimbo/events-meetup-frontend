@@ -51,13 +51,13 @@ export const addEvent = (user_event_data) => {
   
   //return dispatch => {
     const user_event = {
-      performer_name: user_event_data.event.performer_name,
-      performer_image: user_event_data.event.performer_image,
-      venue_name: user_event_data.event.venue_name,
-      venue_address: user_event_data.event.venue_address,
+      performer_name: user_event_data.event.performerName,
+      performer_image: user_event_data.event.performerImage,
+      venue_name: user_event_data.event.venueName,
+      venue_address: user_event_data.event.venueAddress,
       username: user_event_data.user.username,
-      first_name: user_event_data.user.first_name,
-      last_name: user_event_data.user.last_name,
+      first_name: user_event_data.user.firstName,
+      last_name: user_event_data.user.lastName,
       user_id: user_event_data.user.id,
       event_id: user_event_data.event.id,
     }
@@ -69,7 +69,7 @@ export const addEvent = (user_event_data) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": localStorage.token
+      "Authorization": 'Bearer {localStorage.token}'
     },
     body: JSON.stringify(user_event)
     

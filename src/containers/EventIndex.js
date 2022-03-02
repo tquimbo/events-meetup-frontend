@@ -19,7 +19,6 @@ function EventIndex({getEvents, events}){
 
 }
 
-debugger 
 
   const mapStateToProps = (state) => {
   return {events: state.events}

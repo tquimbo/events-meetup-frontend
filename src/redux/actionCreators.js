@@ -7,6 +7,7 @@ export const getEvents = () => {
   .then(res => res.json())
   .then(events => dispatch({type: "GET_EVENTS", payload: events})
   )
+  
 };
 
 export const getEvent = (eventId) => {
@@ -16,12 +17,12 @@ export const getEvent = (eventId) => {
   )
 };
 
-export const getUser = (userId) => {
-  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
-  .then(res => res.json())
-  .then(user => dispatch({type: "GET_USER", payload: user})
-  )
-};
+// export const getUser = (userId) => {
+//   return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "GET_USER", payload: user})
+//   )
+// };
 
 // export const setCurrentUser = user => {
 //   return {
@@ -52,7 +53,7 @@ export const addEvent = (user_event_data) => {
   //return dispatch => {
     const user_event = {
       performer_name: user_event_data.event.performerName,
-      performer_image: user_event_data.event.performerImage,
+      // performer_image: user_event_data.event.performerImage,
       venue_name: user_event_data.event.venueName,
       venue_address: user_event_data.event.venueAddress,
       username: user_event_data.user.username,
@@ -69,7 +70,8 @@ export const addEvent = (user_event_data) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": 'Bearer {localStorage.token}'
+      // "Authorization": 'Bearer {localStorage.token}'
+      "Authorization": `bearer ${localStorage.token}`
     },
     body: JSON.stringify(user_event)
     

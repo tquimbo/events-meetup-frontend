@@ -147,7 +147,6 @@ export const autoLogin = () => {
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
 //   .then(res => {
-//     //debugger
 //     return res.json()})
 //   .then(
 //     (json) => {
@@ -187,39 +186,74 @@ export const autoLogin = () => {
 
 
 
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-//   .then(res => {
-//     debugger
-//     return res.json()})
-//   .then(
-//     (json) => {
-//     json.events.map(event => 
-//       event.venue.name
-//       // (performer_name: event.performers[0].name),
-//       // (performer_image: event.performers[0].image),
-//       // (venue_name: event.venue.name),
-//       // (venue_address: event.venue.extended_address),
-//       // (datetime: event.datetime_local)
-
+export const getSearchResults = (searchQuery) => {
+  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+  .then(res => {
+    return res.json()})
+  .then(
+    (json) => {debugger
+    json.events.map(event => 
+      {return {
+      name: event.venue.name,
+      adddess: event.venue.extended_address
       
-//     );
+  
+      }
+    }
+    );
     
-//   }).then(events => 
-//     dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )};
+  }).then(events => 
+    dispatch({type: "SEARCH_RESULTS", payload: events})
+  )};
+
+      // (performer_name: event.performers[0].name),
+      // (performer_image: event.performers[0].image),
+      // (venue_name: event.venue.name),
+      // (venue_address: event.venue.extended_address),
+      // (datetime: event.datetime_local)
+
+
 //   dispatch({type: "SEARCH_RESULTS", payload: json.events})
 // } )}
   
 //   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events}))
 // };
 
-export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-  .then(res => res.json())
-  .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-  )
-};
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => res.json())
+//   .then(
+//     (json) => {
+//       json.events.map(event => 
+//               venue.name,
+//               venue.extended_address,
+//               performers[0].name,
+//               performers[0].image,
+//               datetime_local,
+//       )
+
+//         //       // (performer_name: event.performers[0].name),
+//         //       // (performer_image: event.performers[0].image),
+//         //       // (venue_name: event.venue.name),
+//         //       // (venue_address: event.venue.extended_address),
+//         //       // (datetime: event.datetime_local)
+
+//     }
+//   )
+//   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events}))
+// };
+
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => res.json()).then(events => dispatch({type: "SEARCH_RESULTS", payload: events}))
+// };
+
+// event.venue.name
+// event.venue.extended_address
+// event.performers[0].name
+// event.performers[0].image
+// event.datetime_local
+
 
 
 

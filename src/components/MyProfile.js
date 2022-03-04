@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
+// import UserEvents from './containers/UserEvents';
 import AddEvent from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
 
@@ -25,6 +26,8 @@ function MyProfile(props){
     <h1> Hi {props.user.firstName} {props.user.lastName} </h1>
  
     <h3> My Events </h3>
+{/* 
+    <UserEvents/> */}
     
    </div>
     )

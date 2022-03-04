@@ -1,26 +1,34 @@
-// import {useEffect} from "react"
-// import {submitLogin, submitSignup, getEvent, addEvent} from '../redux/actionCreators'
-// import { connect } from 'react-redux'
-// import { Routes, Route, Outlet } from "react-router-dom";
+import {useEffect} from "react"
+import {submitLogin, submitSignup, getEvent, addEvent} from '../redux/actionCreators'
+import { connect } from 'react-redux'
+import { Routes, Route, Outlet } from "react-router-dom";
 // import EventCard from "../components/EventCard"
-// import MyProfile from "../components/EventCard"
-// import Login from "../components/Login";
-// import Signup from "../components/Signup";
-// import EventShow from "../components/EventCard";
+import UserEventCard from "../components/UserEventCard"
+import MyProfile from "../components/MyProfile"
+import Login from "../components/Login";
+import Signup from "../components/Signup";
+import EventShow from "../components/EventShow";
 
 
-// function UserEvents(props){
+function UserEvents(props){
+
+    // useEffect(addEvent, [addEvent])
 
 
-//       return <div className="user_events">
-//     {props.user_events.map(user_event => <EventCard {...user_event} key={user_event.id}/>)}
-//     <Outlet />
-//   </div>
-// }
+      return <div className="user_events">
+    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+  
+  </div>
 
-//   const mapStateToProps = (state) => {
-//   return {user_events: state.user_events}
-//   }
+debugger
+
+}
+
+  const mapStateToProps = (state) => {
+  return {user: state.user,
+user_event: state.user_event,
+user_events: state.user_events  }
+  }
 
 
-//   export default connect(mapStateToProps, { getEvent, addEvent })(UserEvents)
+  export default connect(mapStateToProps, { getEvent, addEvent })(UserEvents)

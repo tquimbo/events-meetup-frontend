@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
-// import UserEvents from './containers/UserEvents';
+import UserEvents from '../containers/UserEvents';
+import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
 import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
 
@@ -19,24 +20,37 @@ function MyProfile(props){
     //     submitLogin(localStorage.currentUser)
     // }, [])
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup] )
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup])
     
     return (<div className="myprofile">
 
     <h1> Hi {props.user.firstName} {props.user.lastName} </h1>
  
     <h3> My Events </h3>
-{/* 
-    <UserEvents/> */}
+
+    {/* <p> {props.user.userEvents} </p> */}
+
+    <UserEvents />
     
+    {/* <EventIndex /> */}
+
    </div>
+   
     )
+
+    debugger
 };
 
-const mapStateToProps = (state) => {
-    return {  user: state.user}
-}
+// const mapStateToProps = (state) => {
+//     return {  user: state.user}
+// }
 
+const mapStateToProps = (state) => {
+    return {user: state.user,
+  user_event: state.user_event,
+  user_events: state.user_events  }
+    }
+  
 
 
 

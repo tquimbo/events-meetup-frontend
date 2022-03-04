@@ -134,7 +134,8 @@ function AddEvent(props){
 const mapStateToProps = (state) => {
     return {
        user: state.user, 
-       event: state.event
+       event: state.event,
+       user_event: state.user_event
     }
         
 }

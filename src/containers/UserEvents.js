@@ -20,7 +20,7 @@ function UserEvents(props){
   
   </div>
 
-debugger
+
 
 }
 

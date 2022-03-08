@@ -191,20 +191,30 @@ export const getSearchResults = (searchQuery) => {
   .then(res => {
     return res.json()})
   .then(
-    (json) => {debugger
+    (json) => {
     json.events.map(event => 
       {return {
       name: event.venue.name,
-      adddess: event.venue.extended_address
+      address: event.venue.extended_address,
+      performer_name: event.performers[0].name
       
   
-      }
+      } 
     }
-    );
     
-  }).then(events => 
-    dispatch({type: "SEARCH_RESULTS", payload: events})
-  )};
+    )}) }
+    
+    // .then(events => {dispatch({type: "SEARCH_RESULTS", payload: events})})}
+    // ;
+  // }).then(events => 
+  //   dispatch({type: "SEARCH_RESULTS", payload: events})
+  // )};
+
+//   export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => res.json()).then(events => dispatch({type: "SEARCH_RESULTS", payload: events}))
+// };
+
 
       // (performer_name: event.performers[0].name),
       // (performer_image: event.performers[0].image),

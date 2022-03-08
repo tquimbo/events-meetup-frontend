@@ -38,7 +38,7 @@ function MyProfile(props){
    
     )
 
-    debugger
+    
 };
 
 // const mapStateToProps = (state) => {

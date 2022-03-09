@@ -47,6 +47,43 @@ export const getEvent = (eventId) => {
 //   }
 // }
 
+// export const addEvent = (user_event_data) => {
+  
+  
+//   //return dispatch => {
+//     const user_event = {
+//       performer_name: user_event_data.event.performerName,
+//       // performer_image: user_event_data.event.performerImage,
+//       venue_name: user_event_data.event.venueName,
+//       venue_address: user_event_data.event.venueAddress,
+//       username: user_event_data.user.username,
+//       first_name: user_event_data.user.firstName,
+//       last_name: user_event_data.user.lastName,
+//       user_id: user_event_data.user.id,
+//       event_id: user_event_data.event.id,
+//     }
+//   //}
+    
+  
+
+//   return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//       // "Authorization": 'Bearer {localStorage.token}'
+//       "Authorization": `bearer ${localStorage.token}`
+//     },
+//     body: JSON.stringify(user_event)
+    
+//   })
+//   .then(res => res.json())
+//   .then(response => {
+//     dispatch({type: "ADD_EVENT", payload: user_event })
+    
+//   })
+ 
+// };
+
 export const addEvent = (user_event_data) => {
   
   
@@ -66,7 +103,7 @@ export const addEvent = (user_event_data) => {
     
   
 
-  return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}`, {
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,11 +115,13 @@ export const addEvent = (user_event_data) => {
   })
   .then(res => res.json())
   .then(response => {
-    dispatch({type: "ADD_EVENT", payload: user_event })
+    dispatch({type: "ADD_EVENT", response.user_event })
     
   })
  
 };
+
+
 
 
 export const submitLogin = (user) => {

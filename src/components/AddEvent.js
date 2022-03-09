@@ -145,37 +145,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)
 
 
-// const AddEvent = ({ history, addEvent }) =>
-
-//     useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], getEvent, [getEvent] )
-
-//     const handleSubmit = (formData, userId) => {
-//         addEvent({
-//           ...formData,
-//           userId
-//         }, history)
-//       }
-
-  
-//     return (<div className="addEvent">
-
-
-//             <button onClick={addEvent}>
-//             Attending
-//             </button>
-    
-//    </div>
-//     )
-// };
-
-// const mapDispatchToProps = { addEvent }
-
-// const mapStateToProps = (state) => {
-//     return {
-//        ...state.user,
-//     }
-        
-// }
-
-
-// export default connect(mapStateToProps, { submitSignup, submitLogin, getEvent, addEvent })(AddEvent)

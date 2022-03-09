@@ -20,7 +20,7 @@ function MyProfile(props){
     //     submitLogin(localStorage.currentUser)
     // }, [])
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup])
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent])
     
     return (<div className="myprofile">
 
@@ -30,8 +30,11 @@ function MyProfile(props){
 
     {/* <p> {props.user.userEvents} </p> */}
 
+    {/* <p> {props.user.userEvents} </p> */}
     <UserEvents />
-    
+
+    {/* <UserEvents />
+     */}
     {/* <EventIndex /> */}
 
    </div>
@@ -47,8 +50,7 @@ function MyProfile(props){
 
 const mapStateToProps = (state) => {
     return {user: state.user,
-  user_event: state.user_event,
-  user_events: state.user_events  }
+      userEvents: state.user.userEvents }
     }
   
 

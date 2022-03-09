@@ -35,18 +35,27 @@ const initialUser = {
   username: "",
   first_name: "",
   last_name: "",
-  user_events: [],
-  // user_events: [],
+  user_events: []
 }
 
 
+// const initialState = {
+//     events: [],
+//     user_events: [],
+//     user_event: initialUserEvent,
+//     event: initialEvent,
+//     user: initialUser,
+//   }
+
+
 const initialState = {
-    events: [],
-    user_events: [],
-    user_event: initialUserEvent,
-    event: initialEvent,
-    user: initialUser,
-  }
+  events: [],
+  user_events: [],
+  user_event: initialUserEvent,
+  event: initialEvent,
+  user: initialUser,
+}
+
 
   export function reducer(state=initialState, action){
       switch (action.type){
@@ -69,8 +78,10 @@ const initialState = {
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
   
-            return {...state, user_event: action.payload }
+            // return {...state, user: action.payload }
             
+            return {...state, user: {...state.user, user_events: [action.payload, ...state.user.user_events]}}
+            debugger 
             
 
             // user_event: {...state.event,

@@ -78,6 +78,7 @@ function AddEvent(props){
 
     const user = props.user
     const event = props.event
+    const userID = props.user.id
     
     // const eventId = useParams().eventId;
     // const userId = props.userId;
@@ -92,6 +93,7 @@ function AddEvent(props){
     const handleClick = (e) => {
         e.preventDefault()
         props.addEvent({ user, event } )
+        props.getUser(userID)
         // navigate("/myprofile", { replace: true });
     
       }

@@ -59,6 +59,10 @@ const initialState = {
 
   export function reducer(state=initialState, action){
       switch (action.type){
+        case "GET_USERS":
+          return{...state, users: action.payload};
+          case "GET_USER":
+          return{...state, user: action.payload};
       case "GET_EVENTS":
         return{...state, events: action.payload};
        case "GET_EVENT":
@@ -77,11 +81,12 @@ const initialState = {
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
-  
-            // return {...state, user: action.payload }
+            return {...state, user: action.payload }
+            ;
             
-            return {...state, user: {...state.user, user_events: [action.payload, ...state.user.user_events]}}
-            debugger 
+            
+            // return {...state, user: {...state.user, user_event: [action.payload, ...state.user.user_event]}}
+             
             
 
             // user_event: {...state.event,

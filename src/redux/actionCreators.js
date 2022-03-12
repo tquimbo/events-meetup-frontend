@@ -10,6 +10,23 @@ export const getEvents = () => {
   
 };
 
+export const getUsers = () => {
+  return dispatch => fetch('http://localhost:3000/users')
+  .then(res => res.json())
+  .then(users => dispatch({type: "GET_USERS", payload: users})
+  )
+  
+};
+
+export const getUser = (userId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(user => dispatch({type: "GET_USER", payload: user})
+  )
+};
+
+
+
 export const getEvent = (eventId) => {
   return dispatch => fetch(`http://localhost:3000/events/${eventId}`)
   .then(res => res.json())
@@ -84,11 +101,14 @@ export const getEvent = (eventId) => {
  
 // };
 
+
+
 export const addEvent = (user_event_data) => {
   
   
+  
   //return dispatch => {
-    const user_event = {
+    const user = {
       performer_name: user_event_data.event.performerName,
       // performer_image: user_event_data.event.performerImage,
       venue_name: user_event_data.event.venueName,
@@ -108,18 +128,25 @@ export const addEvent = (user_event_data) => {
     headers: {
       "Content-Type": "application/json",
       // "Authorization": 'Bearer {localStorage.token}'
-      "Authorization": `bearer ${localStorage.token}`
-    },
-    body: JSON.stringify(user_event)
+      "Authorization": `${localStorage.token}`
+    }, 
+    body: JSON.stringify(user)
     
+  }).then(res => {
+    if (res.ok) {
+      res.json().then(user => dispatch({type: "ADD_EVENT", payload: user}))
+    } else {
+      res.json().then(res => alert(res.errors))
+    }
   })
-  .then(res => res.json())
-  .then(response => {
-    dispatch({type: "ADD_EVENT", response.user_event })
+}
+//   .then(res => res.json())
+//   .then(user => {
+//     dispatch({type: "ADD_EVENT", user })
     
-  })
+//   })
  
-};
+// };
 
 
 

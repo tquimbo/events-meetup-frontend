@@ -15,10 +15,7 @@ function EventIndex({getEvents, events}){
 
   </div>
 
-
-
 }
-
 
   const mapStateToProps = (state) => {
   return {events: state.events}

@@ -10,20 +10,22 @@ export const getEvents = () => {
   
 };
 
-export const getUsers = () => {
-  return dispatch => fetch('http://localhost:3000/users')
-  .then(res => res.json())
-  .then(users => dispatch({type: "GET_USERS", payload: users})
-  )
+// export const getUsers = () => {
+//   return dispatch => fetch('http://localhost:3000/users')
+//   .then(res => res.json())
+//   .then(users => dispatch({type: "GET_USERS", payload: users})
+//   )
   
-};
+// };
 
-export const getUser = (userId) => {
-  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
-  .then(res => res.json())
-  .then(user => dispatch({type: "GET_USER", payload: user})
-  )
-};
+// export const getUser = (userId) => {
+//   return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+//   .then(res => res.json())
+//   .then(user => dispatch({type: "GET_USER", payload: user})
+//   )
+// };
+
+
 
 
 
@@ -140,6 +142,8 @@ export const addEvent = (user_event_data) => {
     }
   })
 }
+
+
 //   .then(res => res.json())
 //   .then(user => {
 //     dispatch({type: "ADD_EVENT", user })

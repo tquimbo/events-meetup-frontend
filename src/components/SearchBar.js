@@ -12,13 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import Login from "../components/Login";
-
-
 import { useState } from 'react'
 
 function SearchBar(props) {
-
-  
 
     let navigate = useNavigate();
 

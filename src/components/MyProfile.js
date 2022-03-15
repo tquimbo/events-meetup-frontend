@@ -9,7 +9,9 @@ import EventCard from "../components/EventCard";
 import UserEvents from '../containers/UserEvents';
 import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
-import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
+// import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
+
 
 
 function MyProfile(props){
@@ -20,7 +22,10 @@ function MyProfile(props){
     //     submitLogin(localStorage.currentUser)
     // }, [])
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent], getUsers, [getUsers], getUser, [getUser])
+    // useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent], getUsers, [getUsers], getUser, [getUser])
+
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent])
+    
     
     return (<div className="myprofile">
 
@@ -35,7 +40,7 @@ function MyProfile(props){
     {/* <p> {props.user.userEvents} </p> */}
     {/* <UserEvents /> */}
 
-    <UserEvents />
+    {/* <UserEvents /> */}
     
     {/* <EventIndex /> */}
 
@@ -58,4 +63,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { submitSignup, submitLogin, addEvent, getUsers, getUser })(MyProfile)
+export default connect(mapStateToProps, { submitSignup, submitLogin, addEvent })(MyProfile)

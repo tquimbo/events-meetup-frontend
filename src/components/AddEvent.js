@@ -53,7 +53,7 @@ import { useSelector } from 'react-redux'
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
-import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent, getUser } from '../redux/actionCreators';
 import EventShow from "../components/EventShow";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -61,10 +61,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import MyProfile from "../components/MyProfile";
 
-
-
-
-// import { getState } from 'react';
 
 
 
@@ -93,7 +89,7 @@ function AddEvent(props){
     const handleClick = (e) => {
         e.preventDefault()
         props.addEvent({ user, event } )
-        props.getUser(userID)
+        // props.getUser(userID)
         // navigate("/myprofile", { replace: true });
     
       }

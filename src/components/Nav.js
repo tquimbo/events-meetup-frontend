@@ -39,7 +39,7 @@ function Nav({logout, username}){
       <NavLink to="/index"> See all events </NavLink> |
       <NavLink to="/login"> Login </NavLink> |
       <NavLink to="/signup"> Signup </NavLink> |
-      <NavLink to="/myprofile"> My Profile </NavLink> |
+      <NavLink to={`/myprofile/${username}`}> My Profile </NavLink> |
       <button onClick={handleClick}>Logout!</button>
   </nav>
 

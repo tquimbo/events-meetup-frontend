@@ -1,6 +1,6 @@
 import {useEffect} from "react"
 // import {submitLogin, submitSignup, getEvent, addEvent, getUsers, getUser} from '../redux/actionCreators'
-import {submitLogin, submitSignup, getEvent, addEvent} from '../redux/actionCreators'
+import {submitLogin, submitSignup, getEvent, addEvent, getEvents, getUser} from '../redux/actionCreators'
 import { connect } from 'react-redux'
 import { Routes, Route, Outlet } from "react-router-dom";
 // import EventCard from "../components/EventCard"
@@ -14,7 +14,12 @@ import EventShow from "../components/EventShow";
 function UserEvents(props){
 
     // useEffect(addEvent, [addEvent])
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent])
+
+    const user = props.user
+    const event = props.event
+    const userID = props.user.id
+
+    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent] )
 
 
 

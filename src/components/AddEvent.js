@@ -76,15 +76,6 @@ function AddEvent(props){
     const event = props.event
     const userID = props.user.id
     
-    // const eventId = useParams().eventId;
-    // const userId = props.userId;
-    // const userId = props.id;
-    // const userId = props.id;
-    // const selectUserId = state => state.user.id
-
-
-    // const [userID, setuserID] = useState(state.user.id);
-    // const [eventID, seteventID] = useState(state.selectedEvent.id);
 
     const handleClick = (e) => {
         e.preventDefault()

@@ -6,15 +6,26 @@ import { useEffect } from 'react';
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
+import UserEventCard from "../components/EventCard";
 import UserEvents from '../containers/UserEvents';
 import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
 // import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
-import { submitSignup, submitLogin, addEvent, getEvent } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent, getUser  } from '../redux/actionCreators';
 
 
 
 function MyProfile(props){
+
+  const user = props.user
+  const userID = props.user.id
+
+  // const userID = useParams().userID;
+
+  // useEffect(() => {
+  //   getUser(userID)
+  // }, [getUser, userID])
+
 
 
     // useEffect(() => {
@@ -24,7 +35,7 @@ function MyProfile(props){
 
     // useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent], getUsers, [getUsers], getUser, [getUser])
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent])
+    // useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent], getUser, [getUser] )
     
     
     return (<div className="myprofile">
@@ -33,7 +44,14 @@ function MyProfile(props){
 
     <h1> Hi {props.user.firstName} {props.user.lastName} </h1>
  
+
+    
+
     <h3> My Events </h3>
+
+    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+  
+  
 
     {/* <p> {props.user.userEvents} </p> */}
 

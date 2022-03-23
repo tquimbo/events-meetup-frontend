@@ -60,12 +60,17 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
        <Route path="events" >
         <Route path=":eventId" element={<EventShow />}/> 
         </Route>
+
+        <Route path="myprofile" >
+        <Route path=":username" element={<MyProfile />}/> 
+        </Route>
+         
          
       
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
         <Route path="index" element={<EventIndex />}/> 
-        <Route path="myprofile" element={<MyProfile />}/> 
+        {/* <Route path="myprofile" element={<MyProfile />}/>  */}
 
         </Routes>
 

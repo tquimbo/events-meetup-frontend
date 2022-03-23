@@ -81,7 +81,7 @@ const initialState = {
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
-            return {...state, user: action.payload }
+            return {...state, user_event: action.payload }
             ;
             
             

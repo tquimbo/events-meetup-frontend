@@ -66,79 +66,192 @@ export const getEvent = (eventId) => {
 //   }
 // }
 
-// export const addEvent = (user_event_data) => {
-  
-  
-//   //return dispatch => {
-//     const user_event = {
-//       performer_name: user_event_data.event.performerName,
-//       // performer_image: user_event_data.event.performerImage,
-//       venue_name: user_event_data.event.venueName,
-//       venue_address: user_event_data.event.venueAddress,
-//       username: user_event_data.user.username,
-//       first_name: user_event_data.user.firstName,
-//       last_name: user_event_data.user.lastName,
-//       user_id: user_event_data.user.id,
-//       event_id: user_event_data.event.id,
-//     }
-//   //}
-    
-  
-
-//   return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}`, {
-//     method: "PATCH",
-//     headers: {
-//       "Content-Type": "application/json",
-//       // "Authorization": 'Bearer {localStorage.token}'
-//       "Authorization": `bearer ${localStorage.token}`
-//     },
-//     body: JSON.stringify(user_event)
-    
-//   })
-//   .then(res => res.json())
-//   .then(response => {
-//     dispatch({type: "ADD_EVENT", payload: user_event })
-    
-//   })
- 
-// };
-
 export const addEvent = (user_event_data) => {
-
-
+  
+  
   //return dispatch => {
-    const user = {
-      performer_name: user_event_data.event.performer_name,
-      performer_image: user_event_data.event.performer_image,
-      venue_name: user_event_data.event.venue_name,
-      venue_address: user_event_data.event.venue_address,
+    const user_event = {
+      performer_name: user_event_data.event.performerName,
+      // performer_image: user_event_data.event.performerImage,
+      venue_name: user_event_data.event.venueName,
+      venue_address: user_event_data.event.venueAddress,
       username: user_event_data.user.username,
-      first_name: user_event_data.user.first_name,
-      last_name: user_event_data.user.last_name,
+      first_name: user_event_data.user.firstName,
+      last_name: user_event_data.user.lastName,
       user_id: user_event_data.user.id,
       event_id: user_event_data.event.id,
     }
   //}
+    
+  
 
-
-
-  return dispatch => fetch(`http://localhost:3000/user_events`, {
+  return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      // "Authorization": 'Bearer {localStorage.token}'
       "Authorization": `bearer ${localStorage.token}`
     },
-    body: JSON.stringify(user)
-
+    body: JSON.stringify(user_event)
+    
   })
   .then(res => res.json())
-  .then(response => {
+  .then(user_event => {
+    dispatch({type: "ADD_EVENT", payload: user_event })
     
-    dispatch({type: "ADD_EVENT", payload: user })
-
   })
-
+ 
 };
+
+// export const addEvent = (user_event_data) => {
+
+
+//   //return dispatch => {
+//     const user = {
+//       performer_name: user_event_data.event.performer_name,
+//       performer_image: user_event_data.event.performer_image,
+//       venue_name: user_event_data.event.venue_name,
+//       venue_address: user_event_data.event.venue_address,
+//       username: user_event_data.user.username,
+//       first_name: user_event_data.user.first_name,
+//       last_name: user_event_data.user.last_name,
+//       user_id: user_event_data.user.id,
+//       event_id: user_event_data.event.id,
+//     }
+//   //}
+
+
+
+//   return dispatch => fetch(`http://localhost:3000/user_events`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `bearer ${localStorage.token}`
+//     },
+//     body: JSON.stringify(user)
+
+//   })
+//   .then(res => {
+//     if (res.ok) {
+//       res.json().then(user => dispatch({type: "ADD_EVENT", payload: user}))
+//     } else {
+//       res.json().then(res => alert(res.errors))
+//     }
+//   })
+// }
+
+// export const addEvent = (user_event_data) => {
+
+
+//   //return dispatch => {
+//     const user = {
+//       performer_name: user_event_data.event.performer_name,
+//       performer_image: user_event_data.event.performer_image,
+//       venue_name: user_event_data.event.venue_name,
+//       venue_address: user_event_data.event.venue_address,
+//       username: user_event_data.user.username,
+//       first_name: user_event_data.user.first_name,
+//       last_name: user_event_data.user.last_name,
+//       user_id: user_event_data.user.id,
+//       event_id: user_event_data.event.id,
+//     }
+//   //}
+
+
+
+//   return dispatch => fetch(`http://localhost:3000/user_events`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `bearer ${localStorage.token}`
+//     },
+//     body: JSON.stringify(user)
+
+//   })
+//   .then(res => res.json()).then(user => dispatch({type: "ADD_EVENT", payload: user })).catch(e => {console.log(JSON.parse(''))})
+// };
+
+// export const addEvent = (user_event_data) => {
+
+
+//   //return dispatch => {
+//     const user = {
+//       performer_name: user_event_data.event.performer_name,
+//       performer_image: user_event_data.event.performer_image,
+//       venue_name: user_event_data.event.venue_name,
+//       venue_address: user_event_data.event.venue_address,
+//       username: user_event_data.user.username,
+//       first_name: user_event_data.user.first_name,
+//       last_name: user_event_data.user.last_name,
+//       user_id: user_event_data.user.id,
+//       event_id: user_event_data.event.id,
+//     }
+//   //}
+
+
+
+//   return dispatch => fetch(`http://localhost:3000/user_events`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `bearer ${localStorage.token}`
+//     },
+//     body: JSON.stringify(user)
+
+//   })
+//   .then(response => {
+//     return response.json()}).then(user => 
+    
+//     dispatch({type: "ADD_EVENT", payload: user })).catch(e => {
+//     console.log(e);
+// })
+
+// };
+
+
+
+
+
+
+
+
+
+// export const addEvent = (user_event_data) => {
+
+
+//   //return dispatch => {
+//     const user = {
+//       performer_name: user_event_data.event.performer_name,
+//       performer_image: user_event_data.event.performer_image,
+//       venue_name: user_event_data.event.venue_name,
+//       venue_address: user_event_data.event.venue_address,
+//       username: user_event_data.user.username,
+//       first_name: user_event_data.user.first_name,
+//       last_name: user_event_data.user.last_name,
+//       user_id: user_event_data.user.id,
+//       event_id: user_event_data.event.id,
+//     }
+//   //}
+
+
+
+//   return dispatch => fetch(`http://localhost:3000/user_events`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `bearer ${localStorage.token}`
+//     },
+//     body: JSON.stringify(user)
+
+//   })
+//   .then(res => res.json())
+//   .then(user => 
+    
+//     dispatch({type: "ADD_EVENT", payload: user })).catch(e => {
+//     console.log(e);
+// })
+
+// };
 
 
 
@@ -301,21 +414,20 @@ export const getSearchResults = (searchQuery) => {
   .then(res => {
     return res.json()})
   .then(
-    (json) => {
+    (json) => {debugger
     json.events.map(event => 
       {return {
       name: event.venue.name,
       address: event.venue.extended_address,
       performer_name: event.performers[0].name
-      
-  
       } 
-    }
+      
+    } 
     
-    )}) }
     
-    // .then(events => {dispatch({type: "SEARCH_RESULTS", payload: events})})}
-    // ;
+    )}).then(events => {dispatch({type: "SEARCH_RESULTS", payload: events})})}
+
+
   // }).then(events => 
   //   dispatch({type: "SEARCH_RESULTS", payload: events})
   // )};

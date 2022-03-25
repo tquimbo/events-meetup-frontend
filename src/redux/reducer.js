@@ -77,7 +77,7 @@ const initialState = {
             return {...state, 
               events: action.payload};
         case "LOGOUT":
-          return {...state, user: initialUser}
+          return {...state, user: initialUser};
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":

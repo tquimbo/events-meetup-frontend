@@ -49,9 +49,9 @@ function MyProfile(props){
 
     <h3> My Events </h3>
 
-    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+    {/* {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
   
-  
+   */}
 
     {/* <p> {props.user.userEvents} </p> */}
 

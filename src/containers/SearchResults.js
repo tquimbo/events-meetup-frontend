@@ -77,40 +77,40 @@
 // }
 
 
-// import {useEffect} from "react"
-// import {getEvents} from '../redux/actionCreators'
-// import { connect } from 'react-redux'
-// import { Routes, Route, Outlet } from "react-router-dom";
-// import EventCard from "../components/EventCard"
-// import EventCardSearch from "../components/EventCard"
-// import SearchBar from "../components/SearchBar"
-// import { getSearchResults } from '../redux/actionCreators';
-// import { useParams } from 'react-router-dom';
+import {useEffect} from "react"
+import {getEvents} from '../redux/actionCreators'
+import { connect } from 'react-redux'
+import { Routes, Route, Outlet } from "react-router-dom";
+import EventCard from "../components/EventCard"
+import EventCardSearch from "../components/EventCard"
+import SearchBar from "../components/SearchBar"
+import { getSearchResults } from '../redux/actionCreators';
+import { useParams } from 'react-router-dom';
 
 
-// function SearchResults(props){
+function SearchResults(props){
 
 
-//     useEffect(() => {
-//         props.getSearchResults(props.searchQuery)
-//       }, [getSearchResults, props.searchQuery])
+    useEffect(() => {
+        props.getSearchResults(props.searchQuery)
+      }, [getSearchResults, props.searchQuery])
 
 
-//       return <div className="search_cards">
-//     {props.events.map(event => <EventCard {...event} key={event.id}/>)}
-//     <Outlet />
-//   </div>
-
-  
-
-
-// }
+      return <div className="search_cards">
+    {props.search_results.map(event => <EventCard {...event} key={event.id}/>)}
+    <Outlet />
+  </div>
 
 
 
-//   const mapStateToProps = (state) => {
-//   return {events: state.events}
-// }
+
+}
 
 
-// export default connect(mapStateToProps, { getSearchResults })(SearchResults)
+
+  const mapStateToProps = (state) => {
+  return {search_results: state.search_results}
+}
+
+
+export default connect(mapStateToProps, { getSearchResults })(SearchResults)

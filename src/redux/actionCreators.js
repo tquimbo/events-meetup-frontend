@@ -425,7 +425,7 @@ export const getSearchResults = (searchQuery) => {
     } 
     
     
-    )}).then(search_events => {dispatch({type: "SEARCH_RESULTS", payload: search_events})})}
+    )}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
 
 
   // }).then(events => 

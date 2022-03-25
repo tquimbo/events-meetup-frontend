@@ -64,6 +64,11 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
         <Route path="myprofile" >
         <Route path=":username" element={<MyProfile />}/> 
         </Route>
+
+        <Route path="search" >
+        <Route path=":search_results" element={<SearchResults />}/> 
+        </Route>
+
          
          
       

@@ -414,7 +414,7 @@ export const getSearchResults = (searchQuery) => {
   .then(res => {
     return res.json()})
   .then(
-    (json) => {debugger
+    (json) => {
     json.events.map(event => 
       {return {
       name: event.venue.name,
@@ -425,7 +425,7 @@ export const getSearchResults = (searchQuery) => {
     } 
     
     
-    )}).then(events => {dispatch({type: "SEARCH_RESULTS", payload: events})})}
+    )}).then(search_events => {dispatch({type: "SEARCH_RESULTS", payload: search_events})})}
 
 
   // }).then(events => 

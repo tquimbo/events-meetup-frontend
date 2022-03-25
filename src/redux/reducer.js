@@ -51,6 +51,7 @@ const initialUser = {
 const initialState = {
   events: [],
   user_events: [],
+  search_events: [],
   user_event: initialUserEvent,
   event: initialEvent,
   user: initialUser,
@@ -74,8 +75,7 @@ const initialState = {
         case "SET_USER":
           return {...state, user: action.payload};
           case "SEARCH_RESULTS":
-            return {...state, 
-              events: action.payload};
+            return {...state, search_events: action.payload};
         case "LOGOUT":
           return {...state, user: initialUser};
           // case "ADD_EVENT":

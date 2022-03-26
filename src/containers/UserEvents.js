@@ -33,7 +33,7 @@ function UserEvents(props){
 }
 
   const mapStateToProps = (state) => {
-  return {user: state.user,
+  return {user: state.user.user_events,
 user_event: state.user_event,
 user_events: state.user_events  }
   }

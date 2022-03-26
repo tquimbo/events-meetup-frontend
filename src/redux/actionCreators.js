@@ -95,7 +95,7 @@ export const addEvent = (user_event_data) => {
     body: JSON.stringify(user_event)
     
   })
-  .then(res => res.json())
+  .then(res => {return res.json()})
   .then(user_event => {
     dispatch({type: "ADD_EVENT", payload: user_event })
     
@@ -425,7 +425,7 @@ export const getSearchResults = (searchQuery) => {
     } 
     
     
-    )}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
+    )}).then(res => {return res.json()}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
 
 
   // }).then(events => 

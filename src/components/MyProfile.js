@@ -17,14 +17,14 @@ import { submitSignup, submitLogin, addEvent, getEvent, getUser  } from '../redu
 
 function MyProfile(props){
 
-  const user = props.user
+  // const user = props.user
   const userID = props.user.id
 
   // const userID = useParams().userID;
 
-  // useEffect(() => {
-  //   getUser(userID)
-  // }, [getUser, userID])
+  useEffect(() => {
+    getUser(userID)
+  }, [getUser, userID])
 
 
 
@@ -48,6 +48,8 @@ function MyProfile(props){
     
 
     <h3> My Events </h3>
+
+    <UserEvents/>
 
     {/* {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
   

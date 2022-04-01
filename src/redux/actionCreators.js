@@ -10,6 +10,15 @@ export const getEvents = () => {
   
 };
 
+
+// export const getEvents = () => {
+//   return dispatch => fetch('http://localhost:3000/events')
+//   .then(res => res.json())
+//   .then(events => dispatch({type: "GET_EVENTS", payload: events})
+//   )
+  
+// };
+
 // export const getUsers = () => {
 //   return dispatch => fetch('http://localhost:3000/users')
 //   .then(res => res.json())
@@ -95,13 +104,22 @@ export const addEvent = (user_event_data) => {
     body: JSON.stringify(user_event)
     
   })
-  .then(res => {return res.json()})
+  .then(res => res.json())
   .then(user_event => {
     dispatch({type: "ADD_EVENT", payload: user_event })
     
   })
  
 };
+
+
+export const getUser = (userId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(user => dispatch({type: "GET_USER", payload: user})
+  )
+};
+
 
 // export const addEvent = (user_event_data) => {
 

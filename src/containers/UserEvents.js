@@ -19,8 +19,10 @@ function UserEvents(props){
     const event = props.event
     const userID = props.user.id
 
-    useEffect(submitLogin, [submitLogin], submitSignup, [submitSignup], addEvent, [addEvent] )
-
+    useEffect(() => {
+      getUser(userID)
+    }, [getUser, userID])
+  
 
 
       return <div className="user_events">
@@ -32,11 +34,11 @@ function UserEvents(props){
 
 }
 
-  const mapStateToProps = (state) => {
-  return {user: state.user.user_events,
-user_event: state.user_event,
-user_events: state.user_events  }
+const mapStateToProps = (state) => {
+  return {user: state.user,
+    userEvents: state.user.userEvents }
   }
 
 
-  export default connect(mapStateToProps, { getEvent, addEvent })(UserEvents)
+
+  export default connect(mapStateToProps, { getUser })(UserEvents)

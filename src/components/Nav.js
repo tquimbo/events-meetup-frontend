@@ -23,10 +23,12 @@ import { connect } from 'react-redux'
 import { logout } from '../redux/actionCreators'
 import { useNavigate } from 'react-router-dom'
 
-function Nav({logout, username}){
+function Nav({logout, username, user}){
   // if we're logged in, show the traditional nav
   // if we're not logged in, show something else
   // to do that, see if we have a user
+
+  
   let navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -51,6 +53,7 @@ function Nav({logout, username}){
   return username ? loggedInRender() : loggedOutRender()
 }
 
-const mapStateToProps = (state) => ({username: state.user.username})
+const mapStateToProps = (state) => ({username: state.user.username,
+  user: state.user})
 
 export default connect(mapStateToProps, {logout})(Nav);

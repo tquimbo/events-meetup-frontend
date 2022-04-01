@@ -75,18 +75,18 @@ function AddEvent(props){
     const user = props.user
     const event = props.event
     const userID = props.user.id
+    const username = props.user.username
+    
     
 
     const handleClick = (e) => {
         e.preventDefault()
         props.addEvent({ user, event } )
         // props.getUser(userID)
-        // navigate("/myprofile", { replace: true });
+        // navigate(`/myprofile/${username}`, { replace: true });
     
       }
 
-
-    
     
 
   

@@ -85,7 +85,7 @@ const initialState = {
             // ;
             
             
-            return {...state, user: {...state.user, user_events: [action.payload, ...state.user.user_events]}};
+            return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
              
             
 

@@ -15,6 +15,8 @@ function EventShow({getEvent, performerName, performerImage, venueName, venueAdd
    
     const eventId = useParams().eventId;
 
+    
+
   
  
 

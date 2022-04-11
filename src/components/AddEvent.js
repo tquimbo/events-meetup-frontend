@@ -95,24 +95,7 @@ function AddEvent(props){
 
             <button onClick={handleClick}>
             Attending
-            </button>
-
-         
-            {/* {/* <h1> {selectUserId}</h1> */}
-        
-            {/* <h1> {  MyProfile.props.username}</h1>
-            */}
-
-
-{/*             
-            <h1> {parseInt(localStorage.currentUser, 2)} </h1> */}
-            {/* <h1> {state.username} </h1>
-            */}
-
-            {/* <h1> {this.props.event_id} </h1>
-             */}
-            
-            
+            </button>            
     
    </div>
     )
@@ -124,7 +107,7 @@ const mapStateToProps = (state) => {
     return {
        user: state.user, 
        event: state.event,
-       user_event: state.user_event
+       userEvents: state.user.userEvents
     }
         
 }

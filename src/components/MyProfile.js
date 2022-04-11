@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { submitSignup, submitLogin, addEvent })(MyProfile)
+export default connect(mapStateToProps, { submitSignup, submitLogin, addEvent, getUser })(MyProfile)

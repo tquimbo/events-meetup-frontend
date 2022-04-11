@@ -35,7 +35,7 @@ const initialUser = {
   username: "",
   first_name: "",
   last_name: "",
-  user_events: []
+  userEvents: []
 }
 
 
@@ -50,9 +50,6 @@ const initialUser = {
 
 const initialState = {
   events: [],
-  user_events: [],
-  search_results: [],
-  user_event: initialUserEvent,
   event: initialEvent,
   user: initialUser,
 }

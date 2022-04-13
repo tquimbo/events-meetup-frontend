@@ -11,7 +11,7 @@ import UserEvents from '../containers/UserEvents';
 import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
 // import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
-import { submitSignup, submitLogin, addEvent, getEvent, getUser  } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent, getUser, fetchUser  } from '../redux/actionCreators';
 
 
 
@@ -22,10 +22,11 @@ function MyProfile(props){
 
   // const userID = useParams().userID;
 
-  useEffect(() => {
-    getUser(userID)
-  }, [getUser, userID])
+  // useEffect(() => {
+  //   getUser(userID)
+  // }, [getUser, userID])
 
+  useEffect(fetchUser, [fetchUser])
 
 
     // useEffect(() => {
@@ -76,8 +77,7 @@ function MyProfile(props){
 // }
 
 const mapStateToProps = (state) => {
-    return {user: state.user,
-      userEvents: state.user.userEvents }
+    return {user: state.user }
     }
   
 

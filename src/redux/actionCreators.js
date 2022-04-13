@@ -10,6 +10,23 @@ export const getEvents = () => {
   
 };
 
+export const fetchUser = (userId) => {
+  return (dispatch) => {
+      dispatch({ type: 'LOADING_USER'})
+      let config = {
+          method: 'GET',
+          headers: {
+              "Authorization": `bearer ${localStorage.token}`
+          }
+      }
+      fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
+          return response.json()
+      }).then(responseJSON => {
+          dispatch({ type: 'ADD_USER', user: responseJSON})
+      })
+  }
+}
+
 
 // export const getEvents = () => {
 //   return dispatch => fetch('http://localhost:3000/events')
@@ -182,7 +199,9 @@ export const addEvent = (user_event_data) => {
     
   })  .then(res => {
     if (res.ok) {
-      res.json().then(user_event => dispatch({type: "ADD_EVENT", payload: user_event}))
+      res.json().then(user_event => dispatch({type: "ADD_EVENT", payload: user_event})).catch(e => {
+        console.log(e);
+    })
     } else {
       res.json().then(res => alert(res.errors))
     }
@@ -464,7 +483,7 @@ export const autoLogin = () => {
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-//   .then(res => {
+//   .then(res => {debugger
 //     return res.json()})
 //   .then(
 //     (json) => {
@@ -504,24 +523,46 @@ export const autoLogin = () => {
 
 
 
-export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-  .then(res => {
-    return res.json()})
-  .then(
-    (json) => {
-    json.events.map(event => 
-      {return {
-      name: event.venue.name,
-      address: event.venue.extended_address,
-      performer_name: event.performers[0].name
-      } 
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => {
+//     return res.json()})
+//   .then(
+//     (json) => {debugger
+//     json.events.map(event => 
+//       {return {
+//       name: event.venue.name,
+//       address: event.venue.extended_address,
+//       performer_name: event.performers[0].name
+//       } 
       
-    } 
+//     } 
     
     
-    )}).then(res => {return res.json()}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
+//     )}).then(res => {return res.json()}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
 
+//this gets correct 
+export const getSearchResults = (searchQuery) => {
+  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})}).catch(error => {
+      console.error('Error:', error);
+    });
+    
+    }
+
+
+//  .then(
+//     (json) => {
+//     json.events.map(event => 
+//       {return {
+//       name: event.venue.name,
+//       address: event.venue.extended_address,
+//       performer_name: event.performers[0].name
+//       } 
+      
+//     } 
+     
+// before dispatch then
+// .then(res => {return res.json()})
 
   // }).then(events => 
   //   dispatch({type: "SEARCH_RESULTS", payload: events})

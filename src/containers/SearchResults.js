@@ -99,11 +99,9 @@ function SearchResults({getSearchResults, search_results}){
 
 
       return <div className="search_cards">
-    {search_results.map(event => <EventCard {...event} key={event.id}/>)}
+    {search_results.events.map(event => <EventCardSearch {...event} key={event.id}/>)}
     <Outlet />
   </div>
-
-
 
 
 }

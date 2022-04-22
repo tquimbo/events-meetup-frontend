@@ -26,7 +26,7 @@ function MyProfile(props){
   //   getUser(userID)
   // }, [getUser, userID])
 
-  useEffect(fetchUser, [fetchUser])
+  // useEffect(fetchUser, [fetchUser])
 
 
     // useEffect(() => {

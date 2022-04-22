@@ -10,22 +10,22 @@ export const getEvents = () => {
   
 };
 
-export const fetchUser = (userId) => {
-  return (dispatch) => {
-      dispatch({ type: 'LOADING_USER'})
-      let config = {
-          method: 'GET',
-          headers: {
-              "Authorization": `bearer ${localStorage.token}`
-          }
-      }
-      fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
-          return response.json()
-      }).then(responseJSON => {
-          dispatch({ type: 'ADD_USER', user: responseJSON})
-      })
-  }
-}
+// export const fetchUser = (userId) => {
+//   return (dispatch) => {
+//       dispatch({ type: 'LOADING_USER'})
+//       let config = {
+//           method: 'GET',
+//           headers: {
+//               "Authorization": `bearer ${localStorage.token}`
+//           }
+//       }
+//       fetch(`http://localhost:3000/users/${userId}`, config).then(response => {
+//           return response.json()
+//       }).then(responseJSON => {
+//           dispatch({ type: 'ADD_USER', user: responseJSON})
+//       })
+//   }
+// }
 
 
 // export const getEvents = () => {
@@ -542,6 +542,13 @@ export const autoLogin = () => {
 //     )}).then(res => {return res.json()}).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})})}
 
 //this gets correct 
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch((`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => res.json()).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})}).catch(error => {
+//       console.error('Error:', error);
+//     })
+//     };
+
 export const getSearchResults = (searchQuery) => {
   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})}).catch(error => {
       console.error('Error:', error);

@@ -13,6 +13,20 @@ const initialEvent = {
   event_users: [],
 }
 
+const initialSearchResult = {
+  performer_name: "",
+  performer_image: "",
+  venue_name: "",
+  venue_address: "",
+  address: "",
+  attendance_status: "",
+  datetime: "",
+  id: "",
+  user_id: "",
+  event_id: "",
+  event_users: [],
+}
+
 const initialUserEvent = {
   performer_name: "",
   performer_image: "",
@@ -74,6 +88,7 @@ const initialState = {
           return {...state, user: action.payload};
           case "SEARCH_RESULTS":
             return {...state, search_results: action.payload};
+            // return {...state, search_results: {...state.search_results, events: [action.payload, ...state.search_results.events]}};
         case "LOGOUT":
           return {...state, user: initialUser};
           // case "ADD_EVENT":

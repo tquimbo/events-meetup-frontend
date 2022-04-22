@@ -88,7 +88,7 @@ import { getSearchResults } from '../redux/actionCreators';
 import { useParams } from 'react-router-dom';
 
 
-function SearchResults({getSearchResults, search_results}){
+function SearchResults(props){
 
 
  useEffect(getSearchResults, [getSearchResults])
@@ -97,10 +97,13 @@ function SearchResults({getSearchResults, search_results}){
     //     props.getSearchResults(props.searchQuery)
     //   }, [getSearchResults, props.searchQuery])
 
+    
+
+
 
       return <div className="search_cards">
-    {search_results.events.map(event => <EventCardSearch {...event} key={event.id}/>)}
-    <Outlet />
+    {/* {props.search_results.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
+   
   </div>
 
 
@@ -109,7 +112,8 @@ function SearchResults({getSearchResults, search_results}){
 
 
   const mapStateToProps = (state) => {
-  return {search_results: state.search_results}
+  return {search_results: state.search_results,
+    events: state.search_results.events}
 }
 
 

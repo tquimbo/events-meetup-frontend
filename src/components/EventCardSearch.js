@@ -50,10 +50,16 @@ export default function EventCardSearch({id, performer_name, venue_name, venue_a
 
   return (<div className="search_cards">
 
-  <p>{search_results.events.title}</p>
-    
+  {/* <p>{type}</p> */}
+  <p> Hi </p>
+
 </div>
   );
+}
+
+const mapStateToProps = (state) => {
+  return {search_results: state.search_results,
+    events: state.search_results.events}
 }
 
 

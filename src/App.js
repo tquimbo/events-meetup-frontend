@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import concert from './concert.jpg';
 import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
@@ -45,14 +46,16 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
        <header className="App-header">
 
     
-       <h1> Events Meetup!</h1>
+       <h1> Concert Buddy</h1>
+
+       <img src={concert} className="App-logo" alt="logo" />
 
        <Nav/>
 
     <SearchBar/>
       
 
-         <img src={logo} className="App-logo" alt="logo" />
+      
 
        
       <Routes>

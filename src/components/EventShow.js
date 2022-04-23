@@ -33,7 +33,8 @@ return (<div className="show">
     <p>{venueAddress}</p>
     <p>{attendance_status}</p>
     
-
+  
+    
 
    <AddEvent/>
 

@@ -6,6 +6,7 @@ import { useState } from "react";
 import {getEvents} from './redux/actionCreators';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
+import Test from './containers/Test';
 import SearchResults from './containers/SearchResults';
 import UserProfile from './containers/UserProfile';
 import SearchBar from './components/SearchBar';
@@ -67,13 +68,14 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
         <Route path="myprofile" >
         <Route path=":username" element={<MyProfile />}/> 
         </Route>
-
-        <Route path="search" >
-        <Route path=":searchQuery" element={<SearchResults />}/> 
-        </Route>
+{/* 
+        <Route path="search?:searchQuery" element={<SearchResults />} /> */}
+        {/* <Route path=":searchQuery" element={<SearchResults />}/>  */}
+        {/* </Route> */}
 
          
          
+        <Route path="search?:searchQuery" element={<SearchResults />} />
       
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>

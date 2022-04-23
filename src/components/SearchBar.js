@@ -26,7 +26,7 @@ function SearchBar(props) {
     // const navigate = useNavigate();
     const onSubmit = e => {
         // navigate.push(`?results=${searchQuery}`)
-        navigate(`/search_results/${searchQuery}`, { replace: true })
+        navigate(`/search_results?${searchQuery}`, { replace: true })
         e.preventDefault()
         props.getSearchResults(searchQuery)
         // navigate(`/results/${searchQuery}`, { replace: true });

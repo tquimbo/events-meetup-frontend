@@ -5,12 +5,11 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"
 
 
-function EventIndex({getEvents, events}){
+function Test({getEvents, events}){
 
   useEffect(getEvents, [getEvents])
 
-      return <div className="cards">
-    {events.map(event => <EventCard {...event} key={event.id}/>)}
+      return <div className="test">
     
    <p> Hi </p>
    
@@ -23,4 +22,4 @@ function EventIndex({getEvents, events}){
 }
 
 
-export default connect(mapStateToProps, { getEvents })(EventIndex)
+export default connect(mapStateToProps, { getEvents })(Test)

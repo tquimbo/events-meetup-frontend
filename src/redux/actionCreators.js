@@ -481,24 +481,6 @@ export const autoLogin = () => {
   .then(res => handleUserResponse(res, dispatch))
 }
 
-// export const getSearchResults = (searchQuery) => {
-//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
-//   .then(res => {debugger
-//     return res.json()})
-//   .then(
-//     (json) => {
-//     debugger
-//     json.events.map(event => {
-//     return { 
-//       performer_name: event.performers[0].name,
-
-//      }
-//   }
-//   )
-// })
-//   .then(events => dispatch({type: "SEARCH_RESULTS", payload: events})
-//   )
-// };
 
 // export const getSearchResults = (searchQuery) => {
 //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
@@ -555,6 +537,27 @@ export const getSearchResults = (searchQuery) => {
     });
     
     }
+
+
+//     export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//   .then(res => {
+//     return res.json()})
+//   .then(
+//     (json) => {
+    
+//     json.events.map(event => {
+//     return { 
+//       performer_name: event.performers[0].name,
+
+//      }
+//   }
+//   )
+// }).then(search_results => {dispatch({type: "SEARCH_RESULTS", payload: search_results})}).catch(error => {
+//   console.error('Error:', error);
+// });
+
+// }
 
 
 //  .then(

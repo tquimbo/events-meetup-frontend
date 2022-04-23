@@ -49,7 +49,8 @@ const initialUser = {
   username: "",
   first_name: "",
   last_name: "",
-  userEvents: []
+  userEvents: [],
+  events: []
 }
 
 

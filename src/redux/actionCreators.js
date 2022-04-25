@@ -1,4 +1,5 @@
 import { reducer } from "./reducer";
+import axios from "axios";
 
 const USERURL = 'http://localhost:3000/users/'
 
@@ -537,6 +538,14 @@ export const getSearchResults = (searchQuery) => {
     });
     
     }
+
+
+    export const getSearchResults = (searchQuery) => {
+      return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
+          console.error('Error:', error);
+        });
+        
+        }
 
 
 //     export const getSearchResults = (searchQuery) => {

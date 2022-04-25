@@ -1,3 +1,5 @@
+import { flatten } from "lodash";
+
 
 const initialEvent = {
   performer_name: "",
@@ -68,6 +70,10 @@ const initialState = {
   events: [],
   event: initialEvent,
   user: initialUser,
+  isFetching: true,
+  finish: false,
+  error: null,
+  list: [],
 }
 
 
@@ -100,6 +106,41 @@ const initialState = {
             
             
             return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
+
+            case "EVENTS_FETCH_PENDING":
+      // console.log("EVENTS_FETCH_PENDING");
+      return { ...state, isFetching: true, error: null };
+    case "EVENTS_FETCH_SUCCESS":
+      // console.log("EVENTS_FETCH_SUCCESS");
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        list: flatten(action.payload),
+        finish: action.finish
+      };
+    case "EVENTS_FETCH_MORE":
+      // console.log("EVENTS_FETCH_MORE");
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        list: state.list.concat(flatten(action.payload)),
+        finish: action.finish
+      };
+    case "EVENT_DETAILS_FETCH_PENDING":
+      return {
+        ...state,
+        isFetching: true,
+        error: null
+      };
+    case "EVENT_DETAILS_FETCH_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        event: action.payload
+      };
              
             
 
@@ -164,7 +205,7 @@ const initialState = {
     }
 }
 
-  
+
   export default exp
 
 

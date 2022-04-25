@@ -1,6 +1,8 @@
 import { reducer } from "./reducer";
 import axios from "axios";
 
+
+
 const USERURL = 'http://localhost:3000/users/'
 
 export const getEvents = () => {
@@ -10,6 +12,8 @@ export const getEvents = () => {
   )
   
 };
+
+
 
 // export const fetchUser = (userId) => {
 //   return (dispatch) => {
@@ -532,20 +536,70 @@ export const autoLogin = () => {
 //     })
 //     };
 
-export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
-      console.error('Error:', error);
-    });
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
+//       console.error('Error:', error);
+//     });
     
-    }
+//     }
 
 
-    export const getSearchResults = (searchQuery) => {
-      return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
-          console.error('Error:', error);
-        });
-        
+    export const getSearchResults = (page = 1, searchQuery) => {
+      const limit = 20;
+      // console.log(page, performerId);
+    
+      return dispatch => {
+        dispatch({ type: "EVENTS_FETCH_PENDING" });
+    
+        let reqUrl;
+    
+        if (searchQuery) {
+          reqUrl = `https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`
+         
+        } else {
+          reqUrl = `https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`;
         }
+    
+        axios.get(reqUrl).then(res => {
+          // console.log(res.data.events.length);
+          let finish = false;
+          if (res.data.events.length < limit) {
+            finish = true;
+          }
+    
+          if (page == 1) {
+            dispatch({
+              type: "EVENTS_FETCH_SUCCESS",
+              payload: res.data.events,
+              finish
+            });
+          } else {
+            dispatch({ type: "EVENTS_FETCH_MORE", payload: res.data.events, finish });
+          }
+        });
+      };
+    };
+    
+    export const fetchEventDetails = (page = 1, searchQuery) => {
+      // console.log(id);
+      return dispatch => {
+        dispatch({ type: "EVENT_DETAILS_FETCH_PENDING" });
+    
+        const apiUrl = `https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`;
+        axios.get(apiUrl).then(res => {
+          // console.log(res.data);
+          dispatch({ type: "EVENT_DETAILS_FETCH_SUCCESS", payload: res.data });
+        });
+      };
+    };
+
+
+    // export const getSearchResults = (searchQuery) => {
+    //   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
+    //       console.error('Error:', error);
+    //     });
+        
+    //     }
 
 
 //     export const getSearchResults = (searchQuery) => {

@@ -103,8 +103,12 @@ function SearchResults(props){
 
 
  return <div className="test">
- {/* {props.search.events.map(event => <EventCard {...event} key={event.id}/>)}
-  */}
+ {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
+
+<ul> 
+ {props.search.events.map((event) => (<li key={event.id}>{event.type}</li>))} 
+
+ </ul>
 <p> Hi </p>
 
 </div>
@@ -112,7 +116,7 @@ function SearchResults(props){
 
 
     //   return <div className="search_cards">
-    // {/* {props.search_results.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
+    // {/* {props.search.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
     // {/* <ul> */}
 
     //     {/* {props.search_results.events.map((event) => (<li key={event.id}>{event.type}</li>))} */}

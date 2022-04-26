@@ -106,10 +106,20 @@ function SearchResults(props){
  {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
 
 <ul> 
- {props.search.events.map((event) => (<li key={event.id}>{event.type}</li>))} 
+ {props.search.events.map((event) => (<li key={event.id} 
+ 
+ ><h3>{event.performers[0].name}</h3>
+
+{/* <p>{event.datetime_utc}</p> */}
+
+    <p>{event.venue.name}</p>
+    <p>{event.venue.address}, {event.venue.extended_address}
+</p>
+
+
+ </li>))} 
 
  </ul>
-<p> Hi </p>
 
 </div>
 

@@ -110,7 +110,7 @@ function SearchResults(props){
 
  {props.search.events.map((event) => (<li key={event.id} 
 
-><h3>{event.performers[0].name}</h3>
+> <Link to={`/events/${event.id}`}> <h3>{event.performers[0].name}</h3> </Link>
 
 {/* <p>{event.datetime_utc}</p> */}
 

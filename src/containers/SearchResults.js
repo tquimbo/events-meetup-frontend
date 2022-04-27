@@ -87,6 +87,8 @@ import SearchBar from "../components/SearchBar"
 import { getSearchResults } from '../redux/actionCreators';
 // import { fetchEventDetails } from '../redux/actionCreators';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -105,23 +107,25 @@ function SearchResults(props){
  return <div className="test">
  {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
 
-<ul> 
+
  {props.search.events.map((event) => (<li key={event.id} 
- 
- ><h3>{event.performers[0].name}</h3>
+
+><h3>{event.performers[0].name}</h3>
 
 {/* <p>{event.datetime_utc}</p> */}
 
-    <p>{event.venue.name}</p>
-    <p>{event.venue.address}, {event.venue.extended_address}
+   <p>{event.venue.name}</p>
+   <p>{event.venue.address}, {event.venue.extended_address}
 </p>
 
 
- </li>))} 
+</li>))}
 
- </ul>
 
+ 
 </div>
+
+
 
 
 
@@ -137,7 +141,7 @@ function SearchResults(props){
 
 
 
-{/* </ul> */}
+/* </ul> */
    
    
 

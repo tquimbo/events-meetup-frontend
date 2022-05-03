@@ -20,6 +20,7 @@ import Login from "./components/Login";
 import EventCardSearch from "./components/EventCardSearch";
 import Nav from "./components/Nav";
 import EventShow from "./components/EventShow";
+import SearchShow from "./components/SearchShow";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
@@ -78,7 +79,10 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
         {/* <Route path="search?:searchQuery" element={<SearchResults />} /> */}
 
             
-        <Route path="search" element={<SearchResults />} />
+        {/* <Route path="search" element={<SearchResults />} /> */}
+        <Route path="search" element={<SearchResults />} >
+        <Route path=":eventId" element={<SearchShow />}/> 
+        </Route>
       
       
         <Route path="login" element={<Login />}/>

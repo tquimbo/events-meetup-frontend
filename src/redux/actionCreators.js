@@ -543,6 +543,14 @@ export const getSearchResults = (searchQuery) => {
     
     }
 
+    export const getSearch = (eventId) => {
+      return dispatch => fetch(`https://api.seatgeek.com/2/events/${eventId}`)
+      .then(res => res.json())
+      .then(event => dispatch({type: "GET_EVENT", payload: event})
+      )
+    };
+    
+
 
     // export const fetchEventDetails = (page = 1, searchQuery) => {
     //   const limit = 20;

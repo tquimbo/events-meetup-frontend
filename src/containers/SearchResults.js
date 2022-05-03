@@ -110,8 +110,7 @@ function SearchResults(props){
 
  {props.search.events.map((event) => (<li key={event.id} 
 
-> <Link to={`/events/${event.id}`}> <h3>{event.performers[0].name}</h3> </Link>
-
+> <Link to={`/search/${event.id}`}>  <h3>{event.performers[0].name}</h3>  </Link>
 {/* <p>{event.datetime_utc}</p> */}
 
    <p>{event.venue.name}</p>
@@ -121,11 +120,11 @@ function SearchResults(props){
 
 </li>))}
 
+ 
+
 
  
 </div>
-
-
 
 
 

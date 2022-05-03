@@ -543,10 +543,10 @@ export const getSearchResults = (searchQuery) => {
     
     }
 
-    export const getSearch = (eventId) => {
-      return dispatch => fetch(`https://api.seatgeek.com/2/events/${eventId}`)
+    export const getSearch = (searchId) => {
+      return dispatch => fetch(`https://api.seatgeek.com/2/events/${searchId}`)
       .then(res => res.json())
-      .then(event => dispatch({type: "GET_EVENT", payload: event})
+      .then(event => dispatch({type: "GET_SEARCH", payload: event})
       )
     };
     

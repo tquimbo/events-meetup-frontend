@@ -87,6 +87,8 @@ const initialState = {
         return{...state, events: action.payload};
        case "GET_EVENT":
         return {...state, event: action.payload};
+        case "GET_SEARCH":
+          return {...state, event: action.payload};
         // case "GET_USER":
         // return {...state, user: action.payload};
         // case "GET_RESULTS":

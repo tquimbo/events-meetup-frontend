@@ -81,7 +81,7 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
             
         {/* <Route path="search" element={<SearchResults />} /> */}
         <Route path="search" element={<SearchResults />} >
-        <Route path=":eventId" element={<SearchShow />}/> 
+        <Route path=":searchId" element={<SearchShow />}/> 
         </Route>
       
       

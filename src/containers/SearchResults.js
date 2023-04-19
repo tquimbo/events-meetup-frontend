@@ -77,81 +77,107 @@
 // }
 
 
-import {useEffect} from "react"
-import {getEvents} from '../redux/actionCreators.ts'
-import { connect } from 'react-redux'
-import { Routes, Route, Outlet } from "react-router-dom";
-import EventCard from "../components/EventCard"
-import EventCardSearch from "../components/EventCard"
-import SearchBar from "../components/SearchBar"
-import { getSearchResults } from '../redux/actionCreators.ts';
-// import { fetchEventDetails } from '../redux/actionCreators';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+// import {useEffect} from "react"
+// import {getEvents} from '../redux/actionCreators.ts'
+// import { connect } from 'react-redux'
+// import { Routes, Route, Outlet } from "react-router-dom";
+// import EventCard from "../components/EventCard"
+// import EventCardSearch from "../components/EventCard"
+// import SearchBar from "../components/SearchBar"
+// import { getSearchResults } from '../redux/actionCreators.ts';
+// // import { fetchEventDetails } from '../redux/actionCreators';
+// import { useParams } from 'react-router-dom';
+// import { Link } from 'react-router-dom'
 
 
 
 
-function SearchResults(props){
+// function SearchResults(props){
 
 
-  const {searchQuery} = useParams();
+//   const {searchQuery} = useParams();
 
 
-//  useEffect(getSearchResults, [getSearchResults], fetchEventDetails, [fetchEventDetails])
+// //  useEffect(getSearchResults, [getSearchResults], fetchEventDetails, [fetchEventDetails])
 
- useEffect(getSearchResults, [getSearchResults])
-
-
-
- return <div className="test">
- {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
+//  useEffect(getSearchResults, [getSearchResults])
 
 
- {props.search.events.map((event) => (<li key={event.id} 
 
-> <Link to={`/search/${event.id}`}>  <h3>{event.performers[0].name}</h3>  </Link>
-{/* <p>{event.datetime_utc}</p> */}
-
-   <p>{event.venue.name}</p>
-   <p>{event.venue.address}, {event.venue.extended_address}
-</p>
+//  return <div className="test">
+//  {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
 
 
-</li>))}
+//  {props.search.events.map((event) => (<li key={event.id} 
 
- 
+// > <Link to={`/search/${event.id}`}>  <h3>{event.performers[0].name}</h3>  </Link>
+// {/* <p>{event.datetime_utc}</p> */}
 
+//    <p>{event.venue.name}</p>
+//    <p>{event.venue.address}, {event.venue.extended_address}
+// </p>
+
+
+// </li>))}
 
  
-</div>
+
+
+ 
+// </div>
 
 
 
-    //   return <div className="search_cards">
-    // {/* {props.search.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
-    // {/* <ul> */}
+//     //   return <div className="search_cards">
+//     // {/* {props.search.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
+//     // {/* <ul> */}
 
-    //     {/* {props.search_results.events.map((event) => (<li key={event.id}>{event.type}</li>))} */}
+//     //     {/* {props.search_results.events.map((event) => (<li key={event.id}>{event.type}</li>))} */}
 
-    //     <p> Hi </p>
+//     //     <p> Hi </p>
 
         
 
 
 
-/* </ul> */
+// /* </ul> */
    
    
 
 
-}
+// }
 
 
 
-  const mapStateToProps = (state) => {
-  return {search: state.search}
-}
+//   const mapStateToProps = (state) => {
+//   return {search: state.search}
+// }
 
 
-export default connect(mapStateToProps, { getSearchResults })(SearchResults)
+// export default connect(mapStateToProps, { getSearchResults })(SearchResults)
+
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store'; // Update this import in the store/index.ts file.
+import { Card, ListGroup } from 'react-bootstrap';
+
+const Results: React.FC = () => {
+  const { results } = useSelector((state: RootState) => state.search);
+
+  return (
+    <ListGroup>
+      {results.map((event: any) => (
+        <ListGroup.Item key={event.id}>
+          <Card>
+            <Card.Body>
+              <Card.Title>{event.title}</Card.Title>
+              <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
+            </Card.Body>
+          </Card>
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  );
+};
+
+export default Results;

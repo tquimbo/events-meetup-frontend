@@ -193,7 +193,7 @@ export const addEvent = (user_event_data) => {
     
   
 
-  return dispatch => fetch(`http://localhost:3000/users/${user_event_data.user.id}/user_events`, {
+  return dispatch => fetch(`http://localhost:3000/user_events`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

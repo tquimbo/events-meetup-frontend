@@ -773,3 +773,32 @@ export const getSearchResults = (searchQuery) => {
 //   })
 // };
 
+import { searchEvents } from '../../api/seatGeekAPI';
+
+export const SEARCH_EVENTS_REQUEST = 'SEARCH_EVENTS_REQUEST';
+export const SEARCH_EVENTS_SUCCESS = 'SEARCH_EVENTS_SUCCESS';
+export const SEARCH_EVENTS_FAILURE = 'SEARCH_EVENTS_FAILURE';
+
+export const searchEventsRequest = () => ({
+  type: SEARCH_EVENTS_REQUEST,
+});
+
+export const searchEventsSuccess = (results: any) => ({
+  type: SEARCH_EVENTS_SUCCESS,
+  payload: results,
+});
+
+export const searchEventsFailure = (error: string) => ({
+  type: SEARCH_EVENTS_FAILURE,
+  payload: error,
+});
+
+export const fetchSearchResults = (query: string) => async (dispatch: any) => {
+  dispatch(searchEventsRequest());
+  try {
+    const results = await searchEvents(query);
+    dispatch(searchEventsSuccess(results));
+  } catch (error) {
+    dispatch(searchEventsFailure(error.message));
+  }
+};

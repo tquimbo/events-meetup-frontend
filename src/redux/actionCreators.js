@@ -772,3 +772,4 @@ export const getSearchResults = (searchQuery) => {
 //     dispatch({type: "SEARCH_RESULTS", payload: response.events})
 //   })
 // };
+

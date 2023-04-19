@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
-import { submitSignup, submitLogin, addEvent, getEvent, getUser } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent, getUser } from '../redux/actionCreators.ts';
 import EventShow from "../components/EventShow";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -1,6 +1,6 @@
 // import { NavLink } from 'react-router-dom'
 // import { connect } from 'react-redux'
-// import { logout } from '../redux/actionCreators'
+// import { logout } from '../redux/actionCreators.ts'
 
 
 // function Nav(props){
@@ -59,7 +59,7 @@
 // export default connect(mapStateToProps, {logout})(Nav);
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../redux/actionCreators';
+import { logout } from '../redux/actionCreators.ts';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 

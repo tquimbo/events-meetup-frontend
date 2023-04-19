@@ -1,5 +1,5 @@
 // import {useEffect} from "react"
-// import {getEvents} from '../redux/actionCreators'
+// import {getEvents} from '../redux/actionCreators.ts'
 // import { connect } from 'react-redux'
 // import { Routes, Route } from "react-router-dom";
 // import EventCard from "../components/EventCard"
@@ -36,7 +36,7 @@
 //   </div>);
 
 import {useEffect} from "react"
-import {getEvents} from '../redux/actionCreators'
+import {getEvents} from '../redux/actionCreators.ts'
 import { connect } from 'react-redux'
 import { Routes, Route } from "react-router-dom";
 import EventCard from "../components/EventCard"

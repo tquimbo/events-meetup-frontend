@@ -78,13 +78,13 @@
 
 
 import {useEffect} from "react"
-import {getEvents} from '../redux/actionCreators'
+import {getEvents} from '../redux/actionCreators.ts'
 import { connect } from 'react-redux'
 import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"
 import EventCardSearch from "../components/EventCard"
 import SearchBar from "../components/SearchBar"
-import { getSearchResults } from '../redux/actionCreators';
+import { getSearchResults } from '../redux/actionCreators.ts';
 // import { fetchEventDetails } from '../redux/actionCreators';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from 'react-redux'
-import { submitSignup, submitLogin } from '../redux/actionCreators'
+import { submitSignup, submitLogin } from '../redux/actionCreators.ts'
 
 
 function Signup(props){

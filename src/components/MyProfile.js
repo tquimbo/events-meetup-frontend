@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { getEvent } from '../redux/actionCreators';
+//import { getEvent } from '../redux/actionCreators.ts';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import Login from "../components/Login";
@@ -11,7 +11,7 @@ import UserEvents from '../containers/UserEvents';
 import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
 // import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
-import { submitSignup, submitLogin, addEvent, getEvent, getUser, fetchUser  } from '../redux/actionCreators';
+import { submitSignup, submitLogin, addEvent, getEvent, getUser, fetchUser  } from '../redux/actionCreators.ts';
 
 
 

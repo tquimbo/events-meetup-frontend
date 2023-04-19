@@ -3,7 +3,7 @@ import concert from './concert.jpg';
 import './App.css';
 import { useEffect } from "react";
 import { useState } from "react";
-import {getEvents} from './redux/actionCreators';
+import {getEvents} from './redux/actionCreators.ts';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import Test from './containers/Test';
@@ -25,7 +25,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import Signup from './components/Signup';
 import { BrowserRouter as Router } from "react-router-dom";
-import { autoLogin } from './redux/actionCreators'
+import { autoLogin } from './redux/actionCreators.ts'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 

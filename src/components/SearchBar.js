@@ -4,10 +4,10 @@ import EventCard from "./EventCard"
 import EventCardSearch from "./EventCardSearch"
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getEvent } from '../redux/actionCreators';
+import { getEvent } from '../redux/actionCreators.ts';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
-import { getSearchResults } from '../redux/actionCreators';
+import { getSearchResults } from '../redux/actionCreators.ts';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Navigate } from 'react-router-dom';

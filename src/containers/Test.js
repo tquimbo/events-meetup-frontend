@@ -1,5 +1,5 @@
 import {useEffect} from "react"
-import {getEvents} from '../redux/actionCreators'
+import {getEvents} from '../redux/actionCreators.ts'
 import { connect } from 'react-redux'
 import { Routes, Route, Outlet } from "react-router-dom";
 import EventCard from "../components/EventCard"

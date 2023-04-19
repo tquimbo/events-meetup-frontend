@@ -1,7 +1,7 @@
 import { useState } from 'react'
-// import { submitSignup, submitLogin } from '../redux/actionCreators'
+// import { submitSignup, submitLogin } from '../redux/actionCreators.ts'
 import { connect } from 'react-redux'
-import { submitSignup, submitLogin } from '../redux/actionCreators'
+import { submitSignup, submitLogin } from '../redux/actionCreators.ts'
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Navigate } from 'react-router-dom';

@@ -1,3 +1,31 @@
+
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store'; // Update this import in the store/index.ts file.
+import { Card, ListGroup } from 'react-bootstrap';
+
+const Results: React.FC = () => {
+  const { results } = useSelector((state: RootState) => state.search);
+
+  return (
+    <ListGroup>
+      {results.map((event: any) => (
+        <ListGroup.Item key={event.id}>
+          <Card>
+            <Card.Body>
+              <Card.Title>{event.title}</Card.Title>
+              <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
+            </Card.Body>
+          </Card>
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  );
+};
+
+export default Results;
+
+
 // import {useEffect} from "react"
 // import {getEvents} from '../redux/actionCreators'
 // import { connect } from 'react-redux'
@@ -155,29 +183,3 @@
 
 
 // export default connect(mapStateToProps, { getSearchResults })(SearchResults)
-
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store'; // Update this import in the store/index.ts file.
-import { Card, ListGroup } from 'react-bootstrap';
-
-const Results: React.FC = () => {
-  const { results } = useSelector((state: RootState) => state.search);
-
-  return (
-    <ListGroup>
-      {results.map((event: any) => (
-        <ListGroup.Item key={event.id}>
-          <Card>
-            <Card.Body>
-              <Card.Title>{event.title}</Card.Title>
-              <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
-  );
-};
-
-export default Results;

@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import logo from './logo.svg';
 import './App.css';
 import EventIndex from './containers/EventIndex';
-import {reducer} from './redux/reducer'
+import {reducer} from './redux/reducer.ts'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'

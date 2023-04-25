@@ -7,9 +7,10 @@ import {getEvents} from './redux/actionCreators.ts';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import Test from './containers/Test';
-import SearchResults from './containers/SearchResults';
+import SearchResults from './containers/SearchResults.tsx';
 import UserProfile from './containers/UserProfile';
 import SearchBar from './components/SearchBar';
+import Search from './components/Search.tsx';
 import MyProfile from './components/MyProfile';
 import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
@@ -59,6 +60,10 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
        <Nav/>
 
     <SearchBar/>
+    {/* <Search /> */}
+    {/* <SearchResults />
+     */}
+
       
 
       

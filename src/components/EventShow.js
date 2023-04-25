@@ -7,9 +7,10 @@ import EventCard from "../components/EventCard";
 import AddEvent from "../components/AddEvent";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import EventUsers from "../containers/EventUsers";
 import { submitSignup, submitLogin } from '../redux/actionCreators.ts';
 
-function EventShow({getEvent, performerName, performerImage, venueName, venueAddress, datetime, attendance_status, username, id, addEvent, userId}){
+function EventShow({getEvent, performerName, performerImage, venueName, venueAddress, datetime, attendance_status, username, id, addEvent, userId, users}){
 
  
    
@@ -32,11 +33,13 @@ return (<div className="show">
     <p>{venueName}</p>
     <p>{venueAddress}</p>
     <p>{attendance_status}</p>
-    
-  
-    
+
+
 
    <AddEvent/>
+
+   <p> Attendees </p>
+  {/* <EventUsers /> */}
 
   </div>
 

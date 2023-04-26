@@ -68,6 +68,14 @@ export const getUser = (userId) => {
   )
 };
 
+export const addEventUser = (userId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(user => dispatch({type: "GET_USER", payload: user})
+  )
+};
+
+
 
 export const submitLogin = (user) => {
   return dispatch => fetch(`http://localhost:3000/sessions`, {

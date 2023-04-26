@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Modal, Button, ListGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getEvent } from '../redux/actionCreators.ts';
+
 
 const Attendees = ({ events, users }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+  
 
 //   const handleAttend = () => {
 //     // Your logic for updating the attendees in your backend

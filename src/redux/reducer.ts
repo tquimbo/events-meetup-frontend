@@ -1,6 +1,6 @@
 import { flatten } from "lodash";
 import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
-import { UPDATE_EVENT_ATTENDEES } from "./actions";
+// import { UPDATE_EVENT_ATTENDEES } from "./actions";
 
 
 const initialEvent = {
@@ -136,6 +136,12 @@ const initialState = {
         error: null,
         event: action.payload
       };
+      // case UPDATE_EVENT_ATTENDEES:
+      //   return state.map((event) =>
+      //     event.id === action.payload.eventId
+      //       ? { ...event, attendees: action.payload.attendees }
+      //       : event
+      //   );
      
             
 

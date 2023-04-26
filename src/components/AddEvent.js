@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
-import { submitSignup, submitLogin, addEvent, getEvent, getUser } from '../redux/actionCreators.ts';
+import { submitSignup, submitLogin, getEvent, getUser, addEvent } from '../redux/actionCreators.ts';
 import EventShow from "../components/EventShow";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,7 @@ function AddEvent(props){
   
     const user = props.user
     const event = props.event
+   
     const userID = props.user.id
     const username = props.user.username
     
@@ -35,6 +36,21 @@ function AddEvent(props){
         e.preventDefault()
         props.addEvent({ user, event } )
       }
+
+    // const handleAttend = async (e) => {
+    //   e.preventDefault();
+  
+    //   // Your logic for updating the attendees in your backend
+    //   // Get the updated event data from the backend
+    //   // For example, if your API returns the updated event:
+    //   // const updatedEvent = await api.updateAttendeesAndGetEvent(event.id, user);
+  
+    //   // Dispatch the addEvent action to update user events in the Redux store
+    //   props.addEvent({ user, event });
+  
+    //   // Dispatch the getEvent action to update the event data in the Redux store
+    //   // props.getEvent(eventID);
+    // };
 
     
 

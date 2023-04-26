@@ -8,7 +8,11 @@ export default function EventUserCard(props){
   return (<div className="event_users_cards">
  
 
-   <p> {props.user.firstName} {props.user.lastName} </p> 
+      <p>
+        {props.users.firstName} {props.users.lastName}
+      </p>
+
+   
   </div>);
 
 }

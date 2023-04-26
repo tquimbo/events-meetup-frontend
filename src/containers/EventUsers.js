@@ -9,38 +9,94 @@ import MyProfile from "../components/MyProfile"
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import EventShow from "../components/EventShow";
+import UserEvents from "../containers/UserEvents";
 
 
-function EventsUsers(props){
+// function EventUsers({ userEvents, getUser, user, users }) {
+    
+//     return (
+//       <div className="event_users">
+//         {users.map((user) => (
+//           <UserEventCard {...user} key={user.id} />
+//         ))}
+//       </div>
+//     );
+//   }
 
-    // useEffect(addEvent, [addEvent])
-
-    const user = props.user
-    const event = props.event
-    const eventID = props.user.id
-
-    useEffect(() => {
-      getUser(eventID)
-    }, [getEvent, eventID])
-  
-
-
-      return <div className="event_users">
-    {props.event.users.map(user => <UserEventCard {...user} key={user.id}/>)}
-  
-  </div>
-
-
-
-}
-
-const mapStateToProps = (state) => {
-  return {user: state.user }
+function EventUsers({ userEvents, getUser, user, users }) {
+    // ...
+    const attendees = userEvents && users ? userEvents.map((userEvent) => {
+        const attendingUser = users.find((user) => user.id === userEvent.userId);
+        return { ...attendingUser, eventId: userEvent.eventId };
+      }) : [];
+    
+      return (
+        <div className="event_users">
+          {attendees.map((user) => (
+            <UserEventCard {...user} key={user.id} />
+          ))}
+        </div>
+      );
   }
+  
+  const mapStateToProps = (state) => {
+    return { user: state.user, users: state.users, userEvents: state.userEvents };
+  };
+  
+  export default connect(mapStateToProps, { getUser })(EventUsers);
+
+// function EventsUsers({ userEvents, getUser, user, users }) {
+//     // ...
+//     const attendees = userEvents.map((userEvent) => {
+//       const attendingUser = users.find((user) => user.id === userEvent.userId);
+//       return { ...attendingUser, eventId: userEvent.eventId };
+//     });
+  
+//     return (
+//       <div className="event_users">
+//         {attendees.map((user) => (
+//           <UserEventCard {...user} key={user.id} />
+//         ))}
+//       </div>
+//     );
+//   }
+  
+//   const mapStateToProps = (state) => {
+//     return { user: state.user, users: state.users };
+//   };
+  
+//   export default connect(mapStateToProps, { getUser })(EventsUsers);
+
+// function EventsUsers(props){
+
+//     // useEffect(addEvent, [addEvent])
+
+//     const user = props.user
+//     const event = props.event
+//     const userID = props.user.id
+
+//     useEffect(() => {
+//       getUser(userID)
+//     }, [getUser, userID])
+  
+
+
+//       return <div className="event_users">
+//     {props.users.map(user => <UserEventCard {...user} key={user.id}/>)}
+  
+//   </div>
 
 
 
-  export default connect(mapStateToProps, { getUser })
+// }
+
+// const mapStateToProps = (state) => {
+//   return {user: state.user }
+//   }
+
+//   export default connect(mapStateToProps, { getUser })(EventsUsers);
+
+//   export default connect(mapStateToProps, { getUser })
 // import {useEffect} from "react"
 // import {getEvents} from '../redux/actionCreators'
 // import { connect } from 'react-redux'

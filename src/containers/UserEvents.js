@@ -18,6 +18,7 @@ function UserEvents(props){
     const user = props.user
     const event = props.event
     const userID = props.user.id
+    const userEvents = props.user.userEvents
 
     useEffect(() => {
       getUser(userID)

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, ListGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Attendees = ({ event, users }) => {
+const Attendees = ({ events, users }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
@@ -15,7 +15,7 @@ const Attendees = ({ event, users }) => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Attendees: {event.users.length}
+        Attendees: {events.users.length}
       </Button>
 
       <Modal show={showModal} onHide={handleClose}>
@@ -44,9 +44,7 @@ const Attendees = ({ event, users }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleAttend}>
-            Attend
-          </Button>
+       
         </Modal.Footer>
       </Modal>
     </>

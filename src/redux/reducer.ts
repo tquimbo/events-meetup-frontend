@@ -1,5 +1,6 @@
 import { flatten } from "lodash";
 import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
+import { UPDATE_EVENT_ATTENDEES } from "./actions";
 
 
 const initialEvent = {
@@ -55,15 +56,6 @@ const initialUser = {
   userEvents: [],
   events: []
 }
-
-
-// const initialState = {
-//     events: [],
-//     user_events: [],
-//     user_event: initialUserEvent,
-//     event: initialEvent,
-//     user: initialUser,
-//   }
 
 
 const initialState = {
@@ -144,7 +136,7 @@ const initialState = {
         error: null,
         event: action.payload
       };
-             
+     
             
 
             // user_event: {...state.event,
@@ -209,6 +201,10 @@ const initialState = {
 }
 
 
+export default exp
+
+
+
 // const initialState = {
 //   loading: false,
 //   results: [],
@@ -228,7 +224,10 @@ const initialState = {
 //   }
 // };
 
-
-export default exp
-
-
+// const initialState = {
+//     events: [],
+//     user_events: [],
+//     user_event: initialUserEvent,
+//     event: initialEvent,
+//     user: initialUser,
+//   }

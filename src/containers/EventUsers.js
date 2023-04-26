@@ -11,18 +11,6 @@ import Signup from "../components/Signup";
 import EventShow from "../components/EventShow";
 import UserEvents from "../containers/UserEvents";
 
-
-// function EventUsers({ userEvents, getUser, user, users }) {
-    
-//     return (
-//       <div className="event_users">
-//         {users.map((user) => (
-//           <UserEventCard {...user} key={user.id} />
-//         ))}
-//       </div>
-//     );
-//   }
-
 function EventUsers({ userEvents, getUser, user, users }) {
     // ...
     const attendees = userEvents && users ? userEvents.map((userEvent) => {
@@ -121,3 +109,14 @@ function EventUsers({ userEvents, getUser, user, users }) {
 
 
 // export default connect(mapStateToProps, { submitLogin, submitSignup, getEvent, addEvent })(EventUsers)
+
+// function EventUsers({ userEvents, getUser, user, users }) {
+    
+//     return (
+//       <div className="event_users">
+//         {users.map((user) => (
+//           <UserEventCard {...user} key={user.id} />
+//         ))}
+//       </div>
+//     );
+//   }

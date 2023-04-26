@@ -53,19 +53,7 @@ function MyProfile(props){
 
     <UserEvents/>
 
-    {/* {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
-  
-   */}
-
-    {/* <p> {props.user.userEvents} </p> */}
-
-    {/* <p> {props.user.userEvents} </p> */}
-    {/* <UserEvents /> */}
-
-    {/* <UserEvents /> */}
-    
-    {/* <EventIndex /> */}
-
+   
    </div>
    
     )
@@ -85,3 +73,16 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, { submitSignup, submitLogin, addEvent, getUser })(MyProfile)
+
+  {/* {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+  
+   */}
+
+    {/* <p> {props.user.userEvents} </p> */}
+
+    {/* <p> {props.user.userEvents} </p> */}
+    {/* <UserEvents /> */}
+
+    {/* <UserEvents /> */}
+    
+    {/* <EventIndex /> */}

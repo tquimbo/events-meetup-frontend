@@ -3,6 +3,7 @@ import { Modal, Button, ListGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getEvent } from '../redux/actionCreators.ts';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
 
 const Attendees = ({ events, users }) => {

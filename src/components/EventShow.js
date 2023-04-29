@@ -44,8 +44,8 @@ return (<div className="show">
 
    {/* <EventUsers/> */}
 
-{/* 
-   <Attendees/> */}
+
+   <Attendees/>
 
 
 

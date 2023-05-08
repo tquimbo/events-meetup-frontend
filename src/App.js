@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import Test from './containers/Test';
 import SearchResults from './containers/SearchResults.tsx';
-import UserProfile from './containers/UserProfile';
+import UserProfile from './components/UserProfile';
 import SearchBar from './components/SearchBar';
 import Search from './components/Search.tsx';
 import MyProfile from './components/MyProfile';
@@ -77,6 +77,11 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
         <Route path="myprofile" >
         <Route path=":username" element={<MyProfile />}/> 
+
+        </Route>
+
+        <Route path="users" >
+        <Route path=":userId" element={<UserProfile />}/> 
         </Route>
 {/* 
         <Route path="search?:searchQuery" element={<SearchResults />} /> */}

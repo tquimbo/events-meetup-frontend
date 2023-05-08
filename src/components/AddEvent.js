@@ -53,11 +53,79 @@ function AddEvent(props) {
 const mapStateToProps = (state) => {
   return {
     user: state.user, 
+    users: state.users, 
     event: state.event,
   }
 };
 
 export default connect(mapStateToProps, { getEvent, addEvent })(AddEvent);
+
+
+// function AddEvent(props) {
+
+//   let navigate = useNavigate();
+
+//   const user = props.user;
+//   const event = props.event;
+   
+//   const userID = props.user.id;
+//   const username = props.user.username;
+    
+//   // const isEventAlreadyAdded = () => {
+//   //   return event.users.some((u) => u.id === user.id);
+//   // };
+
+//   // const isEventAlreadyAdded = () => {
+//   //   return event.users.some((u) => u.id === user.id);
+//   // };
+//   const isEventAlreadyAdded = () => {
+//     return props.userEvents.some((userEvent) => userEvent.event_id === event.id);
+//   };
+
+//   const [isAttending, setIsAttending] = useState(isEventAlreadyAdded());
+
+//   // const handleClick = (e) => {
+//   //   e.preventDefault();
+//   //   if (!isEventAlreadyAdded()) {
+//   //     props.addEvent({ user, event });
+//   //     setIsAttending(true);
+//   //   } else {
+//   //     alert("You have already added this event.");
+//   //   }
+//   // };
+
+
+//   const handleClick = (e) => {
+//     e.preventDefault();
+//     if (!isEventAlreadyAdded()) {
+//       props.addEvent({ user, event });
+//       setIsAttending(true);
+//     } 
+//   };
+
+
+//     // const handleClick = (e) => {
+//     //     e.preventDefault()
+//     //     props.addEvent({ user, event } )
+//     //   }
+
+
+//   return (
+//     <div className="addEvent">
+//       <button onClick={handleClick}>{isAttending ? "Attending" : "Add Event"}</button>
+//       {/* <button>{isAttending ? "Attending" : "Add Event"}</button> */}
+//     </div>
+//   );
+// }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user, 
+//     event: state.event,
+//   }
+// };
+
+// export default connect(mapStateToProps, { getEvent, addEvent })(AddEvent);
 
 // function AddEvent(props){
 

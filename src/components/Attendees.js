@@ -25,7 +25,7 @@ const Attendees = (props) => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        {/* Attendees: {event.users.length} */}
+
         Attendees: {event.users ? event.users.length : 0}
       </Button>
 
@@ -35,15 +35,15 @@ const Attendees = (props) => {
 </Modal.Header>
 <Modal.Body>
   <ListGroup>
-    {event.users.map((user) => (
+    {event.users && event.users.map((user) => (
       <ListGroup.Item key={user.id}>
-       <Image
+       {/* <Image
           src={user.profile_picture}
           roundedCircle
           width="30"
           height="30"
           className="mr-2"
-        /> 
+        />  */}
    <Link to={`/users/${user.id}`} onClick={handleClose}>
          {user.first_name} {user.last_name}
       </Link>
@@ -69,7 +69,7 @@ const Attendees = (props) => {
 const mapStateToProps = (state) => {
   return {
      user: state.user, 
-     users: state.users, 
+     users: state.users,
      event: state.event,
      events: state.events,
      userEvents: state.user.userEvents

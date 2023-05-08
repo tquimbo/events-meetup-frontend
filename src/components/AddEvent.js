@@ -37,21 +37,6 @@ function AddEvent(props){
         props.addEvent({ user, event } )
       }
 
-    // const handleAttend = async (e) => {
-    //   e.preventDefault();
-  
-    //   // Your logic for updating the attendees in your backend
-    //   // Get the updated event data from the backend
-    //   // For example, if your API returns the updated event:
-    //   // const updatedEvent = await api.updateAttendeesAndGetEvent(event.id, user);
-  
-    //   // Dispatch the addEvent action to update user events in the Redux store
-    //   props.addEvent({ user, event });
-  
-    //   // Dispatch the getEvent action to update the event data in the Redux store
-    //   // props.getEvent(eventID);
-    // };
-
     
 
   

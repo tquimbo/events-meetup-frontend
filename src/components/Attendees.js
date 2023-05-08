@@ -29,6 +29,36 @@ const Attendees = (props) => {
         Attendees: {event.users ? event.users.length : 0}
       </Button>
 
+      <Modal show={showModal} onHide={handleClose}>
+<Modal.Header closeButton>
+  <Modal.Title>Attendees</Modal.Title>
+</Modal.Header>
+<Modal.Body>
+  <ListGroup>
+    {event.users.map((user) => (
+      <ListGroup.Item key={user.id}>
+       <Image
+          src={user.profile_picture}
+          roundedCircle
+          width="30"
+          height="30"
+          className="mr-2"
+        /> 
+   <Link to={`/users/${user.id}`} onClick={handleClose}>
+         {user.first_name} {user.last_name}
+      </Link>
+      </ListGroup.Item>
+   ))}
+  </ListGroup>
+ </Modal.Body>
+<Modal.Footer>
+  <Button variant="secondary" onClick={handleClose}>
+    Close
+  </Button>
+
+</Modal.Footer>
+</Modal> 
+
     </>
   );
 };
@@ -50,32 +80,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { getEvent })(Attendees)
 
 
-{/* <Modal show={showModal} onHide={handleClose}>
-<Modal.Header closeButton>
-  <Modal.Title>Attendees</Modal.Title>
-</Modal.Header>
-<Modal.Body>
-  <ListGroup>
-    {events.users.map((user) => (
-      <ListGroup.Item key={user.id}>
-        {/* <Image
-          src={user.profile_picture}
-          roundedCircle
-          width="30"
-          height="30"
-          className="mr-2"
-        /> */}
-//         <Link to={`/users/${user.id}`} onClick={handleClose}>
-//           {user.first_name} {user.last_name}
-//         </Link>
-//       </ListGroup.Item>
-//     ))}
-//   </ListGroup>
-// </Modal.Body>
-{/* <Modal.Footer>
-  <Button variant="secondary" onClick={handleClose}>
-    Close
-  </Button> */}
-
-// </Modal.Footer>
-// </Modal> */}

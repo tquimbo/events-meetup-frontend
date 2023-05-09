@@ -23,25 +23,48 @@ function AddEvent(props) {
 
   const user = props.user;
   const event = props.event;
+  const users = props.users;
    
   const userID = props.user.id;
   const username = props.user.username;
     
+  // const isEventAlreadyAdded = () => {
+  //   return event.users.some((u) => u.id === user.id);
+  // };
+
+  // const isEventAlreadyAdded = () => {
+  //   return event.users.some((u) => u.username === user.username);
+  // };
   const isEventAlreadyAdded = () => {
-    return event.users.some((u) => u.id === user.id);
+    return event && event.users && event.users.some((u) => u.username === user.username);
   };
 
   const [isAttending, setIsAttending] = useState(isEventAlreadyAdded());
+
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   if (!isEventAlreadyAdded()) {
+  //     props.addEvent({ user, event });
+  //     setIsAttending(true);
+  //   } else {
+  //     alert("You have already added this event.");
+  //   }
+  // };
 
   const handleClick = (e) => {
     e.preventDefault();
     if (!isEventAlreadyAdded()) {
       props.addEvent({ user, event });
       setIsAttending(true);
-    } else {
-      alert("You have already added this event.");
-    }
+    } 
   };
+
+
+    // const handleClick = (e) => {
+    //    e.preventDefault()
+    //     props.addEvent({ user, event } )
+    //  }
+
 
   return (
     <div className="addEvent">

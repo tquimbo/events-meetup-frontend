@@ -26,15 +26,15 @@ useEffect(() => {
 
   return (<div className="user">
 
-<h1> {props.user.firstName} {props.user.lastName} </h1>
+<h1> {props.user.firstName} {props.user.lastName}'s Events </h1>
 
-<h3> My Events </h3>
+
  
-{/* <UserEvents/> */}
-<UserEvents user={props.user} loggedInUser={loggedInUser} />
+<UserEvents/>
+{/* <UserEvents user={props.user} loggedInUser={loggedInUser} />
 
 
-    
+     */}
 
  
 

@@ -67,22 +67,10 @@ function UserEvents(props){
   
 
 
-  //     return <div className="user_events">
-  //   {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+      return <div className="user_events">
+    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
   
-  // </div>
-  return (
-    <div className="user_events">
-      {user.userEvents.map((user_event) => (
-        <UserEventCard
-          {...user_event}
-          key={user_event.id}
-          loggedInUserId={loggedInUser.id}
-          profileUserId={user.id}
-        />
-      ))}
-    </div>
-  );
+  </div>
 
 
 

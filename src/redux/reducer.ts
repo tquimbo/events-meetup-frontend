@@ -57,10 +57,20 @@ const initialUser = {
   events: []
 }
 
+const initialCurrentUser = {
+  id: "",
+  username: "",
+  first_name: "",
+  last_name: "",
+  userEvents: [],
+  events: []
+}
+
 
 const initialState = {
   search: [],
   events: [],
+  current_user: initialCurrentUser,
   event: initialEvent,
   user: initialUser,
   isFetching: true,
@@ -74,6 +84,8 @@ const initialState = {
       switch (action.type){
         case "GET_USERS":
           return{...state, users: action.payload};
+          case "GET_CURRENT_USER":
+            return{...state, current_user: action.payload};
           case "GET_USER":
           return{...state, user: action.payload};
       case "GET_EVENTS":

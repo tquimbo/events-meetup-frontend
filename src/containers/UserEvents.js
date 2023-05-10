@@ -49,38 +49,57 @@ import EventShow from "../components/EventShow";
 
 
 
-function UserEvents(props){
+// function UserEvents(props){
 
-    // useEffect(addEvent, [addEvent])
+//     // useEffect(addEvent, [addEvent])
 
-    const user = props.user
-    const event = props.event
-    const userID = props.user.id
-    const loggedInUser = props.loggedInUser
+//     const user = props.user
+//     const event = props.event
+//     const userID = props.user.id
+//     const otherUser = props.otherUser.userEvents
     
-    
-    const userEvents = props.user.userEvents
+//     const userEvents = props.user.userEvents
 
-    useEffect(() => {
-      getUser(userID)
-    }, [getUser, userID])
+//     useEffect(() => {
+//       getUser(userID)
+//     }, [getUser, userID])
   
 
 
-      return <div className="user_events">
-    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+//       return <div className="user_events">
+//     {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
   
-  </div>
+//   </div>
 
 
 
+// }
+function UserEvents(props) {
+  const otherUser = props.otherUser;
+  const userEvents = props.otherUser.userEvents;
+
+  useEffect(() => {
+    getUser(otherUser.id);
+  }, [getUser, otherUser.id]);
+
+  return (
+    <div className="user_events">
+      {props.otherUser.userEvents.map((user_event) => (
+        <UserEventCard {...user_event} key={user_event.id} />
+      ))}
+    </div>
+  );
 }
 
+// const mapStateToProps = (state) => {
+//   return {user: state.user,
+//     userEvents: state.user.userEvents }
+//   }
 const mapStateToProps = (state) => {
-  return {user: state.user,
-    userEvents: state.user.userEvents }
-  }
+  return { otherUser: state.otherUser, userEvents: state.otherUser.userEvents };
+};
+
+export default connect(mapStateToProps, { getUser })(UserEvents);
 
 
 
-  export default connect(mapStateToProps, { getUser })(UserEvents)

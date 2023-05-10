@@ -99,6 +99,7 @@ const initialState = {
           return{...state, user: action.payload};
           case "GET_OTHER_USER":
             return{...state, otherUser: action.payload};
+            
       case "GET_EVENTS":
         return{...state, events: action.payload};
        case "GET_EVENT":

@@ -29,10 +29,14 @@ function AddEvent(props) {
   const username = props.user.username;
     
   const isEventAlreadyAdded = () => {
-    return event && event.users && event.users.some((u) => u.id === user.id);
+    return event.users && event.users.some((u) => u.id === user.id);
   };
 
   const [isAttending, setIsAttending] = useState(isEventAlreadyAdded());
+
+  useEffect(() => {
+    setIsAttending(isEventAlreadyAdded());
+  }, [event, user]);
 
   const handleClick = (e) => {
     e.preventDefault();

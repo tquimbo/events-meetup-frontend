@@ -85,9 +85,16 @@ function Navigation({ logout, username, user }) {
           <NavLink className="nav-link" to="/index" style={linkStyle}>
             See all events
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className="nav-link"
             to={`/myprofile/${username}`}
+            style={linkStyle}
+          >
+            My Profile
+          </NavLink> */}
+             <NavLink
+            className="nav-link"
+            to={`/users/${user.id}`}
             style={linkStyle}
           >
             My Profile

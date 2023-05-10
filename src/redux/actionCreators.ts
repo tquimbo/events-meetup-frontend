@@ -302,55 +302,55 @@ export const autoLogin = () => {
 
 
 
-export const getSearchResults = (searchQuery) => {
-  return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
-      console.error('Error:', error);
-    });
+// export const getSearchResults = (searchQuery) => {
+//   return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchQuery}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`).then(res => res.json()).then(search => {dispatch({type: "SEARCH_RESULTS", payload: search})}).catch(error => {
+//       console.error('Error:', error);
+//     });
     
-    }
+//     }
 
-    export const getSearch = (searchId) => {
-      return dispatch => fetch(`https://api.seatgeek.com/2/events/${searchId}`)
-      .then(res => res.json())
-      .then(event => dispatch({type: "GET_SEARCH", payload: event})
-      )
-    };
+//     export const getSearch = (searchId) => {
+//       return dispatch => fetch(`https://api.seatgeek.com/2/events?performers.slug=${searchId}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`)
+//       .then(res => res.json())
+//       .then(event => dispatch({type: "GET_SEARCH", payload: event})
+//       )
+//     };
     
-    export const UPDATE_EVENT_ATTENDEES = "UPDATE_EVENT_ATTENDEES";
+//     export const UPDATE_EVENT_ATTENDEES = "UPDATE_EVENT_ATTENDEES";
 
-    export const updateEventAttendees = (eventId, users) => ({
-      type: UPDATE_EVENT_ATTENDEES,
-      payload: { eventId, users },
-    });
+//     export const updateEventAttendees = (eventId, users) => ({
+//       type: UPDATE_EVENT_ATTENDEES,
+//       payload: { eventId, users },
+//     });
 
 
-export const SEARCH_EVENTS_REQUEST = 'SEARCH_EVENTS_REQUEST';
-export const SEARCH_EVENTS_SUCCESS = 'SEARCH_EVENTS_SUCCESS';
-export const SEARCH_EVENTS_FAILURE = 'SEARCH_EVENTS_FAILURE';
+// export const SEARCH_EVENTS_REQUEST = 'SEARCH_EVENTS_REQUEST';
+// export const SEARCH_EVENTS_SUCCESS = 'SEARCH_EVENTS_SUCCESS';
+// export const SEARCH_EVENTS_FAILURE = 'SEARCH_EVENTS_FAILURE';
 
-export const searchEventsRequest = () => ({
-  type: SEARCH_EVENTS_REQUEST,
-});
+// export const searchEventsRequest = () => ({
+//   type: SEARCH_EVENTS_REQUEST,
+// });
 
-export const searchEventsSuccess = (results: any) => ({
-  type: SEARCH_EVENTS_SUCCESS,
-  payload: results,
-});
+// export const searchEventsSuccess = (results: any) => ({
+//   type: SEARCH_EVENTS_SUCCESS,
+//   payload: results,
+// });
 
-export const searchEventsFailure = (error: string) => ({
-  type: SEARCH_EVENTS_FAILURE,
-  payload: error,
-});
+// export const searchEventsFailure = (error: string) => ({
+//   type: SEARCH_EVENTS_FAILURE,
+//   payload: error,
+// });
 
-export const fetchSearchResults = (query: string) => async (dispatch: any) => {
-  dispatch(searchEventsRequest());
-  try {
-    const results = await searchEvents(query);
-    dispatch(searchEventsSuccess(results));
-  } catch (error) {
-    dispatch(searchEventsFailure(error.message));
-  }
-};
+// export const fetchSearchResults = (query: string) => async (dispatch: any) => {
+//   dispatch(searchEventsRequest());
+//   try {
+//     const results = await searchEvents(query);
+//     dispatch(searchEventsSuccess(results));
+//   } catch (error) {
+//     dispatch(searchEventsFailure(error.message));
+//   }
+// };
 
 
 // export const fetchUser = (userId) => {

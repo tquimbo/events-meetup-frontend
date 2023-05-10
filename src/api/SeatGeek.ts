@@ -11,11 +11,12 @@ const SEATGEEK_API_KEY = 'your_seatgeek_api_key';
 const BASE_URL = 'https://api.seatgeek.com/2';
 
 export const searchEvents = async (query: string) => {
-  const response = await axios.get(`${BASE_URL}/events`, {
+  const response = await axios.get(`${BASE_URL}/events?performers.slug=`, {
     params: {
       q: query,
-      client_id: SEATGEEK_API_KEY,
+      client_id: MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy,
     },
   });
   return response.data;
 };
+

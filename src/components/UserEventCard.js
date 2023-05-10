@@ -16,7 +16,7 @@ export default function UserEventCard({
       </Link>
       <p>{venue_name}</p>
       <p>{venue_address}</p>
-      {/* <p>{formatted_datetime}</p> */}
+      <p>{formatted_datetime}</p>
     </div>
   );
 }

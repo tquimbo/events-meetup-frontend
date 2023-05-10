@@ -7,7 +7,8 @@ import {getEvents} from './redux/actionCreators.ts';
 import { connect } from 'react-redux';
 import EventIndex from './containers/EventIndex';
 import Test from './containers/Test';
-import SearchResults from './containers/SearchResults.tsx';
+// import SearchResults from '../containers/SearchResults.tsx';
+import SearchResults from './containers/SearchResults.js';
 import UserProfile from './components/UserProfile';
 import SearchBar from './components/SearchBar';
 import Search from './components/Search.tsx';
@@ -59,10 +60,10 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
        <Nav/>
 
-    <SearchBar/>
-    {/* <Search /> */}
-    {/* <SearchResults />
-     */}
+    {/* <SearchBar/> */}
+    <Search />
+    <SearchResults />
+    
 
       
 

@@ -1,20 +1,20 @@
-import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../redux/actionCreators.ts';
+import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
 
 const initialState = {
   loading: false,
   results: [],
-  error: '',
+  error: null,
 };
 
-export const searchReducer = (state = initialState, action: any) => {
+export default function searchReducer(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_EVENTS_REQUEST:
-      return { ...state, loading: true };
-    case SEARCH_EVENTS_SUCCESS:
-      return { ...state, loading: false, results: action.payload, error: '' };
-    case SEARCH_EVENTS_FAILURE:
-      return { ...state, loading: false, results: [], error: action.payload };
+    case SEARCH_REQUEST:
+      return { ...state, loading: true, error: null };
+    case SEARCH_SUCCESS:
+      return { ...state, loading: false, results: action.payload };
+    case SEARCH_FAILURE:
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
-};
+}

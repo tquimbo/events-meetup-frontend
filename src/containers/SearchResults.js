@@ -1,29 +1,65 @@
 
+// import React from 'react';
+// import { useSelector } from 'react-redux';
+// import { RootState } from '../store'; // Update this import in the store/index.ts file.
+// import { Card, ListGroup } from 'react-bootstrap';
+
+// const Results: React.FC = () => {
+//   const { results } = useSelector((state: RootState) => state.search);
+
+//   return (
+//     <ListGroup>
+//       {results.map((event: any) => (
+//         <ListGroup.Item key={event.id}>
+//           <Card>
+//             <Card.Body>
+//               <Card.Title>{event.title}</Card.Title>
+//               <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
+//             </Card.Body>
+//           </Card>
+//         </ListGroup.Item>
+//       ))}
+//     </ListGroup>
+//   );
+// };
+
+// export default Results;
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store'; // Update this import in the store/index.ts file.
-import { Card, ListGroup } from 'react-bootstrap';
 
-const Results: React.FC = () => {
-  const { results } = useSelector((state: RootState) => state.search);
+const SearchResults = () => {
+  const { results, loading, error } = useSelector((state) => state.search);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (!results || results.length === 0) {
+    return <p>No results found.</p>;
+  }
 
   return (
-    <ListGroup>
-      {results.map((event: any) => (
-        <ListGroup.Item key={event.id}>
-          <Card>
-            <Card.Body>
-              <Card.Title>{event.title}</Card.Title>
-              <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
+    <div>
+      <h2>Search Results:</h2>
+      <ul>
+        {results.map((result) => (
+          <li key={result.id}>
+            <h3>{result.performer_name}</h3>
+            <p>{result.venue_name}</p>
+            <p>{result.venue_address}</p>
+            <p>{result.datetime}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-export default Results;
+export default SearchResults;
 
 
 // import {useEffect} from "react"

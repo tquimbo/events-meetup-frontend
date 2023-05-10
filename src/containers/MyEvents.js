@@ -49,7 +49,7 @@ import EventShow from "../components/EventShow";
 
 
 
-function myEvents(props){
+function MyEvents(props){
 
     // useEffect(addEvent, [addEvent])
 
@@ -59,7 +59,7 @@ function myEvents(props){
     const loggedInUser = props.loggedInUser
     
     
-    const myEvents = props.user.myEvents
+    
 
     useEffect(() => {
       getUser(userID)
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
 
 
 
-  export default connect(mapStateToProps, { getUser })(myEvents)
+  export default connect(mapStateToProps, { getUser })(MyEvents)

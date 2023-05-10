@@ -8,9 +8,11 @@ import Signup from "../components/Signup";
 import EventCard from "../components/EventCard";
 import UserEventCard from "../components/EventCard";
 import UserEvents from '../containers/UserEvents';
+import MyEvents from '../containers/MyEvents';
 import EventUsers from '../containers/EventUsers';
 import EventIndex from '../containers/EventIndex';
 import AddEvent from "../components/EventCard";
+
 // import { submitSignup, submitLogin, addEvent, getEvent, getUsers, getUser } from '../redux/actionCreators';
 import { submitSignup, submitLogin, addEvent, getEvent, getUser, fetchUser  } from '../redux/actionCreators.ts';
 

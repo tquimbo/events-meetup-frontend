@@ -223,6 +223,13 @@ export const getUser = (userId) => {
   )
 };
 
+export const getOtherUser = (userId) => {
+  return dispatch => fetch(`http://localhost:3000/users/${userId}`)
+  .then(res => res.json())
+  .then(user => dispatch({type: "GET_OTHER_USER", payload: user})
+  )
+};
+
 export const addEventUser = (userId) => {
   return dispatch => fetch(`http://localhost:3000/users/${userId}`)
   .then(res => res.json())

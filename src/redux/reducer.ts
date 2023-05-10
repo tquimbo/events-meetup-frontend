@@ -57,7 +57,15 @@ const initialUser = {
   events: []
 }
 
-const initialCurrentUser = {
+// const initialCurrentUser = {
+//   id: "",
+//   username: "",
+//   first_name: "",
+//   last_name: "",
+//   userEvents: [],
+//   events: []
+// }
+const initialOtherUser = {
   id: "",
   username: "",
   first_name: "",
@@ -67,10 +75,11 @@ const initialCurrentUser = {
 }
 
 
+
 const initialState = {
   search: [],
   events: [],
-  current_user: initialCurrentUser,
+  otherUser: initialOtherUser,
   event: initialEvent,
   user: initialUser,
   isFetching: true,
@@ -88,6 +97,8 @@ const initialState = {
             return{...state, current_user: action.payload};
           case "GET_USER":
           return{...state, user: action.payload};
+          case "GET_OTHER_USER":
+            return{...state, otherUser: action.payload};
       case "GET_EVENTS":
         return{...state, events: action.payload};
        case "GET_EVENT":

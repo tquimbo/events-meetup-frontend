@@ -17,14 +17,14 @@ const UserProfile = (props) => {
 
 const userId = useParams().userId;
 
-const loggedInUser = useSelector((state) => state.user);
+// const loggedInUser = useSelector((state) => state.user);
 
 
 useEffect(() => {
     props.getUser(userId)
   }, [props.getUser, userId])
 
-  return (<div className="user">
+  return (<div className="otherUser">
 
 <h1> {props.user.firstName} {props.user.lastName}'s Events </h1>
 

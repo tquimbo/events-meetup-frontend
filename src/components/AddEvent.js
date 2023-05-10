@@ -50,16 +50,26 @@ function AddEvent(props) {
   //     alert("You have already added this event.");
   //   }
   // };
+  // const handleClick = async (e) => {
+  //   e.preventDefault();
+  //   if (!isEventAlreadyAdded()) {
+  //     await props.addEvent({ user, event });
+  //     setIsAttending(true);
+  //   } else {
+  //     alert("You have already added this event.");
+  //   }
+  // };
   const handleClick = async (e) => {
     e.preventDefault();
     if (!isEventAlreadyAdded()) {
       await props.addEvent({ user, event });
       setIsAttending(true);
+      props.getEvent(event.id); // Add this line to refresh the event data
     } else {
       alert("You have already added this event.");
     }
   };
-
+  
 
     // const handleClick = (e) => {
     //    e.preventDefault()

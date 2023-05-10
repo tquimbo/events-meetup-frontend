@@ -5,17 +5,30 @@ import { useDispatch } from "react-redux";
 import { getEvent } from '../redux/actionCreators.ts';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { connect } from 'react-redux';
+import { useEffect } from 'react';
 
 
 const Attendees = (props) => {
 
 
-  const event = props.event
+  // const event = props.event
+  const { event, userEvents } = props;
  
+  // const [showModal, setShowModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [attendees, setAttendees] = useState(event.users || []);
+
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+
+  useEffect(() => {
+    setAttendees(event.users || []);
+  }, [event.users]);
+
+  useEffect(() => {
+    setAttendees(event.users || []);
+  }, [userEvents]);
   
 
 //   const handleAttend = () => {
@@ -24,10 +37,13 @@ const Attendees = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
 
         Attendees: {event.users ? event.users.length : 0}
-      </Button>
+      </Button> */}
+      <Button variant="primary" onClick={handleShow}>
+  Attendees: {attendees ? attendees.length : 0}
+</Button>
 
       <Modal show={showModal} onHide={handleClose}>
 <Modal.Header closeButton>
@@ -35,7 +51,8 @@ const Attendees = (props) => {
 </Modal.Header>
 <Modal.Body>
   <ListGroup>
-    {event.users && event.users.map((user) => (
+  {attendees && attendees.map((user) => (
+
       <ListGroup.Item key={user.id}>
        {/* <Image
           src={user.profile_picture}
@@ -72,7 +89,8 @@ const mapStateToProps = (state) => {
      users: state.users,
      event: state.event,
      events: state.events,
-     userEvents: state.user.userEvents
+     userEvents: state.user.userEvents,
+     attendees: state.attendees
   }
       
 }

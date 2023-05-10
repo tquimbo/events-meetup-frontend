@@ -96,11 +96,7 @@ const initialState = {
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
         case "ADD_EVENT":
-            // return {...state, user_event: action.payload }
-            // ;
-            
-            
-            // return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
+        
             return {
               ...state,
               user: {
@@ -109,9 +105,26 @@ const initialState = {
               },
               event: {
                 ...state.event,
-                users: [state.user, ...state.event.users],
+                users: [action.payload.user, ...state.event.users],
               },
             };
+            
+                // return {...state, user_event: action.payload }
+            // ;
+            
+            
+            // return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
+            // return {
+            //   ...state,
+            //   user: {
+            //     ...state.user,
+            //     userEvents: [action.payload, ...state.user.userEvents],
+            //   },
+            //   event: {
+            //     ...state.event,
+            //     users: [state.user, ...state.event.users],
+            //   },
+            // };
           
 
             case "EVENTS_FETCH_PENDING":

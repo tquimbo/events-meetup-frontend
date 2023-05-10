@@ -1,21 +1,51 @@
 import { Link, Outlet } from 'react-router-dom'
 
 
-export default function UserEventCard({id, performer_name, venue_name, venue_address, datetime, event_id }){
+// export default function UserEventCard({id, performer_name, venue_name, venue_address, datetime, event_id }){
   
 
 
-  return (<div className="user_event_cards">
+//   return (<div className="user_event_cards">
  
-<Link to={`/events/${event_id}`}><h3>{performer_name}</h3></Link> 
+// <Link to={`/events/${event_id}`}><h3>{performer_name}</h3></Link> 
 
-{/* <h3>{performer_name}</h3> */}
-    <p>{venue_name}</p>
-    <p>{venue_address}</p>
-    {/* <p>{datetime}</p> */}
-  </div>);
+// {/* <h3>{performer_name}</h3> */}
+//     <p>{venue_name}</p>
+//     <p>{venue_address}</p>
+//     {/* <p>{datetime}</p> */}
+//   </div>);
 
+// }
+
+import React from 'react';
+
+import AddEvent from '../components/AddEvent'; // Don't forget to import AddEvent component
+
+function UserEventCard({
+  id,
+  performer_name,
+  venue_name,
+  venue_address,
+  datetime,
+  event_id,
+  loggedInUserId,
+  profileUserId,
+}) {
+  const isAttending = loggedInUserId === profileUserId;
+
+  return (
+    <div className="user_event_cards">
+      <Link to={`/events/${event_id}`}>
+        <h3>{performer_name}</h3>
+      </Link>
+      <p>{venue_name}</p>
+      <p>{venue_address}</p>
+      {/* {isAttending && <AddEvent eventId={event_id} />} */}
+    </div>
+  );
 }
+
+export default UserEventCard;
 
 
 // export default function UserEventCard({id, event, performer_name, venue_name, venue_address, datetime }){

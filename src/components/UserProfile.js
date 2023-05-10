@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import UserEvents from '../containers/UserEvents';
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -15,17 +17,21 @@ const UserProfile = (props) => {
 
 const userId = useParams().userId;
 
+const loggedInUser = useSelector((state) => state.user);
+
+
 useEffect(() => {
     props.getUser(userId)
   }, [props.getUser, userId])
 
   return (<div className="user">
 
-<h1> Hi {props.user.firstName} {props.user.lastName} </h1>
+<h1> {props.user.firstName} {props.user.lastName} </h1>
 
 <h3> My Events </h3>
  
-<UserEvents/>
+{/* <UserEvents/> */}
+<UserEvents user={props.user} loggedInUser={loggedInUser} />
 
 
     

@@ -56,6 +56,7 @@ function UserEvents(props){
     const user = props.user
     const event = props.event
     const userID = props.user.id
+    const loggedInUser = props.loggedInUser
     
     
     const userEvents = props.user.userEvents
@@ -66,10 +67,22 @@ function UserEvents(props){
   
 
 
-      return <div className="user_events">
-    {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
+  //     return <div className="user_events">
+  //   {props.user.userEvents.map(user_event => <UserEventCard {...user_event} key={user_event.id}/>)}
   
-  </div>
+  // </div>
+  return (
+    <div className="user_events">
+      {user.userEvents.map((user_event) => (
+        <UserEventCard
+          {...user_event}
+          key={user_event.id}
+          loggedInUserId={loggedInUser.id}
+          profileUserId={user.id}
+        />
+      ))}
+    </div>
+  );
 
 
 

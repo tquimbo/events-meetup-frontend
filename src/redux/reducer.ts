@@ -100,7 +100,19 @@ const initialState = {
             // ;
             
             
-            return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
+            // return {...state, user: {...state.user, userEvents: [action.payload, ...state.user.userEvents]}};
+            return {
+              ...state,
+              user: {
+                ...state.user,
+                userEvents: [action.payload, ...state.user.userEvents],
+              },
+              event: {
+                ...state.event,
+                users: [state.user, ...state.event.users],
+              },
+            };
+          
 
             case "EVENTS_FETCH_PENDING":
       // console.log("EVENTS_FETCH_PENDING");

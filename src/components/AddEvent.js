@@ -28,6 +28,9 @@ function AddEvent(props) {
   const userID = props.user.id;
   const username = props.user.username;
     
+  // const isEventAlreadyAdded = () => {
+  //   return event.users && event.users.some((u) => u.id === user.id);
+  // };
   const isEventAlreadyAdded = () => {
     return event.users && event.users.some((u) => u.id === user.id);
   };
@@ -36,12 +39,21 @@ function AddEvent(props) {
 
   useEffect(() => {
     setIsAttending(isEventAlreadyAdded());
-  }, [event, user]);
+  }, [event, user, props.userEvents]);
 
-  const handleClick = (e) => {
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   if (!isEventAlreadyAdded()) {
+  //     props.addEvent({ user, event });
+  //     setIsAttending(true);
+  //   } else {
+  //     alert("You have already added this event.");
+  //   }
+  // };
+  const handleClick = async (e) => {
     e.preventDefault();
     if (!isEventAlreadyAdded()) {
-      props.addEvent({ user, event });
+      await props.addEvent({ user, event });
       setIsAttending(true);
     } else {
       alert("You have already added this event.");

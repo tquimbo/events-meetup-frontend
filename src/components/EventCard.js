@@ -3,7 +3,7 @@
 import { Link, Outlet } from 'react-router-dom'
 
 
-export default function EventCard({id, performerName, venueName, venueAddress, datetime }){
+export default function EventCard({id, performerName, venueName, venueAddress, datetime, formattedDatetime}){
   
 
 
@@ -15,6 +15,7 @@ export default function EventCard({id, performerName, venueName, venueAddress, d
 
     <p>{venueName}</p>
     <p>{venueAddress}</p>
+    <p> {formattedDatetime}</p>
 
   </div>);
 

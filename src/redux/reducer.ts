@@ -11,10 +11,12 @@ const initialEvent = {
   address: "",
   attendance_status: "",
   datetime: "",
+  formatted_datetime: "",
   id: "",
   user_id: "",
   event_id: "",
   event_users: [],
+
 }
 
 const initialSearchResult = {

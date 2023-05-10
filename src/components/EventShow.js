@@ -12,7 +12,7 @@ import EventUsers from "../containers/EventUsers";
 import { submitSignup, submitLogin } from '../redux/actionCreators.ts';
 
 
-function EventShow({getEvent, userEvents, performerName, performerImage, venueName, venueAddress, datetime, attendance_status, username, id, addEvent, userId, users}){
+function EventShow({getEvent, userEvents, performerName, performerImage, venueName, venueAddress, datetime, attendance_status, username, id, addEvent, userId, users, formatted_datetime}){
 
  
    
@@ -35,6 +35,7 @@ return (<div className="show">
     <p>{venueName}</p>
     <p>{venueAddress}</p>
     <p>{attendance_status}</p>
+    {/* <p>{formatted_datetime}</p> */}
 
 
 

@@ -14,12 +14,14 @@ export const getEvents = () => {
 };
 
 
+
 // export const getEvent = (eventId) => {
 //   return dispatch => fetch(`http://localhost:3000/events/${eventId}`)
 //   .then(res => res.json())
 //   .then(event => dispatch({type: "GET_EVENT", payload: event})
 //   )
 // };
+
 export const getEvent = (event_id) => {
   return (dispatch) => {
     return new Promise((resolve, reject) => {

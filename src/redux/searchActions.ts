@@ -20,10 +20,17 @@ export const searchFailure = (error) => ({
 export const fetchSearchResults = (query) => async (dispatch) => {
   dispatch(searchRequest());
   try {
-    const response = await fetch(`https://api.seatgeek.com/2/events?performers.slug=${query}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy`);
+    const response = await fetch(`http://localhost:3000/api/v1/search/${query}`);
     const results = await response.json();
     dispatch(searchSuccess(results.events));
   } catch (error) {
-    dispatch(searchFailure(error.message));
+    // dispatch(searchFailure(error.message));
   }
 };
+
+// https://api.seatgeek.com/2/events?performers.slug=${query}&client_id=MjExMjk0NjV8MTY0MTA5MDU5OC40MTYzNzQy
+
+// http://localhost:3000/api/v1/search
+
+
+// http://localhost:3000/api/v1/search

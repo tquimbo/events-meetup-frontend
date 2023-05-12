@@ -1,5 +1,7 @@
 import { flatten } from "lodash";
-import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
+// import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
+import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
+
 // import { UPDATE_EVENT_ATTENDEES } from "./actions";
 
 
@@ -79,7 +81,7 @@ const initialOtherUser = {
 
 
 const initialState = {
-  search: [],
+  results: [],
   events: [],
   otherUser: initialOtherUser,
   event: initialEvent,
@@ -101,6 +103,13 @@ const initialState = {
           return{...state, user: action.payload};
           case "GET_OTHER_USER":
             return{...state, otherUser: action.payload};
+
+            case SEARCH_REQUEST:
+  return { ...state, loading: true, error: null };
+case SEARCH_SUCCESS:
+  return { ...state, loading: false, events: action.payload };
+case SEARCH_FAILURE:
+  return { ...state, loading: false, error: action.payload };
             
       case "GET_EVENTS":
         return{...state, events: action.payload};
@@ -121,6 +130,7 @@ const initialState = {
           return {...state, user: initialUser};
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
+          
         case "ADD_EVENT":
         
             return {

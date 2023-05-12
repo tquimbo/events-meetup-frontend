@@ -18,13 +18,13 @@
 //       return state;
 //   }
 // }
-import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from './searchActions';
+// import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
 
-const initialState = {
-  loading: false,
-  results: [],
-  error: null,
-};
+// const initialState = {
+//   loading: false,
+//   results: [],
+//   error: null,
+// };
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {

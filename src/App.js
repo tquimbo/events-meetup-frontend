@@ -33,8 +33,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 
-
-
 function App({user, autoLogin}) {
 
   
@@ -62,7 +60,7 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
     {/* <SearchBar/> */}
     <Search />
-    <SearchResults />
+     <SearchResults  />
     
 
       

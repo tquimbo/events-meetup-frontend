@@ -21,8 +21,9 @@ export const fetchSearchResults = (query) => async (dispatch) => {
   dispatch(searchRequest());
   try {
     const response = await fetch(`http://localhost:3000/api/v1/search/${query}`);
-    const results = await response.json();
-    dispatch(searchSuccess(results.events));
+    const events = await response.json();
+    // dispatch(searchSuccess(results.events));
+    dispatch(searchSuccess(events));
   } catch (error) {
     // dispatch(searchFailure(error.message));
   }

@@ -1,4 +1,51 @@
 
+import { useEffect } from "react";
+import { connect } from 'react-redux';
+import { fetchSearchResults } from '../redux/searchActions.ts';
+
+const SearchResults = ({ loading, events, error }) => {
+  useEffect(() => {
+    fetchSearchResults();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (!events || events.length === 0) {
+    return <p>No results found.</p>;
+  }
+
+  return (
+    <div>
+      <h2>Search Results:</h2>
+      <ul>
+        {events.map((event) => (
+          <li key={event.id}>
+            <h3>{event.performer_name}</h3>
+            <p>{event.venue_name}</p>
+            <p>{event.venue_address}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    events: state.events,
+    // loading: state..oading,
+    // error: state.search.error,
+  };
+};
+
+export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
+
 // import React from 'react';
 // import { useSelector } from 'react-redux';
 // import { RootState } from '../store'; // Update this import in the store/index.ts file.
@@ -24,42 +71,89 @@
 // };
 
 // export default Results;
-import React from 'react';
-import { useSelector } from 'react-redux';
+// import React from 'react';
+// import { useSelector } from 'react-redux';
+// import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE, fetchSearchResults } from '../redux/searchActions.ts';
+// import {useEffect} from "react";
+// import { connect } from 'react-redux';
 
-const SearchResults = () => {
-  const { results, loading, error } = useSelector((state) => state.search);
+// const SearchResults = ({loading, events, error,}) => {
+//   // const { events, loading, error } = useSelector((state) => state.search);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+//   useEffect(fetchSearchResults, [fetchSearchResults])
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
 
-  if (!results || results.length === 0) {
-    return <p>No results found.</p>;
-  }
+//   if (error) {
+//     return <p>Error: {error.message}</p>;
+//   }
 
-  return (
-    <div>
-      <h2>Search Results:</h2>
-      <ul>
-        {results.map((result) => (
-          <li key={result.id}>
-            <h3>{result.performer_name}</h3>
-            <p>{result.venue_name}</p>
-            <p>{result.venue_address}</p>
-            <p>{result.datetime}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+//   if (!events || events.length === 0) {
+//     return <p>No results found.</p>;
+//   }
 
-export default SearchResults;
+  
+//   return (
+//     <div>
+//       <h2>Search Results:</h2>
+//       <ul>
+//         {events.map((event) => (
+//           <li key={event.id}>
+//             <h3>{event.performer_name}</h3>
+//             <p>{event.venue_name}</p>
+//             <p>{event.venue_address}</p>
+//             {/* <p>{result.datetime}</p> */}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// // export default SearchResults;
+
+// const mapStateToProps = (state) => {
+//   return {events: state.events}
+// }
+
+
+// export default connect(mapStateToProps, { fetchSearchResults })(SearchResults)
+
+// const SearchResults = () => {
+//   const { results, loading, error } = useSelector((state) => state.search);
+
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
+
+//   if (error) {
+//     return <p>Error: {error.message}</p>;
+//   }
+
+//   if (!results || results.length === 0) {
+//     return <p>No results found.</p>;
+//   }
+
+//   return (
+//     <div>
+//       <h2>Search Results:</h2>
+//       <ul>
+//         {results.map((result) => (
+//           <li key={result.id}>
+//             <h3>{result.performer_name}</h3>
+//             <p>{result.venue_name}</p>
+//             <p>{result.venue_address}</p>
+//             {/* <p>{result.datetime}</p> */}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default SearchResults;
 
 
 // import {useEffect} from "react"

@@ -22,13 +22,14 @@ const SearchResults = ({ loading, events, error }) => {
 
   return (
     <div>
-      <h2>Search Results:</h2>
+      {/* <h2>Search Results:</h2> */}
       <ul>
         {events.map((event) => (
           <li key={event.id}>
-            <h3>{event.performer_name}</h3>
-            <p>{event.venue_name}</p>
-            <p>{event.venue_address}</p>
+            <h3>{event.performerName}</h3>
+            <p>{event.venueName}</p>
+            <p>{event.venueAddress}</p>
+            <p>{event.formattedDatetime}</p>
           </li>
         ))}
       </ul>

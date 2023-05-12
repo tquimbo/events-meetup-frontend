@@ -2,11 +2,22 @@
 import { useEffect } from "react";
 import { connect } from 'react-redux';
 import { fetchSearchResults } from '../redux/searchActions.ts';
+import { Link, Outlet } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+
+
 
 const SearchResults = ({ loading, events, error }) => {
+  const { input } = useParams(); 
+
   useEffect(() => {
-    fetchSearchResults();
-  }, []);
+    fetchSearchResults(input);
+  }, [fetchSearchResults, input]);
+
+
+  // useEffect(() => {
+  //   fetchSearchResults();
+  // }, []);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -23,10 +34,13 @@ const SearchResults = ({ loading, events, error }) => {
   return (
     <div>
       {/* <h2>Search Results:</h2> */}
+      
       <ul>
         {events.map((event) => (
           <li key={event.id}>
-            <h3>{event.performerName}</h3>
+            <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link> 
+
+            {/* <h3>{event.performerName}</h3> */}
             <p>{event.venueName}</p>
             <p>{event.venueAddress}</p>
             <p>{event.formattedDatetime}</p>
@@ -40,8 +54,9 @@ const SearchResults = ({ loading, events, error }) => {
 const mapStateToProps = (state) => {
   return {
     events: state.events,
-    // loading: state..oading,
-    // error: state.search.error,
+    loading: state.loading, // update this according to your state structure
+    error: state.error, // update this according to your state structure
+  
   };
 };
 

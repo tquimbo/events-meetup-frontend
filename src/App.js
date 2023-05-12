@@ -60,7 +60,7 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
     {/* <SearchBar/> */}
     <Search />
-     <SearchResults  />
+     {/* <SearchResults  /> */}
     
 
       
@@ -82,6 +82,12 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
         <Route path="users" >
         <Route path=":userId" element={<UserProfile />}/> 
         </Route>
+
+
+        <Route path="search" >
+        <Route path=":input" element={<SearchResults />}/> 
+        </Route>
+{/* 
 {/* 
         <Route path="search?:searchQuery" element={<SearchResults />} /> */}
         {/* <Route path=":searchQuery" element={<SearchResults />}/>  */}

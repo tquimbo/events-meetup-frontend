@@ -12,7 +12,7 @@ function EventIndex({getEvents, events}){
       return <div className="cards">
     {events.map(event => <EventCard {...event} key={event.id}/>)}
     
-   <p> Hi </p>
+   {/* <p> Hi </p> */}
    
   </div>
 

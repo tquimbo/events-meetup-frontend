@@ -60,8 +60,8 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
     {/* <SearchBar/> */}
     <Search />
-     {/* <SearchResults  /> */}
-    
+     {/* <SearchResults  />
+     */}
 
       
 

@@ -1,6 +1,7 @@
 
 import { useEffect } from "react";
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchSearchResults } from '../redux/searchActions.ts';
 import { Link, Outlet } from 'react-router-dom';
 import { useParams } from "react-router-dom";
@@ -10,9 +11,21 @@ import { useParams } from "react-router-dom";
 const SearchResults = ({ loading, events, error }) => {
   const { input } = useParams(); 
 
+  const dispatch = useDispatch(); // Move the useDispatch hook above the useEffect
+
   useEffect(() => {
-    fetchSearchResults(input);
-  }, [fetchSearchResults, input]);
+    dispatch(fetchSearchResults(input));
+  }, [dispatch, input]); // Remove fetchSearchResults from dependencies as it is not needed
+
+
+  // useEffect(() => {
+  //   fetchSearchResults(input);
+  // }, [fetchSearchResults, input]);
+  // useEffect(() => {
+  //   dispatch(fetchSearchResults(input));
+  // }, [dispatch, fetchSearchResults, input]);
+
+  // const dispatch = useDispatch();
 
 
   // useEffect(() => {
@@ -54,8 +67,8 @@ const SearchResults = ({ loading, events, error }) => {
 const mapStateToProps = (state) => {
   return {
     events: state.events,
-    loading: state.loading, // update this according to your state structure
-    error: state.error, // update this according to your state structure
+    // loading: state.loading, // update this according to your state structure
+    // error: state.error, // update this according to your state structure
   
   };
 };

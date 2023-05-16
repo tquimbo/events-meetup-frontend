@@ -13,12 +13,14 @@ import { getEvent } from '../redux/actionCreators.ts';
 import { Link, Outlet} from 'react-router';
 import { useEffect } from 'react';
 import { getSearchResults } from '../redux/actionCreators.ts';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import Login from "../components/Login";
 import Results from './components/Results';
 import SearchResults from './containers/SearchResults';
+import { useNavigate } from "react-router-dom";
+
 
 import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE, fetchSearchResults } from '../redux/searchActions.ts';
 
@@ -26,13 +28,28 @@ import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE, fetchSearchResults } fr
 const Search = () => {
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (query.trim() !== '') {
+  //     dispatch(fetchSearchResults(query));
+  //   }
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (query.trim() !== '') {
+  //     navigate.push(`/search/${query}`); // navigate to the new route with the query
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
-      dispatch(fetchSearchResults(query));
+      navigate(`/search/${query}`); // Use navigate instead of history.push
     }
   };
+
 
   return (
     <div>

@@ -45,10 +45,14 @@ const SearchResults = ({ loading, events, error }) => {
   }
 
   return (
+
+    
     <div>
       {/* <h2>Search Results:</h2> */}
       
-      <ul>
+      {/* <ul style={{ listStyleType: "none" }}> */}
+      <ul className="no-bullets">
+        
         {events.map((event) => (
           <li key={event.id}>
             <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link> 
@@ -63,6 +67,8 @@ const SearchResults = ({ loading, events, error }) => {
     </div>
   );
 };
+
+
 
 const mapStateToProps = (state) => {
   return {

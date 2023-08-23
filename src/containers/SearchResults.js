@@ -38,18 +38,46 @@ const SearchResults = ({ loading, events, error }) => {
       
       {/* <ul style={{ listStyleType: "none" }}> */}
       <ul className="no-bullets">
-        
+
+      {events.map((event) => {
+  // Convert the event.formattedDatetime string to a Date object
+  const date = new Date(event.formattedDatetime);
+
+  // Extract day of the week, date, month, hours, and minutes
+  const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
+  const day = date.getDate();
+  const month = date.toLocaleString('default', { month: 'short' });
+  let hours = date.getHours();
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  
+  // Convert to 12-hour time format with AM/PM
+  const period = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // If the hour is 0, change it to 12 for 12:xx am
+
+  return (
+    <li key={event.id}>
+      <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link>
+      <p>{event.venueName}</p>
+      <p>{event.venueAddress}</p>
+      <p>{`${dayOfWeek}, ${month} ${day}, ${hours}:${minutes}${period}`}</p>
+    </li>
+  );
+})}
+
+{/*         
         {events.map((event) => (
           <li key={event.id}>
             <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link> 
 
             {/* <h3>{event.performerName}</h3> */}
-            <p>{event.venueName}</p>
+            {/* <p>{event.venueName}</p>
             <p>{event.venueAddress}</p>
             <p>{event.formattedDatetime}</p>
           </li>
-        ))}
-      </ul>
+        ))} */}
+      </ul> */}
+
     </div>
   );
 };

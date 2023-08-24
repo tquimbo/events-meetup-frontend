@@ -24,6 +24,7 @@ const initialEvent = {
 const initialSearchResult = {
   performer_name: "",
   performer_image: "",
+  performerImage: "",
   venue_name: "",
   venue_address: "",
   address: "",

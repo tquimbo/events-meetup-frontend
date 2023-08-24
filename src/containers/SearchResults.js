@@ -57,6 +57,7 @@ const SearchResults = ({ loading, events, error }) => {
 
   return (
     <li key={event.id}>
+         <img src={event.performerImage} alt={event.performerName} />
       <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link>
       <p>{event.venueName}</p>
       <p>{event.venueAddress}</p>
@@ -76,7 +77,7 @@ const SearchResults = ({ loading, events, error }) => {
             <p>{event.formattedDatetime}</p>
           </li>
         ))} */}
-      </ul> */}
+      </ul> 
 
     </div>
   );

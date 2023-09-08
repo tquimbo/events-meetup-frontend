@@ -224,22 +224,24 @@ const SearchResults = ({ loading, events, error }) => {
         hours = hours % 12;
         hours = hours ? hours : 12;
 
+
         return (
           <li key={event.id}>
-            <Link to={`/events/${event.id}`} className="event-link">
-              <div className="event-left">
-                <p>{`${month} ${day}`}</p>
-                <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p>
-              </div>
-              <div className="event-right">
-                <h3>{event.performerName}</h3>
-                <p>{`${event.venueName} - ${event.venueCity}`}</p>
-              </div>
-            </Link>
-          </li>
+          <Link to={`/events/${event.id}`} className="event-link">
+            <div className="event-left">
+              <p>{`${month} ${day}`}</p>
+              <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p>
+            </div>
+            <div className="event-right">
+              <h3>{event.performerName}</h3>
+              <p>{`${event.venueName} - ${event.venueAddress}`}</p>
+            </div>
+          </Link>
+        </li>
         );
       })}
       </ul>
+
       <style jsx>{`
        .no-bullets {
         list-style-type: none;

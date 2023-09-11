@@ -82,9 +82,9 @@ function Navigation({ logout, username, user }) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-        {/* <NavLink className="nav-link" to="/nearby" style={linkStyle}>
+        <NavLink className="nav-link" to="/nearby" style={linkStyle}>
            Nearby Events
-          </NavLink> */}
+          </NavLink>
 
           <NavLink className="nav-link" to="/index" style={linkStyle}>
             See all events

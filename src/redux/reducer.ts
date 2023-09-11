@@ -1,7 +1,7 @@
 import { flatten } from "lodash";
 // import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
 import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
-import { NEARBY_REQUEST, NEARBY_SUCCESS, NEARBY_FAILURE } from "./nearbyActions.js";
+import { NEARBY_REQUEST, NEARBY_SUCCESS, NEARBY_FAILURE } from '../redux/nearbyActions.ts';
 
 // import { UPDATE_EVENT_ATTENDEES } from "./actions";
 

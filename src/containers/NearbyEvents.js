@@ -20,7 +20,6 @@ const NearbyEvents = ({ loading, events, error }) => {
   }, [dispatch]);
 
   
-
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -30,8 +29,21 @@ const NearbyEvents = ({ loading, events, error }) => {
   }
 
   if (!events || events.length === 0) {
-    return <p>No nearby events found.</p>;
+    return <p>No results found.</p>;
   }
+
+
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
+
+  // if (error) {
+  //   return <p>Error: {error.message}</p>;
+  // }
+
+  // if (!events || events.length === 0) {
+  //   return <p>No nearby events found.</p>;
+  // }
 
   // ... (Use the same JSX and CSS as your SearchResults component for display.)
 
@@ -94,7 +106,7 @@ const NearbyEvents = ({ loading, events, error }) => {
       `}</style>
     </div>
   );
-  
+
 };
 
 const mapStateToProps = (state) => {

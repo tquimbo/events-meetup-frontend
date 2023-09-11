@@ -17,7 +17,7 @@ export const nearbyFailure = (error) => ({
   payload: error,
 });
 
-export const fetchNearbyResults = (latitude, longitude) => async (dispatch) => {
+export const fetchNearbyEvents = (latitude, longitude) => async (dispatch) => {
     dispatch(nearbyRequest());
     try {
       const response = await fetch(`http://localhost:3000/api/v1/nearby?lat=${latitude}&lon=${longitude}`);

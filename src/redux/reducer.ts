@@ -1,6 +1,7 @@
 import { flatten } from "lodash";
 // import { SEARCH_EVENTS_REQUEST, SEARCH_EVENTS_SUCCESS, SEARCH_EVENTS_FAILURE } from '../actions/searchActions';
 import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
+import { NEARBY_REQUEST, NEARBY_SUCCESS, NEARBY_FAILURE } from "./nearbyActions.js";
 
 // import { UPDATE_EVENT_ATTENDEES } from "./actions";
 
@@ -111,6 +112,13 @@ case SEARCH_SUCCESS:
   return { ...state, loading: false, events: action.payload };
 case SEARCH_FAILURE:
   return { ...state, loading: false, error: action.payload };
+
+  case NEARBY_REQUEST:
+    return { ...state, loading: true, error: null };
+  case NEARBY_SUCCESS:
+    return { ...state, loading: false, events: action.payload };
+  case NEARBY_FAILURE:
+    return { ...state, loading: false, error: action.payload };
             
       case "GET_EVENTS":
         return{...state, events: action.payload};

@@ -17,6 +17,7 @@ import FilterEvents from './components/FilterEvents';
 import useFetch from "./hooks/useFetch";
 // import EventSearchResults from './containers/EventIndex';
 import EventCard from "./components/EventCard";
+// import Nearby from "./components/Nearby";
 import Login from "./components/Login";
 // import Auth from "./components/Auth";
 import EventCardSearch from "./components/EventCardSearch";
@@ -106,6 +107,7 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
       
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
+        {/* <Route path="nearby" element={<Nearby />}/>  */}
         <Route path="index" element={<EventIndex />}/> 
         {/* <Route path="myprofile" element={<MyProfile />}/>  */}
 

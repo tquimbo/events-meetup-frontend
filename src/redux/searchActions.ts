@@ -17,15 +17,14 @@ export const searchFailure = (error) => ({
   payload: error,
 });
 
-export const fetchSearchResults = (query) => async (dispatch) => {
-  dispatch(searchRequest());
+export const fetchNearbyResults = (latitude, longitude) => async (dispatch) => {
+  dispatch(nearbyRequest());
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/search/${query}`);
+    const response = await fetch(`http://localhost:3000/api/v1/nearby?lat=${latitude}&lon=${longitude}`);
     const events = await response.json();
-    // dispatch(searchSuccess(results.events));
-    dispatch(searchSuccess(events));
+    dispatch(nearbySuccess(events));
   } catch (error) {
-    // dispatch(searchFailure(error.message));
+    dispatch(nearbyFailure(error.message));
   }
 };
 

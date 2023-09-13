@@ -5,32 +5,58 @@ import { fetchNearbyEvents } from '../redux/nearbyActions.ts'; // Adjust the pat
 import { Link } from 'react-router-dom';
 
 const NearbyEvents = ({ loading, events, error }) => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // We're using navigator.geolocation here for simplicity. 
-    // A more user-friendly approach might involve a button click.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        dispatch(fetchNearbyEvents(position.coords.latitude, position.coords.longitude));
-      });
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
+    const getIPAddress = async () => {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        return data.ip;
+      } catch (error) {
+        console.error("Error getting IP address:", error);
+        return null;
+      }
+    };
+
+    (async () => {
+      const ip = await getIPAddress();
+      if (ip) {
+        dispatch(fetchNearbyEvents(ip));
+      } else {
+        console.error("Failed to get IP address");
+      }
+    })();
   }, [dispatch]);
 
   
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  // const dispatch = useDispatch();
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  // useEffect(() => {
+  //   // We're using navigator.geolocation here for simplicity. 
+  //   // A more user-friendly approach might involve a button click.
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       dispatch(fetchNearbyEvents(position.coords.latitude, position.coords.longitude));
+  //     });
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  // }, [dispatch]);
 
-  if (!events || events.length === 0) {
-    return <p>No results found.</p>;
-  }
+  
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
+
+  // if (error) {
+  //   return <p>Error: {error.message}</p>;
+  // }
+
+  // if (!events || events.length === 0) {
+  //   return <p>No results found.</p>;
+  // }
 
 
   // if (loading) {
@@ -118,3 +144,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { fetchNearbyEvents })(NearbyEvents);
+
+

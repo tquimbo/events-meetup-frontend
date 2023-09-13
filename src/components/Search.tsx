@@ -43,10 +43,16 @@ const Search = () => {
   //     navigate.push(`/search/${query}`); // navigate to the new route with the query
   //   }
   // };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (query.trim() !== '') {
+  //     navigate(`/search/${query}`); // Use navigate instead of history.push
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
-      navigate(`/search/${query}`); // Use navigate instead of history.push
+      navigate(`/search/${encodeURIComponent(query)}`); // URL-encode the query string
     }
   };
 

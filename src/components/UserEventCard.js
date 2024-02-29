@@ -62,7 +62,8 @@ export default function UserEventCard({
   performer_name,
   venue_name,
   venue_address,
-  formatted_datetime,
+  formattedDatetime,
+  // formatted_datetime,
 }) {
   // const date = new Date(formatted_datetime);
   // const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
@@ -82,9 +83,11 @@ export default function UserEventCard({
   // const period = hours >= 12 ? 'pm' : 'am';
   // hours = hours % 12;
   // hours = hours ? hours : 12;
-  console.log(formatted_datetime);
+  // console.log(formatted_datetime);
+  console.log(formattedDatetime);
 
-  let date = new Date(formatted_datetime);
+  // let date = new Date(formatted_datetime);
+  let date = new Date(formattedDatetime);
   if (isNaN(date.getTime())) {
     // Default date if parsing fails
     date = new Date();
@@ -108,6 +111,7 @@ export default function UserEventCard({
           <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p>
         </div>
         <div className="event-right">
+          <h3>{formattedDatetime ?? 'N/A'}</h3>
           <h3>{performer_name ?? 'N/A'}</h3>
           <p>{`${venue_name ?? 'N/A'} - ${venue_address ?? 'N/A'}`}</p>
         </div>

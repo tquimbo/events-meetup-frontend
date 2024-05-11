@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -74,42 +75,26 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
-
-// import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { RootState } from '../store'; // Update this import in the store/index.ts file.
-// import { Card, ListGroup } from 'react-bootstrap';
-
-// const Results: React.FC = () => {
-//   const { results } = useSelector((state: RootState) => state.search);
-
-//   return (
-//     <ListGroup>
-//       {results.map((event: any) => (
-//         <ListGroup.Item key={event.id}>
-//           <Card>
-//             <Card.Body>
-//               <Card.Title>{event.title}</Card.Title>
-//               <Card.Text>{event.venue.name} - {event.datetime_local}</Card.Text>
-//             </Card.Body>
-//           </Card>
-//         </ListGroup.Item>
-//       ))}
-//     </ListGroup>
-//   );
-// };
-
-// export default Results;
-// import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE, fetchSearchResults } from '../redux/searchActions.ts';
-// import {useEffect} from "react";
+=======
+// import { useEffect } from "react";
 // import { connect } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { fetchSearchResults } from '../redux/searchActions.ts';
+// import { Link, Outlet } from 'react-router-dom';
+// import { useParams } from "react-router-dom";
+>>>>>>> ad5e4ac9a384238885dc359aa4ad12fe4bab6b44
 
-// const SearchResults = ({loading, events, error,}) => {
-//   // const { events, loading, error } = useSelector((state) => state.search);
 
-//   useEffect(fetchSearchResults, [fetchSearchResults])
+
+// const SearchResults = ({ loading, events, error }) => {
+//   const { input } = useParams(); 
+
+//   const dispatch = useDispatch(); // Move the useDispatch hook above the useEffect
+
+//   useEffect(() => {
+//     dispatch(fetchSearchResults(input));
+//   }, [dispatch, input]); // Remove fetchSearchResults from dependencies as it is not needed
+
 
 //   if (loading) {
 //     return <p>Loading...</p>;
@@ -123,35 +108,87 @@ export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
 //     return <p>No results found.</p>;
 //   }
 
-  
 //   return (
+
+    
 //     <div>
-//       <h2>Search Results:</h2>
-//       <ul>
+//       {/* <h2>Search Results:</h2> */}
+      
+//       {/* <ul style={{ listStyleType: "none" }}> */}
+//       <ul className="no-bullets">
+
+//       {events.map((event) => {
+//   // Convert the event.formattedDatetime string to a Date object
+//   const date = new Date(event.formattedDatetime);
+
+//   // Extract day of the week, date, month, hours, and minutes
+//   const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
+//   const day = date.getDate();
+//   const month = date.toLocaleString('default', { month: 'short' });
+//   let hours = date.getHours();
+//   const minutes = date.getMinutes().toString().padStart(2, '0');
+  
+//   // Convert to 12-hour time format with AM/PM
+//   const period = hours >= 12 ? 'pm' : 'am';
+//   hours = hours % 12;
+//   hours = hours ? hours : 12; // If the hour is 0, change it to 12 for 12:xx am
+
+//   return (
+//     <li key={event.id}>
+//          {/* <img src={event.performerImage} alt={event.performerName} /> */}
+//       <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link>
+//       <p>{event.venueName}</p>
+//       <p>{event.venueAddress}</p>
+//       <p>{`${dayOfWeek}, ${month} ${day}, ${hours}:${minutes}${period}`}</p>
+//     </li>
+//   );
+// })}
+
+// {/*         
 //         {events.map((event) => (
 //           <li key={event.id}>
-//             <h3>{event.performer_name}</h3>
-//             <p>{event.venue_name}</p>
-//             <p>{event.venue_address}</p>
-//             {/* <p>{result.datetime}</p> */}
+//             <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link> 
+
+//             {/* <h3>{event.performerName}</h3> */}
+//             {/* <p>{event.venueName}</p>
+//             <p>{event.venueAddress}</p>
+//             <p>{event.formattedDatetime}</p>
 //           </li>
-//         ))}
-//       </ul>
+//         ))} */}
+//       </ul> 
+
 //     </div>
 //   );
 // };
 
-// // export default SearchResults;
+
 
 // const mapStateToProps = (state) => {
-//   return {events: state.events}
-// }
+//   return {
+//     events: state.events,
+//     // loading: state.loading, // update this according to your state structure
+//     // error: state.error, // update this according to your state structure
+  
+//   };
+// };
+
+// export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
+
+// import { useEffect } from "react";
+// import { connect } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { fetchSearchResults } from '../redux/searchActions.ts';
+// import { Link } from 'react-router-dom';
+// import { useParams } from "react-router-dom";
 
 
-// export default connect(mapStateToProps, { fetchSearchResults })(SearchResults)
+// const SearchResults = ({ loading, events, error }) => {
+//   const { input } = useParams(); 
+//   const dispatch = useDispatch();
 
-// const SearchResults = () => {
-//   const { results, loading, error } = useSelector((state) => state.search);
+//   useEffect(() => {
+//     dispatch(fetchSearchResults(input));
+//   }, [dispatch, input]);
 
 //   if (loading) {
 //     return <p>Loading...</p>;
@@ -161,184 +198,161 @@ export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
 //     return <p>Error: {error.message}</p>;
 //   }
 
-//   if (!results || results.length === 0) {
+//   if (!events || events.length === 0) {
 //     return <p>No results found.</p>;
 //   }
 
 //   return (
 //     <div>
-//       <h2>Search Results:</h2>
-//       <ul>
-//         {results.map((result) => (
-//           <li key={result.id}>
-//             <h3>{result.performer_name}</h3>
-//             <p>{result.venue_name}</p>
-//             <p>{result.venue_address}</p>
-//             {/* <p>{result.datetime}</p> */}
-//           </li>
-//         ))}
+//       <ul className="no-bullets">
+//       {events.map((event) => {
+//         const date = new Date(event.formattedDatetime);
+//         const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
+//         const day = date.getDate();
+//         const month = date.toLocaleString('default', { month: 'short' });
+//         let hours = date.getHours();
+//         const minutes = date.getMinutes().toString().padStart(2, '0');
+//         const period = hours >= 12 ? 'pm' : 'am';
+//         hours = hours % 12;
+//         hours = hours ? hours : 12; 
+
+//         return (
+//           <Link to={`/events/${event.id}`} key={event.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+//             <li className="event-button">
+//               <div className="event-left">
+//                 <p>{dayOfWeek}</p>
+//                 <p>{`${hours}:${minutes}${period}`}</p>
+//               </div>
+//               <div className="event-right">
+//                 <h3>{event.performerName}</h3>
+//                 <p>{`${event.venueName} * ${event.venueAddress}`}</p>
+//               </div>
+//             </li>
+//           </Link>
+//         );
+//       })}
 //       </ul>
+//       <style jsx>{`
+//         .no-bullets {
+//           list-style-type: none;
+//           padding: 0;
+//         }
+//         .event-button {
+//           display: flex;
+//           justify-content: space-between;
+//           align-items: center;
+//           padding: 15px;
+//           border: 1px solid transparent;
+//           transition: background-color 0.2s;
+//         }
+//         .event-button:hover {
+//           background-color: #f0f0f0;
+//           cursor: pointer;
+//         }
+//       `}</style>
 //     </div>
 //   );
 // };
 
-// export default SearchResults;
-
-
-// import {useEffect} from "react"
-// import {getEvents} from '../redux/actionCreators'
-// import { connect } from 'react-redux'
-// import EventCard from "../components/EventCard"
-// import SearchBar from './components/SearchBar';
-
-
-// function SearchResults({getEvents, events}){
-
-//     const { search } = window.location;
-// const query = new URLSearchParams(search).get('input');
-// const [searchQuery, setSearchQuery] = useState(query || '');
-// const FilteredEvents = FilterEvents(events, searchQuery);
-
-// const FilterEvents = (events, query) => {
-//     if (!query) {
-//         return events;
-//     }
-  
-//     return events.filter((event) => {
-//         const eventName = event.name.toLowerCase();
-//         return eventName.includes(query);
-//     });
+// const mapStateToProps = (state) => {
+//   return {
+//     events: state.events,
 //   };
+// };
 
-//   useEffect(getEvents, [getEvents])
+// export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);
+import { useEffect } from "react";
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { fetchSearchResults } from '../redux/searchActions.ts';
+import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-//       return 
+const SearchResults = ({ loading, events, error }) => {
+  const { input } = useParams(); 
+  const dispatch = useDispatch();
 
-//       <ul>
-//       {FilteredEvents.map(event => (
-//           <li key={event.key}>{event.name}</li>
-//       ))}
-//   </ul>
+  useEffect(() => {
+    dispatch(fetchSearchResults(input));
+  }, [dispatch, input]);
 
-//   </div>
-// }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-//   const mapStateToProps = (state) => {
-//   return {events: state.events}
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
+  if (!events || events.length === 0) {
+    return <p>No results found.</p>;
+  }
 
-// }
-
-
-// import {useState} from "react"
-// import {useEffect} from "react"
-// import {getEvents} from '../redux/actionCreators'
-// import { connect } from 'react-redux'
-// import EventCard from "../components/EventCard"
-// import EventCardSearch from "../components/EventCardSearch"
-// import SearchBar from './components/SearchBar';
-// import FilterEvents from './components/FilterEvents';
-
-
-// export default function SearchResults() {
-
-// const { search } = window.location;
-// const query = new URLSearchParams(search).get('results');
-// const [searchQuery, setSearchQuery] = useState(query || '');
-// const FilteredEvents = EventCardSearch(events, searchQuery);
-
-
-// return (
-//     <div>
-//         <SearchBar
-//             searchQuery={searchQuery}
-//             setSearchQuery={setSearchQuery}
-//         />
-//         <ul>
-//             {FilteredEvents.map(event => (
-//                 <li key={event.key}>{event.name}</li>
-//             ))}
-//         </ul>
-//     </div>
-// );
-// }
+  return (
+    <div>
+      <ul className="no-bullets">
+      {events.map((event) => {
+        const date = new Date(event.formattedDatetime);
+        const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'short' });
+        let hours = date.getHours();
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const period = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
 
 
-// import {useEffect} from "react"
-// import {getEvents} from '../redux/actionCreators.ts'
-// import { connect } from 'react-redux'
-// import { Routes, Route, Outlet } from "react-router-dom";
-// import EventCard from "../components/EventCard"
-// import EventCardSearch from "../components/EventCard"
-// import SearchBar from "../components/SearchBar"
-// import { getSearchResults } from '../redux/actionCreators.ts';
-// // import { fetchEventDetails } from '../redux/actionCreators';
-// import { useParams } from 'react-router-dom';
-// import { Link } from 'react-router-dom'
+        return (
+          <li key={event.id}>
+          <Link to={`/events/${event.id}`} className="event-link">
+            <div className="event-left">
+              <p>{`${month} ${day}`}</p>
+              <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p>
+            </div>
+            <div className="event-right">
+              <h3>{event.performerName}</h3>
+              <p>{`${event.venueName} - ${event.venueAddress}`}</p>
+            </div>
+          </Link>
+        </li>
+        );
+      })}
+      </ul>
 
+      <style jsx>{`
+       .no-bullets {
+        list-style-type: none;
+      }
+      
+      .event-link {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: inherit;
+        transition: background-color 0.3s;
+      }
+      
+      .event-link:hover {
+        background-color: #f5f5f5;
+      }
+      
+      .event-left,
+      .event-right {
+        flex: 1;
+      }
+      `}</style>
+    </div>
+  );
+};
 
+const mapStateToProps = (state) => {
+  return {
+    events: state.events,
+  };
+};
 
-
-// function SearchResults(props){
-
-
-//   const {searchQuery} = useParams();
-
-
-// //  useEffect(getSearchResults, [getSearchResults], fetchEventDetails, [fetchEventDetails])
-
-//  useEffect(getSearchResults, [getSearchResults])
-
-
-
-//  return <div className="test">
-//  {/* {props.search.events.map(<p>event => <EventCard {...event} key={event.id}/>)} */}
-
-
-//  {props.search.events.map((event) => (<li key={event.id} 
-
-// > <Link to={`/search/${event.id}`}>  <h3>{event.performers[0].name}</h3>  </Link>
-// {/* <p>{event.datetime_utc}</p> */}
-
-//    <p>{event.venue.name}</p>
-//    <p>{event.venue.address}, {event.venue.extended_address}
-// </p>
-
-
-// </li>))}
-
- 
-
-
- 
-// </div>
-
-
-
-//     //   return <div className="search_cards">
-//     // {/* {props.search.events.map(event => <EventCardSearch {...event} key={event.id}/>)} */}
-//     // {/* <ul> */}
-
-//     //     {/* {props.search_results.events.map((event) => (<li key={event.id}>{event.type}</li>))} */}
-
-//     //     <p> Hi </p>
-
-        
-
-
-
-// /* </ul> */
-   
-   
-
-
-// }
-
-
-
-//   const mapStateToProps = (state) => {
-//   return {search: state.search}
-// }
-
-
-// export default connect(mapStateToProps, { getSearchResults })(SearchResults)
+export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);

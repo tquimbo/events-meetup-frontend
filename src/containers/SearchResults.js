@@ -48,7 +48,7 @@ const SearchResults = ({ loading, events, error }) => {
     <div>
       {/* <h2>Search Results:</h2> */}
       
-      <ul>
+      <ul style={{ listStyleType: "none" }}>
         {events.map((event) => (
           <li key={event.id}>
             <Link to={`/events/${event.id}`}><h3>{event.performerName}</h3></Link> 

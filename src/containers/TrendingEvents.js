@@ -278,12 +278,15 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
           <li key={event.id}>
             <Link to={`/events/${event.id}`} className="event-link">
               <div className="event-top">
-                <p>{new Date(event.formattedDatetime).toLocaleDateString()}</p>
+              <img src={event.performerImage} alt={`${event.performerName}`} className="performer-image" />
+                {/* <p>{new Date(event.formattedDatetime).toLocaleDateString()}</p> */}
               </div>
               <div className="event-bottom">
                 {/* <img src={event.image_url} alt={event.name} /> */}
+            
                 <h3>{event.performerName}</h3>
-                <p>{event.venueName}</p>
+                <p>{new Date(event.formattedDatetime).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} {event.venueName}</p>
+                {/* <p>{event.venueName}</p> */}
               </div>
             </Link>
           </li>
@@ -297,7 +300,7 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
         .event-link {
           display: flex;
           flex-direction: column;
-          border: 1px solid #ccc;
+          // border: 1px solid #ccc;
           padding: 10px;
           margin-bottom: 10px;
           text-decoration: none;
@@ -329,6 +332,13 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
           max-width: 100%;
           height: auto;
         }
+
+
+        .performer-image {
+          width: 100%;
+          height: auto;
+        }
+
       `}</style>
     </div>
   );

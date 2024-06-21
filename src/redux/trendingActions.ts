@@ -17,14 +17,30 @@ export const fetchTrendingEventsFailure = (error) => ({
 });
 
 export const fetchTrendingEvents = () => {
-  return async (dispatch) => {
-    dispatch(fetchTrendingEventsRequest());
-    try {
-      const response = await fetch('/trending_events');
-      const data = await response.json();
-      dispatch(fetchTrendingEventsSuccess(data));
-    } catch (error) {
-      dispatch(fetchTrendingEventsFailure(error.message));
-    }
-  };
+    return async (dispatch) => {
+      dispatch(fetchTrendingEventsRequest());
+      try {
+        const response = await fetch('http://localhost:3000/events/trending');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        dispatch(fetchTrendingEventsSuccess(data));
+      } catch (error) {
+        dispatch(fetchTrendingEventsFailure(error.message));
+      }
+    };
+  
+
+// export const fetchTrendingEvents = () => {
+//   return async (dispatch) => {
+//     dispatch(fetchTrendingEventsRequest());
+//     try {
+//       const response = await fetch('http://localhost:3000/events/trending');
+//       const data = await response.json();
+//       dispatch(fetchTrendingEventsSuccess(data));
+//     } catch (error) {
+//       dispatch(fetchTrendingEventsFailure(error.message));
+//     }
+//   };
 };

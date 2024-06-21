@@ -86,6 +86,10 @@ function Navigation({ logout, username, user }) {
            Nearby Events
           </NavLink>
 
+          <NavLink className="nav-link" to="/trending" style={linkStyle}>
+           Trending Events
+          </NavLink>
+
           <NavLink className="nav-link" to="/index" style={linkStyle}>
             See all events
           </NavLink>

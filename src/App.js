@@ -31,6 +31,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { autoLogin } from './redux/actionCreators.ts'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import TrendingEvents from './containers/TrendingEvents';
 
 
 
@@ -103,12 +104,16 @@ useEffect(() => localStorage.token && autoLogin(), [autoLogin])
         <Route path="search" element={<SearchResults />} >
         <Route path=":searchId" element={<SearchShow />}/> 
         </Route>
+
+        
       
       
         <Route path="login" element={<Login />}/>
         <Route path="signup" element={<Signup />}/>
         <Route path="nearby" element={<NearbyEvents />}/> 
         <Route path="index" element={<EventIndex />}/> 
+        <Route path="trending" element={<TrendingEvents />}/> 
+
         {/* <Route path="myprofile" element={<MyProfile />}/>  */}
 
         </Routes>

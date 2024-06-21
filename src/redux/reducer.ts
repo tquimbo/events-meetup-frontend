@@ -123,6 +123,16 @@ case SEARCH_FAILURE:
     return { ...state, loading: false, events: action.payload };
   case NEARBY_FAILURE:
     return { ...state, loading: false, error: action.payload };
+
+    case FETCH_TRENDING_EVENTS_REQUEST:
+      return {...state, loading: true,error: null,
+      };
+    case FETCH_TRENDING_EVENTS_SUCCESS:
+      return {...state, loading: false, events: action.payload,
+      };
+    case FETCH_TRENDING_EVENTS_FAILURE:
+      return {...state, loading: false, error: action.payload,
+      };
             
       case "GET_EVENTS":
         return{...state, events: action.payload};
@@ -143,24 +153,7 @@ case SEARCH_FAILURE:
           return {...state, user: initialUser};
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
-          case FETCH_TRENDING_EVENTS_REQUEST:
-            return {
-              ...state,
-              loading: true,
-              error: null,
-            };
-          case FETCH_TRENDING_EVENTS_SUCCESS:
-            return {
-              ...state,
-              loading: false,
-              events: action.payload,
-            };
-          case FETCH_TRENDING_EVENTS_FAILURE:
-            return {
-              ...state,
-              loading: false,
-              error: action.payload,
-            };
+         
         case "ADD_EVENT":
         
             return {

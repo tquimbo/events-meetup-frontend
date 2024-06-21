@@ -3,6 +3,7 @@ import { flatten } from "lodash";
 // import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
 import { NEARBY_REQUEST, NEARBY_SUCCESS, NEARBY_FAILURE } from '../redux/nearbyActions.ts';
 import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../redux/searchActions.ts';
+import { FETCH_TRENDING_EVENTS_REQUEST, FETCH_TRENDING_EVENTS_SUCCESS, FETCH_TRENDING_EVENTS_FAILURE, } from '../redux/trendingActions.ts'
 
 // import { UPDATE_EVENT_ATTENDEES } from "./actions";
 
@@ -142,7 +143,24 @@ case SEARCH_FAILURE:
           return {...state, user: initialUser};
           // case "ADD_EVENT":
           //   return {...state, selectedEvent: action.payload};
-          
+          case FETCH_TRENDING_EVENTS_REQUEST:
+            return {
+              ...state,
+              loading: true,
+              error: null,
+            };
+          case FETCH_TRENDING_EVENTS_SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              events: action.payload,
+            };
+          case FETCH_TRENDING_EVENTS_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload,
+            };
         case "ADD_EVENT":
         
             return {
@@ -241,6 +259,8 @@ case SEARCH_FAILURE:
         return state
     }
   }
+
+  
 
   function userReducer(state = { user: {}, loading: false, userStatsLoading: false, userStats: {} }, action){
     switch(action.type){

@@ -62,28 +62,11 @@ export default function UserEventCard({
   performer_name,
   venue_name,
   venue_address,
+  formatted_datetime,
   formattedDatetime,
-  // formatted_datetime,
+ 
 }) {
-  // const date = new Date(formatted_datetime);
-  // const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
-  // const day = date.getDate();
-  // const month = date.toLocaleString('default', { month: 'short' });
-  // let hours = date.getHours();
-  // const minutes = date.getMinutes().toString().padStart(2, '0');
-  // const period = hours >= 12 ? 'pm' : 'am';
-  // hours = hours % 12;
-  // hours = hours ? hours : 12;
-  // const date = new Date(formatted_datetime);
-  // const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
-  // const day = date.getDate();
-  // const month = date.toLocaleString('default', { month: 'short' });
-  // let hours = date.getHours();
-  // const minutes = date.getMinutes().toString().padStart(2, '0');
-  // const period = hours >= 12 ? 'pm' : 'am';
-  // hours = hours % 12;
-  // hours = hours ? hours : 12;
-  // console.log(formatted_datetime);
+
   console.log(formattedDatetime);
 
   // let date = new Date(formatted_datetime);
@@ -107,11 +90,13 @@ export default function UserEventCard({
     <div className="user_event_cards">
       <Link to={`/events/${event_id}`} className="event-link">
         <div className="event-left">
-          <p>{`${month} ${day}`}</p>
-          <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p>
+          {/* <p>{`${month} ${day}`}</p>
+          <p>{`${dayOfWeek} - ${hours}:${minutes}${period}`}</p> */}
+          <h3>{formatted_datetime ?? 'N/A'}</h3>
         </div>
         <div className="event-right">
-          <h3>{formattedDatetime ?? 'N/A'}</h3>
+        {/* <h3>{formatted_datetime ?? 'N/A'}</h3> */}
+          {/* <h3>{formattedDatetime ?? 'N/A'}</h3> */}
           <h3>{performer_name ?? 'N/A'}</h3>
           <p>{`${venue_name ?? 'N/A'} - ${venue_address ?? 'N/A'}`}</p>
         </div>
@@ -124,7 +109,7 @@ export default function UserEventCard({
       .event-link {
         display: flex;
         justify-content: space-between;
-        border: 1px solid #ccc;
+        // border: 1px solid #ccc;
         padding: 10px;
         margin-bottom: 10px;
         text-decoration: none;

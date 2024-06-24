@@ -388,7 +388,7 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
 
   return (
     <div>
-      <h2>Trending Events</h2>
+      {/* <h2>Trending Events</h2>
       <div className="event-navigation">
         <button onClick={prevEvents} disabled={currentIndex === 0}>
           &lt; Prev
@@ -397,6 +397,18 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
         <button onClick={nextEvents} disabled={currentIndex + itemsPerPage >= events.length}>
           Next &gt;
         </button>
+      </div> */}
+        <div className="header">
+        <h2>Trending Events</h2>
+        <div className="event-navigation">
+          <button onClick={prevEvents} disabled={currentIndex === 0}>
+            &lt;
+          </button>
+          <span>{Math.ceil((currentIndex + 1) / itemsPerPage)} of {Math.ceil(events.length / itemsPerPage)}</span>
+          <button onClick={nextEvents} disabled={currentIndex + itemsPerPage >= events.length}>
+            &gt;
+          </button>
+        </div>
       </div>
       <ul className="no-bullets event-list">
         {events.slice(currentIndex, currentIndex + itemsPerPage).map((event) => (
@@ -419,12 +431,31 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
           padding: 0;
         }
 
-        .event-navigation {
+        .header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 10px;
         }
+
+        .event-navigation {
+          display: flex;
+          align-items: center;
+        }
+
+        .event-navigation button {
+          background: none;
+          border: none;
+          font-size: 1.2rem;
+          cursor: pointer;
+          margin: 0 5px;
+          color: inherit;
+        }
+
+        .event-navigation span {
+          font-size: 0.9rem;
+        }
+
 
         .event-list {
           display: flex;

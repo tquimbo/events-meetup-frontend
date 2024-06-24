@@ -178,7 +178,7 @@ export const addEvent = (user_event_data) => {
     performer_name: user_event_data.event.performerName,
     venue_name: user_event_data.event.venueName,
     venue_address: user_event_data.event.venueAddress,
-    formatted_datetime: user_event_data.event.formatted_datetime,
+    formatted_datetime: user_event_data.event.formattedDatetime,
     // formattedDatetime: user_event_data.event.formattedDatetime,
     username: user_event_data.user.username,
     first_name: user_event_data.user.firstName,

@@ -87,7 +87,7 @@ const NearbyEvents = ({ loading, events, error }) => {
         .event-link {
           display: flex;
           flex-direction: column;
-          border: 1px solid #ccc;
+          // border: 1px solid #ccc;
           padding: 10px;
           margin-bottom: 10px;
           text-decoration: none;

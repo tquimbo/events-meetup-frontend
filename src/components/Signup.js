@@ -22,7 +22,7 @@ function Signup(props){
   const handleSubmit = (e) => {
     e.preventDefault()
     props.submitSignup({username, password, first_name, last_name })
-    navigate("/index", { replace: true });
+    navigate("/nearby", { replace: true });
   }
 
   return <>

@@ -89,10 +89,10 @@ function Navigation({ logout, username, user }) {
           <NavLink className="nav-link" to="/trending" style={linkStyle}>
            Trending Events
           </NavLink>
-
+{/* 
           <NavLink className="nav-link" to="/index" style={linkStyle}>
             See all events
-          </NavLink>
+          </NavLink> */}
           {/* <NavLink
             className="nav-link"
             to={`/myprofile/${username}`}

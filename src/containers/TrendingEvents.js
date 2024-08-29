@@ -463,7 +463,7 @@ const TrendingEvents = ({ events, error, fetchTrendingEvents }) => {
         }
 
         .event-item {
-          flex: 1 0 22%;
+          flex: 1 0 20%;
           margin: 0 1%;
         }
 

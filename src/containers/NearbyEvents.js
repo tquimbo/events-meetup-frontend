@@ -62,7 +62,7 @@ const NearbyEvents = ({ loading, events, error }) => {
                 <div className="event-bottom">
                   <img src={event.performerImage} alt={`${event.performerName}`} />
                   <h3>{event.performerName}</h3>
-                  <p>{`${event.venueName} - ${event.venueAddress}`}</p>
+                  <p>{`${event.venueName} · ${event.venueAddress}`}</p>
                 </div>
               </Link>
             </li>
